@@ -2,8 +2,25 @@
 
 use Illuminate\Support\Facades\Route;
 
+// middleware
+use App\Http\Middleware\Logout;
+use App\Http\Middleware\Authenticated;
+use App\Http\Middleware\Unauthenticated;
+use App\Http\Middleware\AccountisValid;
+use App\Http\Middleware\AccountisAdmin;
+use App\Http\Middleware\AccountisStudent;
+
+// authentication
+use App\Livewire\Authentication\Signout;
+use App\Livewire\Authentication\Login;
+use App\Livewire\Authentication\RegisterEmail;
+use App\Livewire\Authentication\ForgotPassword;
+use App\Livewire\Authentication\AccountRecovery;
+use App\Livewire\Authentication\ChangeEmail;
+
 use App\Livewire\CreatePost;
 
+// page
 use App\Livewire\Page\About\About;
 use App\Livewire\Page\Contact\Contact;
 use App\Livewire\Page\Faq\Faq;
@@ -26,6 +43,19 @@ Route::get('/', function () {
 
 });
 
+Route::get('/logout', Signout::class)->middleware(Logout::class)->name('logout');
+
+Route::middleware([Unauthenticated::class])->group(function () {
+    Route::get('/login', Login::class)->name('login');
+    Route::get('/register-email',RegisterEmail::class)->name('register-email');
+    Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
+    Route::get('/account/recovery/{hash}', AccountRecovery::class)->name('account-recovery');
+});
+
+Route::middleware([Authenticated::class,AccountisValid::class])->group(function () {
+    Route::get('/change-email', ChangeEmail::class)->name('change.email');
+});
+
 Route::prefix('/')->group(function () {
     Route::get('/', Home::class)->name('homepage');
 
@@ -35,7 +65,6 @@ Route::prefix('/')->group(function () {
     Route::get('/home', Home::class)->name('home');
     Route::get('/project',Project::class)->name('project');
     Route::get('/techstack', TechStack::class)->name('techstack');
-  
 
 });
 
