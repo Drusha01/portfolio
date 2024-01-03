@@ -1,7 +1,7 @@
-<div>
+<div style="font-family: 'Roboto';font-size: 13px;">
     <div style="width:100%;padding-top: 70px;">
 
-</div>
+    </div>
     <header class="p-2 bg-light fixed-top shadow " data-bs-theme="light" style="max-height:70px;">
         <div class="container d-flex justify-content-between align-items-center " >
             <h1 class="logo mr-auto">
@@ -26,11 +26,11 @@
                     </div>
                 </nav>
 
-                <div class="vr mx-2" ></div>
-                <a href="https://www.facebook.com/atgscorp" class="text-secondary mx-2" target="_blank"><i class="bi bi-facebook fs-5"></i></a>
-                <a href="https://www.instagram.com/atgscorp" class="text-secondary mx-2" target="_blank"><i class="bi bi-instagram fs-5"></i></a>
-                <a href="https://www.linkedin.com/company/ally-techno-grit-solutions" class="text-secondary mx-2" target="_blank"><i class="bi bi-linkedin fs-5"></i></a>
-                <a href="https://www.linkedin.com/company/ally-techno-grit-solutions" class="text-secondary mx-2" target="_blank"><i class="bi bi-github fs-5"></i></a>
+                <div class="vr mx-2 text-dark" ></div>
+                    <a href="https://www.facebook.com/drusha091" class="text-secondary mx-2" target="_blank"><i class="bi bi-facebook fs-5"></i></a>
+                    <a href="https://www.instagram.com/drusha091" class="text-secondary mx-2" target="_blank"><i class="bi bi-instagram fs-5"></i></a>
+                    <a href="https://www.linkedin.com/in/drusha01" class="text-secondary mx-2" target="_blank"><i class="bi bi-linkedin fs-5"></i></a>
+                    <a href="https://github.com/Drusha01" class="text-secondary mx-2" target="_blank"><i class="bi bi-github fs-5"></i></a>
                
                 <nav class="navbar  d-lg-none opacity-0  " >
                     <div class="container-fluid ">
