@@ -4,7 +4,7 @@
     </section>
     
     <section id="contact">
-        <div class="container mt-5">
+        <div class="container-md mt-5">
             <div class="row text-center">
                 <div class="section-title">
                     <h2>CONTACT US</h2>

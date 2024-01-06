@@ -13,6 +13,7 @@
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 
         <title>{{ $title ?? 'Page Title' }}</title>
+        <link rel="icon" href="{{ asset('assets/favicon/favicon.ico') }}" type="image/x-icon"></head>
     </head>
     <style>
         body {

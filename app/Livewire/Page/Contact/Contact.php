@@ -3,6 +3,7 @@
 namespace App\Livewire\Page\Contact;
 
 use Livewire\Component;
+use Illuminate\Http\Request;
 
 class Contact extends Component
 {
@@ -10,8 +11,12 @@ class Contact extends Component
     public $lng;
     public $lat;  
     public $zoom;
-    
-    public function mount(){
+
+    public $mode;
+
+    public function mount(Request $request){
+        $data = $request->session()->all();
+        $this->mode = $data['mode'];
         $this->lng = 122.0761312;
         $this->lat = 6.9038855;
         $this->zoom = 16;
@@ -20,6 +25,7 @@ class Contact extends Component
     {
         return view('livewire.page.contact.contact')
         ->layout('components.layouts.contact',[
-            'title'=>$this->title]);
+            'title'=>$this->title,
+            'mode'=>$this->mode]);
     }
 }

@@ -9,6 +9,7 @@ use App\Http\Middleware\Unauthenticated;
 use App\Http\Middleware\AccountisValid;
 use App\Http\Middleware\AccountisAdmin;
 use App\Http\Middleware\AccountisStudent;
+use App\Http\Middleware\Darkmode;
 
 // authentication
 use App\Livewire\Authentication\Signout;
@@ -56,16 +57,18 @@ Route::middleware([Authenticated::class,AccountisValid::class])->group(function 
     Route::get('/change-email', ChangeEmail::class)->name('change.email');
 });
 
-Route::prefix('/')->group(function () {
-    Route::get('/', Home::class)->name('homepage');
+Route::middleware([Darkmode::class])->group(function () {
+    Route::prefix('/')->group(function () {
+        Route::get('/', Home::class)->name('homepage');
 
-    Route::get('/about', About::class)->name('about');
-    Route::get('/contact', Contact::class)->name('contact');
-    Route::get('/faq', Faq::class)->name('faq');
-    Route::get('/home', Home::class)->name('home');
-    Route::get('/project',Project::class)->name('project');
-    Route::get('/techstack', TechStack::class)->name('techstack');
+        Route::get('/about', About::class)->name('about');
+        Route::get('/contact', Contact::class)->name('contact');
+        Route::get('/faq', Faq::class)->name('faq');
+        Route::get('/home', Home::class)->name('home');
+        Route::get('/project',Project::class)->name('project');
+        Route::get('/techstack', TechStack::class)->name('techstack');
 
+    });
 });
 
 

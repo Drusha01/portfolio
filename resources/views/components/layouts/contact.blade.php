@@ -14,12 +14,19 @@
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 
         <title>{{ $title ?? 'Page Title' }}</title>
+        <link rel="icon" href="{{ asset('assets/favicon/favicon.ico') }}" type="image/x-icon"></head>
         <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel="stylesheet">
         <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"></script>
+        
     </head>
     <body>
     @livewire('components.header.page-header.page-header')
         {{ $slot }}
     @livewire('components.footer.page-footer.page-footer')
+    <script>
+        window.addEventListener('refresh-page', event => {
+            window.location.reload(false); 
+        })
+    </script>
     </body>
 </html>
