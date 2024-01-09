@@ -14,6 +14,9 @@
   
         <title>{{ $title ?? 'Page Title' }}</title>
         <link rel="icon" href="{{ asset('assets/favicon/favicon.ico') }}" type="image/x-icon"></head>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     </head>
     <style>
         body {
@@ -30,17 +33,17 @@
        
 
 
-@keyframes gradient {
-    0% {
-        background-position: 20% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 30% 50%;
-    }
-}
+        @keyframes gradient {
+            0% {
+                background-position: 20% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 30% 50%;
+            }
+        }
     </style>
     <body>
     @livewire('components.header.page-header.page-header')
