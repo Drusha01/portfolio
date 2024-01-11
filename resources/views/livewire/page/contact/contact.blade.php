@@ -44,14 +44,27 @@
         </div>
     </section>
     <script>
-	mapboxgl.accessToken = 'pk.eyJ1IjoiZHJ1c2hhIiwiYSI6ImNscXkyenV3cDBrdjMyanBjc2Fib2h4eWIifQ.00MiJujxN4t1DZH5ksedbA';
-    var map = new mapboxgl.Map({
-    container: 'map', // container ID
-    center: [{{$lng}},{{$lat}}], // starting position [lng, lat]
-    zoom: {{$zoom}} // starting zoom
-    });
-    var marker1 = new mapboxgl.Marker({ color: 'red'})
-    .setLngLat( [{{$lng}},{{$lat}}])
-    .addTo(map);
+        function map_contact(){
+            mapboxgl.accessToken = 'pk.eyJ1IjoiZHJ1c2hhIiwiYSI6ImNscXkyenV3cDBrdjMyanBjc2Fib2h4eWIifQ.00MiJujxN4t1DZH5ksedbA';
+            var map = new mapboxgl.Map({
+            container: 'map', // container ID
+            center: [{{$lng}},{{$lat}}], // starting position [lng, lat]
+            zoom: {{$zoom}} // starting zoom
+            });
+            var marker1 = new mapboxgl.Marker({ color: 'red'})
+            .setLngLat( [{{$lng}},{{$lat}}])
+            .addTo(map);
+        }
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZHJ1c2hhIiwiYSI6ImNscXkyenV3cDBrdjMyanBjc2Fib2h4eWIifQ.00MiJujxN4t1DZH5ksedbA';
+        var map = new mapboxgl.Map({
+        container: 'map', // container ID
+        center: [{{$lng}},{{$lat}}], // starting position [lng, lat]
+        zoom: {{$zoom}} // starting zoom
+        });
+        var marker1 = new mapboxgl.Marker({ color: 'red'})
+        .setLngLat( [{{$lng}},{{$lat}}])
+        .addTo(map);
     </script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel="stylesheet">
+    <script onload="map_contact();" src="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"></script>
 </div>

@@ -15,8 +15,6 @@
 
         <title>{{ $title ?? 'Page Title' }}</title>
         <link rel="icon" href="{{ asset('assets/favicon/favicon.ico') }}" type="image/x-icon"></head>
-        <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel="stylesheet">
-        <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 
@@ -25,6 +23,9 @@
         
     </head>
     <body>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoiZHJ1c2hhIiwiYSI6ImNscXkyenV3cDBrdjMyanBjc2Fib2h4eWIifQ.00MiJujxN4t1DZH5ksedbA';
+        </script>
     @livewire('components.header.page-header.page-header')
         {{ $slot }}
     @livewire('components.footer.page-footer.page-footer')

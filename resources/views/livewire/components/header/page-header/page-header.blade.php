@@ -1,6 +1,5 @@
 <div style="font-family: 'Roboto';font-size: 13px;">
     <div style="width:100%;padding-top: 70px;" >
-
     </div>
     <header class="p-2 fixed-top shadow @if($mode == 1) bg-white @else bg-dark @endif" data-bs-theme="light" style="max-height:70px;" >
         <div class="container d-flex justify-content-between align-items-center " >
@@ -21,11 +20,11 @@
                             <li class="nav-item"><a href="{{ Route('faq') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>FAQs</strong></a></li>
                             <li class="nav-item"><a href="{{ Route('techstack') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>Tech Stack</strong></a></li>
                             <li class="nav-item"><a href="{{ Route('project') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>Projects</strong></a></li>
-                            <li class="nav-item"><a href="{{ Route('contact') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>Contact</strong></a></li>
+                            <li class="nav-item"><a href="{{ Route('contact') }}" wire:navigate.hover class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>Contact</strong></a></li>
                             <li class="nav-item aligh-items-center"> 
                             <a class="form-check form-switch aligh-items-center m-2">
-                                <input class="form-check-input" type="checkbox" role="switch" @if($mode == 1) @else checked @endif id="mode" wire:click="mode_toggle()">
-                                <label class="form-check-label @if($mode == 0) text-white @else text-dark @endif"" for="flexSwitchCheckDefault"> @if($mode == 1) Light @else Dark @endif</label>
+                                <input class="form-check-input" id="mode" type="checkbox" role="switch" @if($mode == 1) @else checked @endif id="mode" wire:click="mode_toggle()">
+                                <label for="mode" class="form-check-label @if($mode == 0) text-white @else text-dark @endif"" for="flexSwitchCheckDefault"> @if($mode == 1) Light @else Dark @endif</label>
                             </a>
                             </li>
                         </ul>

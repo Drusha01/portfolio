@@ -65,7 +65,7 @@ Route::middleware([Darkmode::class])->group(function () {
         Route::get('/contact', Contact::class)->name('contact');
         Route::get('/faq', Faq::class)->name('faq');
         Route::get('/home', Home::class)->name('home');
-        Route::get('/project',Project::class)->name('project');
+        Route::get('/projects',Project::class)->name('project');
         Route::get('/techstack', TechStack::class)->name('techstack');
 
     });
