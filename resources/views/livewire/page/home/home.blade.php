@@ -358,7 +358,7 @@
                                         <h3 >Western Mindanao State University</h3>
                                     </a>
                                     <p>2020 - Present | Normal Rd, Zamboanga, 7000 Zamboanga del Sur</p>
-                                    <p>Bachelor's</p>
+                                    <p>Tertiary</p>
                                 </div>
                             </div>
                         </div>

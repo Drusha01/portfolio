@@ -1,4 +1,4 @@
-<div>
+<div style="min-height:80vh;@if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif">
     <section id="map-section">
         <div id="map" style=" width: 100%;height:340px;opacity:.8"></div>
     </section>
