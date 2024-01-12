@@ -72,7 +72,7 @@ class ForgotPassword extends Component
                     'user_forgot_password_hash' => $hash,
                 ]);
                 $request->session()->put('user_email', $this->email);
-                $this->dispatchBrowserEvent('swal:redirect',
+                $this->dispatch('swal:redirect',
                     position          									: 'center',
                     icon              									: 'success',
                     title             									: 'Link has been emailed!',
@@ -82,7 +82,7 @@ class ForgotPassword extends Component
                 );
             }else{
                 sleep(5);
-                $this->dispatchBrowserEvent('swal:redirect',
+                $this->dispatch('swal:redirect',
                     position          									: 'center',
                     icon              									: 'success',
                     title             									: 'Link has been emailed!',
