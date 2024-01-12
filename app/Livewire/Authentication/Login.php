@@ -50,23 +50,23 @@ class Login extends Component
                 $request->session()->put('user_id', $user_details->user_id);
                 
                 //append it to session
-                $this->dispatchBrowserEvent('swal:redirect',[
-                    'position'          									=> 'center',
-                    'icon'              									=> 'success',
-                    'title'             									=> 'Welcome back crimson!',
-                    'showConfirmButton' 									=> 'true',
-                    'timer'             									=> '1500',
-                    'link'              									=> 'student/profile'
-                ]);
+                $this->dispatch('swal:redirect',
+                    position         									: 'center',
+                    icon              									: 'success',
+                    title             									: 'Welcome back crimson!',
+                    showConfirmButton 									: 'true',
+                    timer             									: '1500',
+                    link              									: 'student/profile'
+                );
             }else{
-                $this->dispatchBrowserEvent('swal:redirect',[
-                    'position'          									=> 'center',
-                    'icon'              									=> 'warning',
-                    'title'             									=> 'Invalid credentials!',
-                    'showConfirmButton' 									=> 'true',
-                    'timer'             									=> '1000',
-                    'link'              									=> '#'
-                ]);
+                $this->dispatch('swal:redirect',
+                    position          									: 'center',
+                    icon              									: 'warning',
+                    title            									: 'Invalid credentials!',
+                    showConfirmButton 									: 'true',
+                    timer             									: '1000',
+                    link              									: '#'
+                );
             }
             
 

@@ -20,6 +20,7 @@
                             <li class="nav-item"><a href="{{ Route('faq') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>FAQs</strong></a></li>
                             <li class="nav-item"><a href="{{ Route('techstack') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>Tech Stack</strong></a></li>
                             <li class="nav-item"><a href="{{ Route('project') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>Projects</strong></a></li>
+                            <li class="nav-item"><a href="{{ Route('blog') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>Blog</strong></a></li>
                             <li class="nav-item"><a href="{{ Route('contact') }}" wire:navigate.hover class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>Contact</strong></a></li>
                             <li class="nav-item aligh-items-center"> 
                             <a class="form-check form-switch aligh-items-center m-2">
@@ -48,16 +49,20 @@
                  
                 <div class="offcanvas offcanvas-end @if($mode == 1) text-dark @else text-white  bg-secondary @endif" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Navigation</h5>
                         <button type="button" class="btn-close mx-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3"  >
-                            <li class="nav-item"><a href="#" class="nav-link "><strong>HOME</strong></a></li>
-                            <li class="nav-item"><a href="#" class="nav-link "><strong>Features</strong></a></li>
-                            <li class="nav-item"><a href="#" class="nav-link "><strong>Pricing</strong></a></li>
-                            <li class="nav-item"><a href="#" class="nav-link "><strong>FAQs</strong></a></li>
-                            <li class="nav-item"><a href="#" class="nav-link "><strong>About</strong></a></li>
+                        <li class="nav-item"><a href="{{ Route('home') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif active"><strong><i class="bi bi-house-door"></i> HOME</strong></a></li>
+                            <li class="nav-item"><a href="{{ Route('about') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong> <i class="bi bi-info-circle"></i> About</strong></a></li>
+                            <li class="nav-item"><a href="{{ Route('faq') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong><i class="bi bi-patch-question"></i> FAQs</strong></a></li>
+                            <li class="nav-item"><a href="{{ Route('techstack') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong><i class="bi bi-motherboard"></i> Tech Stack</strong></a></li>
+                            <li class="nav-item"><a href="{{ Route('project') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong><i class="bi bi-menu-button-wide"></i> Projects</strong></a></li>
+                            <li class="nav-item"><a href="{{ Route('blog') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong><i class="bi bi-file-earmark-richtext"></i> Blog</strong></a></li> 
+                            <li class="nav-item"><a href="{{ Route('contact') }}" wire:navigate.hover class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong><i class="bi bi-telephone"></i> Contact</strong></a></li>
+                            <li class="nav-item"><a href="{{ Route('contact') }}" wire:navigate.hover class="nav-link @if($mode == 0) text-white @else text-dark @endif"><i class="bi bi-folder"></i> <strong>CV </strong></a></li>
+                            <li class="nav-item"><a href="{{ Route('contact') }}" wire:navigate.hover class="nav-link @if($mode == 0) text-white @else text-dark @endif"><i class="bi bi-incognito"></i> <strong>Secret </strong></a></li>
                             <li class="nav-item aligh-items-center"> 
                             <a class="form-check form-switch aligh-items-center">
                                 <input class="form-check-input" type="checkbox" role="switch" @if($mode == 1) @else checked @endif id="mode" wire:click="mode_toggle()">

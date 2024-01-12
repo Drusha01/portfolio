@@ -2,30 +2,34 @@
     <section id="map-section">
         <div id="map" style=" width: 100%;height:340px;opacity:.8"></div>
     </section>
-    
-    <section id="contact">
-        <div class="container-md mt-5">
-            <div class="row text-center">
-                <div class="section-title">
-                    <h2>CONTACT US</h2>
-                </div>
-                <div class="row p-3">
-                    <div class="col">
-                        <a href="https://www.facebook.com/drusha091" class="text-dark mx-2" target="_blank"><i class="bi bi-facebook fs-5"></i></a>
-                        <a href="https://www.instagram.com/drusha091" class="text-dark mx-2" target="_blank"><i class="bi bi-instagram fs-5"></i></a>
-                        <a href="https://www.linkedin.com/in/drusha01" class="text-dark mx-2" target="_blank"><i class="bi bi-linkedin fs-5"></i></a>
-                        <a href="https://github.com/Drusha01" class="text-dark mx-2" target="_blank"><i class="bi bi-github fs-5"></i></a>
-                    </div>
+    <section id="contact-info">
+        <div class="row p-5">
+            <div class="col-12 section-title text-center">
+                <h2>CONTACT US</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row p-3 text-center">
+                <div class="col">
+                    <a href="https://www.facebook.com/drusha091" class="mx-2 @if($mode == 1) text-dark @else text-white @endif" target="_blank"><i class="bi bi-facebook fs-5"></i></a>
+                    <a href="https://www.instagram.com/drusha091" class="mx-2 @if($mode == 1) text-dark @else text-white @endif" target="_blank"><i class="bi bi-instagram fs-5"></i></a>
+                    <a href="https://www.linkedin.com/in/drusha01" class="mx-2 @if($mode == 1) text-dark @else text-white @endif" target="_blank"><i class="bi bi-linkedin fs-5"></i></a>
+                    <a href="https://github.com/Drusha01" class="mx-2 @if($mode == 1) text-dark @else text-white @endif" target="_blank"><i class="bi bi-github fs-5"></i></a>
                 </div>
             </div>
-            <div class="row bg-light shadow justify-content-center p-3">
-                <div class="col-lg-10">
-                    <form action="">
-                        <div class="row">
-                            <div class="col-lg-6 mb-3">
+        </div>
+    </section>
+   
+    <section id="contact-form">
+        <div class="container-md mt-5 ">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-10 bg-light shadow justify-content-center p-3 mb-5 rounded-4">
+                    <form action="" class="">
+                        <div class="row pt-5">
+                            <div class="col-sm-6 mb-3">
                                 <input type="text" class="form-control" placeholder="Your name">
                             </div>
-                            <div class="col-lg-6 mb-3">
+                            <div class="col-sm-6 mb-3">
                                 <input type="text" class="form-control" placeholder="Your email">
                             </div>
                             <div class="col-lg-12 mb-3">
@@ -35,7 +39,7 @@
                                 <textarea class="form-control" rows="4"  placeholder="Message"></textarea>
                             </div>
                             <div class="text-center mb-3">
-                                <button class="btn btn-primary">Send Message</button>
+                                <button class="btn btn-light btn-outline-dark">Send Message</button>
                             </div>
                         </div>
                     </form>

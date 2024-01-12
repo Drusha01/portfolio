@@ -1,4 +1,4 @@
-<div>
+<div  wire:scroll>
     <div style="z-index:2;">
         <section id="home" class="p-lg-0 pt-lg-0 text-center text-sm-start" style="@if($mode == 0) background:transparent;color:white @else background:transparent;color:dark @endif">
             <div class="container">
@@ -6,7 +6,7 @@
                     <div class="p-3">
                         <h1> Hi, I am <span class="text-danger"> Hanrickson E. Dumapit </span></h1>
                         <p class="lead my-4 d-none d-md-block ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi quod eligendi eius quidem natus hic rerum aspernatur cupiditate veritatis necessitatibus.</p>
-                        <button class="btn btn-outline-primary btn-lg"> Hire Me</button>
+                        <button class="btn btn-outline-primary btn-lg d-none d-md-block "> Hire Me</button>
                     </div>
                     <img class="img-sm-fluid w-50" src="{{ asset('assets/page/drusha.png') }}" alt="logo" class="logo">
                 </div>
@@ -171,127 +171,153 @@
                                     <div class="col-6" >
                                         <img class="p-2 rounded-start-4" src="{{ asset('assets/page/dev.png') }}" alt="logo" style="width:100%;height:100%;object-fit:contain">
                                     </div>
-                                    <div class="col-6 col-xs-6 p-sm-3 " style="max-height:600px;overflow: auto;">
-                                        <h3 class="text-start text-info pt-md-5 pt-sm-5 text-wrap ">ProjectName asdfasdfsdfasdfasdf</h3>
-                                        <a class="justify-content-start link-underline link-underline-opacity-0 " href=""> 
-                                            <button class="text-start btn @if($mode == 0) btn-outline-light @else btn-outline-dark @endif btn-md m-1 px-3"> Visit Site</button>
-                                        </a>
-                                        <div class="col-12">
-                                            <p class="text-start h6 d-none d-md-block " >
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                            </p>
-                                            <p class="text-start lead my-4 d-none d-lg-block">
-                                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate quaerat voluptatem obcaecati laudantium a, iure praesentium quam. Numquam atque cumque porro, reprehenderit esse reiciendis. Temporibus corrupti laborum at possimus iste. Qui, sed nostrum, facere adipisci, quisquam labore fugit dolore iusto quidem aspernatur commodi obcaecati earum asperiores atque ipsam voluptate repellendus nisi! Obcaecati quo necessitatibus totam fugiat reprehenderit sit praesentium laudantium dolore dolorum perspiciatis ducimus eveniet ea numquam, placeat quod? Ratione, dignissimos tenetur. Illo adipisci excepturi, rem sit officiis similique corporis ad alias assumenda minus, rerum quasi impedit officia et voluptatum, animi quisquam eum earum nisi possimus. Voluptatum rerum autem deleniti.
-                                            </p>
+                                    <div class="col-6 col-xs-6 p-sm-3 " style="max-height:650px;overflow: auto;">
+                                        <div class="row">
+                                            <h3 class="text-start text-info pt-md-5 pt-sm-5" style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis quisquam aliquid delectus omnis odit, nulla tenetur. Omnis cum sint eveniet.
+                                            </h3>
                                         </div>
-                                       
+                                       <div class="row">
+                                            <div class="col">
+                                                <a class="justify-content-start link-underline link-underline-opacity-0 " href=""> 
+                                                    <button class="text-start btn @if($mode == 0) btn-outline-light @else btn-outline-dark @endif btn-md m-1 px-3"><strong>Visit Site</strong> </button>
+                                                </a>
+                                            </div>
+                                       </div>
+                                       <div class="row pt-3">
+                                            <div class="col">
+                                                <p class="text-start h6 d-none d-md-block " style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                </p>
+                                            </div>
+                                       </div>
+                                       <div class="row pt-3">
+                                            <div class="col">
+                                                <p class="text-start lead d-none d-lg-block overflow-auto" style="width:inherit;max-height:450px" >
+                                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, numquam porro id molestias, suscipit commodi quis esse impedit accusantium dignissimos molestiae eaque aliquid atque, natus et sed. Odit aperiam obcaecati optio! Commodi nemo ducimus magnam nisi consequatur quis praesentium, tempora illum dicta fugiat nam velit dolorum fuga, ullam, molestias facere rem ipsa totam vitae. Beatae architecto velit minima voluptatibus, eos porro, debitis repellat odit a quisquam officiis deleniti ipsum possimus, voluptates ea in! Aspernatur corporis odio ab enim nesciunt pariatur in et! Vitae repellat ipsum, praesentium eum autem omnis sint at, possimus pariatur dolorum ab hic veritatis fugiat provident facilis cum ratione, beatae error sed est veniam. Maxime, et, iure ullam porro dolores architecto nam placeat facere velit earum doloribus! Natus iste corporis veritatis perspiciatis! Eius nesciunt ea porro nostrum, quam assumenda totam laboriosam itaque provident repellendus deserunt velit modi iure dolores praesentium! Sequi corrupti incidunt aperiam quae, provident laudantium alias, voluptates voluptatem illo, ex perferendis. Aliquam, nostrum soluta consequuntur rerum molestias dicta laboriosam, unde esse, omnis et placeat totam a optio. Sint libero mollitia quas asperiores alias, aliquid perferendis sit hic rem incidunt maiores, suscipit eius. Non corporis molestias suscipit aliquid, accusantium blanditiis rerum fugit vero odio. Magnam commodi perferendis dolores quae corporis reprehenderit eveniet esse dolorum vitae, officiis maiores perspiciatis vel ipsum distinctio alias totam accusamus quo dolore porro saepe nisi aut incidunt. Rerum quod impedit, voluptates iure, consequuntur sint saepe laboriosam incidunt ea, nulla doloribus ipsum consequatur quos possimus cum repellendus aliquam? Doloremque, unde consequuntur. Magni, error. Laudantium fuga voluptas nesciunt corporis, fugit officia quam quidem vel itaque, deleniti fugiat cupiditate? Doloribus quo vitae reiciendis impedit aspernatur exercitationem, unde aperiam porro aut laudantium voluptate magni facilis quod magnam id. Deserunt aut corrupti totam perferendis dolor aspernatur at ipsam nemo quos fugiat quisquam rem, eligendi, adipisci eum, iusto voluptatum neque! Eius maxime aperiam, ipsam eligendi totam minus repellat facere asperiores dolore dicta, voluptas laudantium. Ab omnis repellat mollitia facere quaerat ad doloremque, consequuntur illo voluptates placeat. Nobis vitae ab officia ducimus quaerat beatae architecto nulla consectetur voluptatum nam. Voluptatem nihil asperiores, cumque veritatis amet eos reprehenderit harum maiores nesciunt ad qui est molestiae optio delectus alias suscipit. Facilis laborum voluptatibus libero ipsum rerum distinctio. A, omnis quod? Nostrum temporibus qui culpa, amet quidem voluptatem aliquam voluptatibus eligendi odio doloribus! Enim neque earum nobis vitae, exercitationem dolor similique quaerat nisi consequuntur, quia obcaecati dolorem? Tempore accusamus molestiae ipsa eligendi dolorum esse asperiores iure magni modi impedit numquam velit nisi architecto vel perspiciatis iste quos veniam, iusto eos sunt alias nostrum sapiente labore laudantium? Placeat possimus deserunt eveniet magni, voluptatum facilis ullam est officiis asperiores labore nobis aliquam veniam quasi blanditiis officia quisquam harum debitis, ipsa nulla animi. Voluptatem, officiis quod nobis adipisci consequatur itaque fuga unde minima soluta! Commodi maxime laudantium iste ipsam harum corrupti sed, qui nam ad eaque optio nobis ut sit perspiciatis vero hic tempore voluptates. Nisi commodi quos quibusdam maxime praesentium sit itaque eveniet magnam ut, neque blanditiis eum nobis illum optio quia dolorum. Ex!
+                                                </p>
+                                            </div>
+                                       </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>       
                             <div class="swiper-slide border border-dark rounded-4 @if($mode == 1) bg-light @else bg-secondary @endif ">
                                 <div class="row p-2">
                                     <div class="col-6" >
                                         <img class="p-2 rounded-start-4" src="{{ asset('assets/page/dev.png') }}" alt="logo" style="width:100%;height:100%;object-fit:contain">
                                     </div>
-                                    <div class="col-6 col-xs-6 p-sm-3 " style="max-height:600px;overflow: auto;">
-                                        <h3 class="text-start text-info pt-md-5 pt-sm-5 text-wrap ">ProjectName asdfasdfsdfasdfasdf</h3>
-                                        <a class="justify-content-start link-underline link-underline-opacity-0 " href=""> 
-                                            <button class="text-start btn @if($mode == 0) btn-outline-light @else btn-outline-dark @endif btn-md m-1 px-3"> Visit Site</button>
-                                        </a>
-                                        <div class="col-12">
-                                            <p class="text-start h6 d-none d-md-block " >
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                                <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                    Secondary
-                                                </span> 
-                                            </p>
-                                            <p class="text-start lead my-4 d-none d-lg-block">
-                                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate quaerat voluptatem obcaecati laudantium a, iure praesentium quam. Numquam atque cumque porro, reprehenderit esse reiciendis. Temporibus corrupti laborum at possimus iste. Qui, sed nostrum, facere adipisci, quisquam labore fugit dolore iusto quidem aspernatur commodi obcaecati earum asperiores atque ipsam voluptate repellendus nisi! Obcaecati quo necessitatibus totam fugiat reprehenderit sit praesentium laudantium dolore dolorum perspiciatis ducimus eveniet ea numquam, placeat quod? Ratione, dignissimos tenetur. Illo adipisci excepturi, rem sit officiis similique corporis ad alias assumenda minus, rerum quasi impedit officia et voluptatum, animi quisquam eum earum nisi possimus. Voluptatum rerum autem deleniti.
-                                            </p>
+                                    <div class="col-6 col-xs-6 p-sm-3 " style="max-height:650px;overflow: auto;">
+                                        <div class="row">
+                                            <h3 class="text-start text-info pt-md-5 pt-sm-5" style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis quisquam aliquid delectus omnis odit, nulla tenetur. Omnis cum sint eveniet.
+                                            </h3>
                                         </div>
-                                       
+                                       <div class="row">
+                                            <div class="col">
+                                                <a class="justify-content-start link-underline link-underline-opacity-0 " href=""> 
+                                                    <button class="text-start btn @if($mode == 0) btn-outline-light @else btn-outline-dark @endif btn-md m-1 px-3"><strong>Visit Site</strong> </button>
+                                                </a>
+                                            </div>
+                                       </div>
+                                       <div class="row pt-3">
+                                            <div class="col">
+                                                <p class="text-start h6 d-none d-md-block " style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        Secondary
+                                                    </span> 
+                                                </p>
+                                            </div>
+                                       </div>
+                                       <div class="row pt-3">
+                                            <div class="col">
+                                                <p class="text-start lead d-none d-lg-block overflow-auto" style="width:inherit;max-height:450px" >
+                                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit, numquam porro id molestias, suscipit commodi quis esse impedit accusantium dignissimos molestiae eaque aliquid atque, natus et sed. Odit aperiam obcaecati optio! Commodi nemo ducimus magnam nisi consequatur quis praesentium, tempora illum dicta fugiat nam velit dolorum fuga, ullam, molestias facere rem ipsa totam vitae. Beatae architecto velit minima voluptatibus, eos porro, debitis repellat odit a quisquam officiis deleniti ipsum possimus, voluptates ea in! Aspernatur corporis odio ab enim nesciunt pariatur in et! Vitae repellat ipsum, praesentium eum autem omnis sint at, possimus pariatur dolorum ab hic veritatis fugiat provident facilis cum ratione, beatae error sed est veniam. Maxime, et, iure ullam porro dolores architecto nam placeat facere velit earum doloribus! Natus iste corporis veritatis perspiciatis! Eius nesciunt ea porro nostrum, quam assumenda totam laboriosam itaque provident repellendus deserunt velit modi iure dolores praesentium! Sequi corrupti incidunt aperiam quae, provident laudantium alias, voluptates voluptatem illo, ex perferendis. Aliquam, nostrum soluta consequuntur rerum molestias dicta laboriosam, unde esse, omnis et placeat totam a optio. Sint libero mollitia quas asperiores alias, aliquid perferendis sit hic rem incidunt maiores, suscipit eius. Non corporis molestias suscipit aliquid, accusantium blanditiis rerum fugit vero odio. Magnam commodi perferendis dolores quae corporis reprehenderit eveniet esse dolorum vitae, officiis maiores perspiciatis vel ipsum distinctio alias totam accusamus quo dolore porro saepe nisi aut incidunt. Rerum quod impedit, voluptates iure, consequuntur sint saepe laboriosam incidunt ea, nulla doloribus ipsum consequatur quos possimus cum repellendus aliquam? Doloremque, unde consequuntur. Magni, error. Laudantium fuga voluptas nesciunt corporis, fugit officia quam quidem vel itaque, deleniti fugiat cupiditate? Doloribus quo vitae reiciendis impedit aspernatur exercitationem, unde aperiam porro aut laudantium voluptate magni facilis quod magnam id. Deserunt aut corrupti totam perferendis dolor aspernatur at ipsam nemo quos fugiat quisquam rem, eligendi, adipisci eum, iusto voluptatum neque! Eius maxime aperiam, ipsam eligendi totam minus repellat facere asperiores dolore dicta, voluptas laudantium. Ab omnis repellat mollitia facere quaerat ad doloremque, consequuntur illo voluptates placeat. Nobis vitae ab officia ducimus quaerat beatae architecto nulla consectetur voluptatum nam. Voluptatem nihil asperiores, cumque veritatis amet eos reprehenderit harum maiores nesciunt ad qui est molestiae optio delectus alias suscipit. Facilis laborum voluptatibus libero ipsum rerum distinctio. A, omnis quod? Nostrum temporibus qui culpa, amet quidem voluptatem aliquam voluptatibus eligendi odio doloribus! Enim neque earum nobis vitae, exercitationem dolor similique quaerat nisi consequuntur, quia obcaecati dolorem? Tempore accusamus molestiae ipsa eligendi dolorum esse asperiores iure magni modi impedit numquam velit nisi architecto vel perspiciatis iste quos veniam, iusto eos sunt alias nostrum sapiente labore laudantium? Placeat possimus deserunt eveniet magni, voluptatum facilis ullam est officiis asperiores labore nobis aliquam veniam quasi blanditiis officia quisquam harum debitis, ipsa nulla animi. Voluptatem, officiis quod nobis adipisci consequatur itaque fuga unde minima soluta! Commodi maxime laudantium iste ipsam harum corrupti sed, qui nam ad eaque optio nobis ut sit perspiciatis vero hic tempore voluptates. Nisi commodi quos quibusdam maxime praesentium sit itaque eveniet magnam ut, neque blanditiis eum nobis illum optio quia dolorum. Ex!
+                                                </p>
+                                            </div>
+                                       </div>
                                     </div>
                                 </div>
-                            </div>                           
+                            </div>                            
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
@@ -319,8 +345,353 @@
                 </div>
             </div>
         </section>
+        <section id="blog" class="pt-5 pb-5" style="@if($mode == 0)  background:#282828;color:white @else background:#fff;color:dark @endif">
+            <div class="container my-5 p-sm-1">
+                <div class="align-items-center">
+                    <h3 class="h1 pb-5 text-uppercase text-center ">MyBlog</h3>
+                    <div class="row p-3 d-flex justify-content-center">
+                        <div class="col-lg-5 col-md-6 rounded-4 m-3 border @if($mode == 1) border-dark @else border-light @endif" style="height:600px">
+                            <div class="row" >
+                                <div class="col-12 rounded-4">
+                                    <img class="pt-3 pb-3 " src="{{ asset('assets/page/coding.jpg') }}" alt="" style="object-fit:cover;width:inherit;max-height:300px" >
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-12">
+                                    <h2  style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; " >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt ad obcaecati quis ducimus accusantium cumque quos tenetur sequi assumenda rerum!</h2>
+                                </div>
+                            </div>
+                            <div class="row p-1" >
+                                <div class="col-12">
+                                    <div style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; " >
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row p-1" >
+                                <div class="col-12">
+                                    <p class="overflow-auto h6" style="width:inherit;max-height:200px" >
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi debitis magnam explicabo fugiat voluptatibus alias eum repudiandae? Velit dolor ad sapiente deleniti error voluptas ipsa magni et in vero nostrum saepe autem tempore iure ducimus eveniet pariatur recusandae, ut, impedit repellat eius? Dicta quod nostrum adipisci, sequi, vitae magnam dignissimos quo doloribus omnis possimus, officia harum animi aperiam itaque beatae ipsum facilis molestias similique! Voluptatibus aperiam explicabo ullam quaerat necessitatibus provident porro similique! Ea odio quas iure ut sed eligendi vero enim assumenda. Provident similique doloribus molestias suscipit assumenda, quaerat, maiores atque itaque ad in explicabo iste repellendus eveniet! Voluptas, numquam incidunt quasi porro modi dignissimos minima omnis quia! Neque, non repellendus necessitatibus reiciendis, nobis distinctio, omnis debitis officiis repudiandae libero est voluptate consectetur eos soluta inventore totam dolorum ullam quas et fuga ut exercitationem! Magni repudiandae distinctio porro possimus exercitationem, natus suscipit velit, consequuntur fugit hic illum. Accusantium reprehenderit dolores officiis aliquid, hic sed aperiam deleniti laboriosam, ullam quod accusamus ipsa cupiditate molestiae quas ex temporibus modi aut eaque similique neque, dicta nesciunt mollitia ipsam! Ipsum ullam, incidunt animi consequuntur aspernatur cum voluptatem commodi ab mollitia, molestiae reprehenderit. Illum, amet quisquam. Quisquam, sequi tempore autem id illum eius in.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-6 rounded-4 m-3 border @if($mode == 1) border-dark @else border-light @endif" style="height:600px">
+                            <div class="row" >
+                                <div class="col-12 rounded-4">
+                                    <img class="pt-3 pb-3 " src="{{ asset('assets/page/coding.jpg') }}" alt="" style="object-fit:cover;width:inherit;max-height:300px" >
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-12">
+                                    <h2  style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; " >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt ad obcaecati quis ducimus accusantium cumque quos tenetur sequi assumenda rerum!</h2>
+                                </div>
+                            </div>
+                            <div class="row p-1" >
+                                <div class="col-12">
+                                    <div style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; " >
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row p-1" >
+                                <div class="col-12">
+                                    <p class="overflow-auto h6" style="width:inherit;max-height:200px" >
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi debitis magnam explicabo fugiat voluptatibus alias eum repudiandae? Velit dolor ad sapiente deleniti error voluptas ipsa magni et in vero nostrum saepe autem tempore iure ducimus eveniet pariatur recusandae, ut, impedit repellat eius? Dicta quod nostrum adipisci, sequi, vitae magnam dignissimos quo doloribus omnis possimus, officia harum animi aperiam itaque beatae ipsum facilis molestias similique! Voluptatibus aperiam explicabo ullam quaerat necessitatibus provident porro similique! Ea odio quas iure ut sed eligendi vero enim assumenda. Provident similique doloribus molestias suscipit assumenda, quaerat, maiores atque itaque ad in explicabo iste repellendus eveniet! Voluptas, numquam incidunt quasi porro modi dignissimos minima omnis quia! Neque, non repellendus necessitatibus reiciendis, nobis distinctio, omnis debitis officiis repudiandae libero est voluptate consectetur eos soluta inventore totam dolorum ullam quas et fuga ut exercitationem! Magni repudiandae distinctio porro possimus exercitationem, natus suscipit velit, consequuntur fugit hic illum. Accusantium reprehenderit dolores officiis aliquid, hic sed aperiam deleniti laboriosam, ullam quod accusamus ipsa cupiditate molestiae quas ex temporibus modi aut eaque similique neque, dicta nesciunt mollitia ipsam! Ipsum ullam, incidunt animi consequuntur aspernatur cum voluptatem commodi ab mollitia, molestiae reprehenderit. Illum, amet quisquam. Quisquam, sequi tempore autem id illum eius in.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-6 rounded-4 m-3 border @if($mode == 1) border-dark @else border-light @endif" style="height:600px">
+                            <div class="row" >
+                                <div class="col-12 rounded-4">
+                                    <img class="pt-3 pb-3 " src="{{ asset('assets/page/coding.jpg') }}" alt="" style="object-fit:cover;width:inherit;max-height:300px" >
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-12">
+                                    <h2  style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt ad obcaecati quis ducimus accusantium cumque quos tenetur sequi assumenda rerum!</h2>
+                                </div>
+                            </div>
+                            <div class="row p-1" >
+                                <div class="col-12">
+                                    <div style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; " >
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row p-1" >
+                                <div class="col-12">
+                                    <p class="overflow-auto h6" style="width:inherit;max-height:200px" >
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi debitis magnam explicabo fugiat voluptatibus alias eum repudiandae? Velit dolor ad sapiente deleniti error voluptas ipsa magni et in vero nostrum saepe autem tempore iure ducimus eveniet pariatur recusandae, ut, impedit repellat eius? Dicta quod nostrum adipisci, sequi, vitae magnam dignissimos quo doloribus omnis possimus, officia harum animi aperiam itaque beatae ipsum facilis molestias similique! Voluptatibus aperiam explicabo ullam quaerat necessitatibus provident porro similique! Ea odio quas iure ut sed eligendi vero enim assumenda. Provident similique doloribus molestias suscipit assumenda, quaerat, maiores atque itaque ad in explicabo iste repellendus eveniet! Voluptas, numquam incidunt quasi porro modi dignissimos minima omnis quia! Neque, non repellendus necessitatibus reiciendis, nobis distinctio, omnis debitis officiis repudiandae libero est voluptate consectetur eos soluta inventore totam dolorum ullam quas et fuga ut exercitationem! Magni repudiandae distinctio porro possimus exercitationem, natus suscipit velit, consequuntur fugit hic illum. Accusantium reprehenderit dolores officiis aliquid, hic sed aperiam deleniti laboriosam, ullam quod accusamus ipsa cupiditate molestiae quas ex temporibus modi aut eaque similique neque, dicta nesciunt mollitia ipsam! Ipsum ullam, incidunt animi consequuntur aspernatur cum voluptatem commodi ab mollitia, molestiae reprehenderit. Illum, amet quisquam. Quisquam, sequi tempore autem id illum eius in.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-6 rounded-4 m-3 border @if($mode == 1) border-dark @else border-light @endif" style="height:600px">
+                            <div class="row" >
+                                <div class="col-12 rounded-4">
+                                    <img class="pt-3 pb-3 " src="{{ asset('assets/page/coding.jpg') }}" alt="" style="object-fit:cover;width:inherit;max-height:300px" >
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-12">
+                                    <h2  style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; " >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt ad obcaecati quis ducimus accusantium cumque quos tenetur sequi assumenda rerum!</h2>
+                                </div>
+                            </div>
+                            <div class="row p-1" >
+                                <div class="col-12">
+                                    <div style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; " >
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row p-1" >
+                                <div class="col-12">
+                                    <p class="overflow-auto h6" style="width:inherit;max-height:200px" >
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi debitis magnam explicabo fugiat voluptatibus alias eum repudiandae? Velit dolor ad sapiente deleniti error voluptas ipsa magni et in vero nostrum saepe autem tempore iure ducimus eveniet pariatur recusandae, ut, impedit repellat eius? Dicta quod nostrum adipisci, sequi, vitae magnam dignissimos quo doloribus omnis possimus, officia harum animi aperiam itaque beatae ipsum facilis molestias similique! Voluptatibus aperiam explicabo ullam quaerat necessitatibus provident porro similique! Ea odio quas iure ut sed eligendi vero enim assumenda. Provident similique doloribus molestias suscipit assumenda, quaerat, maiores atque itaque ad in explicabo iste repellendus eveniet! Voluptas, numquam incidunt quasi porro modi dignissimos minima omnis quia! Neque, non repellendus necessitatibus reiciendis, nobis distinctio, omnis debitis officiis repudiandae libero est voluptate consectetur eos soluta inventore totam dolorum ullam quas et fuga ut exercitationem! Magni repudiandae distinctio porro possimus exercitationem, natus suscipit velit, consequuntur fugit hic illum. Accusantium reprehenderit dolores officiis aliquid, hic sed aperiam deleniti laboriosam, ullam quod accusamus ipsa cupiditate molestiae quas ex temporibus modi aut eaque similique neque, dicta nesciunt mollitia ipsam! Ipsum ullam, incidunt animi consequuntur aspernatur cum voluptatem commodi ab mollitia, molestiae reprehenderit. Illum, amet quisquam. Quisquam, sequi tempore autem id illum eius in.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-6 rounded-4 m-3 border @if($mode == 1) border-dark @else border-light @endif" style="height:600px">
+                            <div class="row" >
+                                <div class="col-12 rounded-4">
+                                    <img class="pt-3 pb-3 " src="{{ asset('assets/page/coding.jpg') }}" alt="" style="object-fit:cover;width:inherit;max-height:300px" >
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-12">
+                                    <h2  style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; " >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt ad obcaecati quis ducimus accusantium cumque quos tenetur sequi assumenda rerum!</h2>
+                                </div>
+                            </div>
+                            <div class="row p-1" >
+                                <div class="col-12">
+                                    <div style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; " >
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span> 
+                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                            Secondary
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row p-1" >
+                                <div class="col-12">
+                                    <p class="overflow-auto h6" style="width:inherit;max-height:200px" >
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi debitis magnam explicabo fugiat voluptatibus alias eum repudiandae? Velit dolor ad sapiente deleniti error voluptas ipsa magni et in vero nostrum saepe autem tempore iure ducimus eveniet pariatur recusandae, ut, impedit repellat eius? Dicta quod nostrum adipisci, sequi, vitae magnam dignissimos quo doloribus omnis possimus, officia harum animi aperiam itaque beatae ipsum facilis molestias similique! Voluptatibus aperiam explicabo ullam quaerat necessitatibus provident porro similique! Ea odio quas iure ut sed eligendi vero enim assumenda. Provident similique doloribus molestias suscipit assumenda, quaerat, maiores atque itaque ad in explicabo iste repellendus eveniet! Voluptas, numquam incidunt quasi porro modi dignissimos minima omnis quia! Neque, non repellendus necessitatibus reiciendis, nobis distinctio, omnis debitis officiis repudiandae libero est voluptate consectetur eos soluta inventore totam dolorum ullam quas et fuga ut exercitationem! Magni repudiandae distinctio porro possimus exercitationem, natus suscipit velit, consequuntur fugit hic illum. Accusantium reprehenderit dolores officiis aliquid, hic sed aperiam deleniti laboriosam, ullam quod accusamus ipsa cupiditate molestiae quas ex temporibus modi aut eaque similique neque, dicta nesciunt mollitia ipsam! Ipsum ullam, incidunt animi consequuntur aspernatur cum voluptatem commodi ab mollitia, molestiae reprehenderit. Illum, amet quisquam. Quisquam, sequi tempore autem id illum eius in.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
-        <section id="experience" class="pt-5 pb-5" style="@if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif">
+
+                    </div>
+                </div>
+            </div>
+        </section>    
+        <section id="experience" class="pt-5 pb-5" style="@if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif">
             <div class="container my-5 p-sm-1">
                 <div class="align-items-center">
                     <h3 class="h1 pb-5 text-uppercase text-center">Experiences</h3>
@@ -343,7 +714,7 @@
                 </div>
             </div>
         </section>
-        <section id="education" class="pt-5 pb-5" style="@if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif">
+        <section id="education" class="pt-5 pb-5" style="@if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif">
             <div class="container my-5 p-sm-1">
                 <div class="align-items-center">
                     <h3 class="h1 pb-5 text-uppercase text-center ">Education</h3>

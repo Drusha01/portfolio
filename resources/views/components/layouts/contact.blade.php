@@ -33,6 +33,9 @@
         window.addEventListener('refresh-page', event => {
             window.location.reload(false); 
         })
+
+        window.scrollBy(0, -2000);
+
     </script>
     </body>
 </html>

@@ -43,7 +43,7 @@ class RegisterEmail extends Component
     }
 
     protected $rules = [
-        'email' => 'required|email',
+        'email' =>   'required|email',
     ];
 
     public function render()
@@ -60,14 +60,14 @@ class RegisterEmail extends Component
                 ->where('user_email_verified', 1)
                 ->first()){
     
-                $this->dispatchBrowserEvent('swal:redirect',[
-                    'position'          									=> 'center',
-                    'icon'              									=> 'danger',
-                    'title'             									=> 'User Exist!',
-                    'showConfirmButton' 									=> 'true',
-                    'timer'             									=> '1000',
-                    'link'              									=> '#'
-                ]);
+                $this->dispatch('swal:redirect',
+                    position                                            : 'center',
+                    icon           									    : 'danger',
+                    title             									: 'User Exist!',
+                    showConfirmButton 									: 'true',
+                    timer             									: '1000',
+                    link              									: '#'
+                );
             }else{
                 // send code
                 $this->email_send = false;
@@ -78,7 +78,7 @@ class RegisterEmail extends Component
                         function($message) {
                     $message->to($this->email, $this->email)->subject
                        ('Account Verification');
-                    $message->from('wmsutec@wmsutec.online','WMSU TESTING AND EVALUATION CENTER');
+                    $message->from('drusha@hanricksondumapit.me','DRUSHA\'s PORTFOLIO');
                  });
                 $deleted = DB::table('user_activations')
                     ->where('user_activation_email', '=', $this->email)
@@ -88,29 +88,28 @@ class RegisterEmail extends Component
                     'user_activation_code' => $code,
                     'user_activation_count' => 0
                 ]);
-                $this->dispatchBrowserEvent('swal:redirect',[
-                    'position'          									=> 'center',
-                    'icon'              									=> 'success',
-                    'title'             									=> 'Code has been sent to your email address!',
-                    'showConfirmButton' 									=> 'true',
-                    'timer'             									=> '2000',
-                    'link'              									=> '#'
-                ]);
+                $this->dispatch('swal:redirect',
+                    position          									:   'center',
+                    icon              									:   'success',
+                    title             									:   'Code has been sent to your email address!',
+                    showConfirmButton 									:   'true',
+                    timer             									:   '2000',
+                    link              									:   '#'
+                );
                 $this->error ="";
             }
         }
     }
 
     public function verify_code(Request $request){
+     
         $data = $request->session()->all();
         if(!isset($data['user_id'])){ 
-            $this->validate();
             $activation_details = DB::table('user_activations')
                 ->select('user_activation_id', 'user_activation_email', 'user_activation_code','user_activation_count','date_created', 'date_updated',DB::raw('NOW() as time_now'))
                 ->where('user_activation_email',$this->email)
                 ->first();
             // // check how long
-        
             if(1){
                 if($activation_details && $activation_details->user_activation_code == $this->code){
                     if($activation_details->user_activation_count<=4){
@@ -119,14 +118,14 @@ class RegisterEmail extends Component
                             $request->session()->put('sign_up', true);
                             $this->sign_up = true;
                     }else{
-                        $this->dispatchBrowserEvent('swal:redirect',[
-                            'position'          									=> 'center',
-                            'icon'              									=> 'warning',
-                            'title'             									=> 'Too many tries, code expires!',
-                            'showConfirmButton' 									=> 'true',
-                            'timer'             									=> '1000',
-                            'link'              									=> '#'
-                        ]);
+                        $this->dispatch('swal:redirect',
+                            position          									:   'center',
+                            icon              									:   'warning',
+                            title             									:   'Too many tries, code expires!',
+                            showConfirmButton 									:   'true',
+                            timer             									:   '1000',
+                            link              									:   '#'
+                        );
                         $deleted = DB::table('user_activations')
                         ->where('user_activation_email', '=', $this->email)
                         ->delete();
@@ -135,26 +134,26 @@ class RegisterEmail extends Component
                     
                 }else{
                     if($activation_details && $activation_details->user_activation_count<4){
-                        $this->dispatchBrowserEvent('swal:redirect',[
-                            'position'          									=> 'center',
-                            'icon'              									=> 'warning',
-                            'title'             									=> 'Invalid code, you have '.(5-$activation_details->user_activation_count-1).' tries!',
-                            'showConfirmButton' 									=> 'true',
-                            'timer'             									=> '1000',
-                            'link'              									=> '#'
-                        ]);
+                        $this->dispatch('swal:redirect',
+                            position          									:   'center',
+                            icon              									:   'warning',
+                            title             									:   'Invalid code, you have '.(5-$activation_details->user_activation_count-1).' tries!',
+                            showConfirmButton 									:   'true',
+                            timer             									:   '1000',
+                            link              									:   '#'
+                        );
                         $updated = DB::table('user_activations')
                         ->where('user_activation_id', $activation_details->user_activation_id)
                         ->update(['user_activation_count' =>  $activation_details->user_activation_count+1]);
                     }else{
-                        $this->dispatchBrowserEvent('swal:redirect',[
-                            'position'          									=> 'center',
-                            'icon'              									=> 'warning',
-                            'title'             									=> 'Too many tries, code expires!',
-                            'showConfirmButton' 									=> 'true',
-                            'timer'             									=> '1000',
-                            'link'              									=> '#'
-                        ]);
+                        $this->dispatch('swal:redirect',
+                            position          									:   'center',
+                            icon              									:   'warning',
+                            title             									:   'Too many tries, code expires!',
+                            showConfirmButton 									:   'true',
+                            timer             									:   '1000',
+                            link              									:   '#'
+                        );
                         $deleted = DB::table('user_activations')
                         ->where('user_activation_email', '=', $this->email)
                         ->delete();
@@ -162,14 +161,14 @@ class RegisterEmail extends Component
                     }
                 } 
             }else{
-                $this->dispatchBrowserEvent('swal:redirect',[
-                    'position'          									=> 'center',
-                    'icon'              									=> 'warning',
-                    'title'             									=> 'Code expires!',
-                    'showConfirmButton' 									=> 'true',
-                    'timer'             									=> '1000',
-                    'link'              									=> '#'
-                ]);
+                $this->dispatch('swal:redirect',
+                    position          									:   'center',
+                    icon              									:   'warning',
+                    title             									:   'Code expires!',
+                    showConfirmButton 									:   'true',
+                    timer             									:   '1000',
+                    link              									:   '#'
+                );
                 $deleted = DB::table('user_activations')
                     ->where('user_activation_email', '=', $this->email)
                     ->delete();
@@ -180,7 +179,7 @@ class RegisterEmail extends Component
     public function verify_username(Request $request){
         $data = $request->session()->all();
         if(!isset($data['user_id'])){ 
-            if(isset($data['sign_up']) && $data['sign_up'] && isset($data['user_email']) && $data['user_email'] == $this->email){
+            if(isset($data['sign_up']) && $data['sign_up'] && isset($data['user_email'])){
                 // validate username
                 // check users db if username is taken
                 if (preg_match('/^[A-Za-z]{1}[A-Za-z0-9]{5,31}$/', $this->username)
@@ -202,7 +201,7 @@ class RegisterEmail extends Component
 
     public function verify_password(Request $request){
         $data = $request->session()->all();
-        if(isset($data['sign_up']) && $data['sign_up'] && isset($data['user_email']) && $data['user_email'] == $this->email){
+        if(isset($data['sign_up']) && $data['sign_up'] && isset($data['user_email'])){
             if(strlen($this->password) < 8 ) {
                 $this->sign_up_button = 'Password must be >= 8';
                 return false;
@@ -228,7 +227,7 @@ class RegisterEmail extends Component
     }
     public function verify_confirm_password(Request $request){
         $data = $request->session()->all();
-        if(isset($data['sign_up']) && $data['sign_up'] && isset($data['user_email']) && $data['user_email'] == $this->email){
+        if(isset($data['sign_up']) && $data['sign_up'] && isset($data['user_email'])){
             if(strlen($this->confirm_password) < 8 ) {
                 $this->sign_up_button = 'Confirm password must be >= 8';
                 return false;
@@ -257,7 +256,7 @@ class RegisterEmail extends Component
     }
     public function verify_birthdate(Request $request){
         $data = $request->session()->all();
-        if(isset($data['sign_up']) && $data['sign_up'] && isset($data['user_email']) && $data['user_email'] == $this->email){
+        if(isset($data['sign_up']) && $data['sign_up'] && isset($data['user_email'])){
             $min_age = 15;
             $min_date = $min_age * 366;
             $diff= date_diff(date_create($this->birthdate),date_create(date('Y-m-d', time())));
@@ -270,10 +269,10 @@ class RegisterEmail extends Component
             }
         }
     }
-    public function sign_up(Request $request){
+    public function sign_up_user(Request $request){
         // validate all
         $data = $request->session()->all();
-        if(isset($data['sign_up']) && $data['sign_up'] && isset($data['user_email']) && $data['user_email'] == $this->email){
+        if(isset($data['sign_up']) && $data['sign_up'] && isset($data['user_email'])){
             $this->firstname =(trim($this->firstname));
             $this->lastname =(trim($this->lastname));
             $this->middlename =(trim($this->middlename));
@@ -307,16 +306,13 @@ class RegisterEmail extends Component
             if(strlen($this->suffix) < 0 && strlen($this->suffix) > 255){
                 return false;
             }
-
             // validate email
-            $this->validate();
             if(DB::table('users')
-            ->where('user_email', $this->email)
+            ->where('user_email', $data['user_email'])
             ->where('user_email_verified', 1)
             ->first()){
                 return false;
             }
-            
             // validate username
             if (!preg_match('/^[A-Za-z]{1}[A-Za-z0-9]{5,31}$/', $this->username)
                     && DB::table('users')
@@ -354,8 +350,6 @@ class RegisterEmail extends Component
                 $this->sign_up_button = 'You must be at least '.$min_age.' y/o';
                 return false;
             }
-            // hash password
-            $this->password = password_hash($this->password, PASSWORD_ARGON2I);
             // insert data
             if(DB::table('users')->insert([
                 'user_status_id' => 1,
@@ -365,7 +359,7 @@ class RegisterEmail extends Component
                 'user_name' => $data['user_name'],
                 'user_email' => $data['user_email'],
                 'user_phone' => NULL,
-                'user_password' => $this->password ,
+                'user_password' => password_hash($this->password, PASSWORD_ARGON2I) ,
                 'user_name_verified' => 1,
                 'user_email_verified' => 1,
                 'user_phone_verified' => 0,
@@ -389,7 +383,7 @@ class RegisterEmail extends Component
                     ->join('user_sex as usex', 'u.user_sex_id', '=', 'usex.user_sex_id')
                     ->join('user_genders as ug', 'u.user_gender_id', '=', 'ug.user_gender_id')
                     ->join('user_roles as ur', 'u.user_role_id', '=', 'ur.user_role_id')
-                    ->where('u.user_email', $this->email)
+                    ->where('u.user_email', $data['user_email'])
                     ->where('u.user_email_verified', 1)
                     ->first();
 
@@ -399,26 +393,27 @@ class RegisterEmail extends Component
                 $request->session()->put('user_id', $user_details->user_id);
                 
                 //append it to session
-                $this->dispatchBrowserEvent('swal:redirect',[
-                    'position'          									=> 'center',
-                    'icon'              									=> 'success',
-                    'title'             									=> 'Successfully signed up!',
-                    'showConfirmButton' 									=> 'true',
-                    'timer'             									=> '1500',
-                    'link'              									=> 'student/profile'
-                ]);
+                $this->dispatch('swal:redirect',
+                    position          									:   'center',
+                    icon              									:   'success',
+                    title             									:   'Successfully signed up!',
+                    showConfirmButton 									:   'true',
+                    timer             									:   '1500',
+                    link              									:   'user/profile'
+                );
             }else{
-                $this->dispatchBrowserEvent('swal:redirect',[
-                    'position'          									=> 'center',
-                    'icon'              									=> 'warning',
-                    'title'             									=> 'Unable to sign up!',
-                    'showConfirmButton' 									=> 'true',
-                    'timer'             									=> '2000',
-                    'link'              									=> '#'
-                ]);
+                $this->dispatch('swal:redirect',
+                    position          									:   'center',
+                    icon              									:   'warning',
+                    title             									:   'Unable to sign up!',
+                    showConfirmButton 									:   'true',
+                    timer             									:   '2000',
+                    link              									:   '#'
+                );
             }
-
-            
+        }else{
+            $this->sign_up_button = 'Sign up';
+            return false;
         }
     }
 }

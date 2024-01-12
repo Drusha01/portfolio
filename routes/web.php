@@ -27,7 +27,12 @@ use App\Livewire\Page\Contact\Contact;
 use App\Livewire\Page\Faq\Faq;
 use App\Livewire\Page\Home\Home;
 use App\Livewire\Page\Project\Project;
+use App\Livewire\Page\Blog\Blog;
 use App\Livewire\Page\TechStack\TechStack;
+
+// user
+use App\Livewire\User\Profile\Profile;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,21 +62,27 @@ Route::middleware([Authenticated::class,AccountisValid::class])->group(function 
     Route::get('/change-email', ChangeEmail::class)->name('change.email');
 });
 
+
 Route::middleware([Darkmode::class])->group(function () {
     Route::prefix('/')->group(function () {
         Route::get('/', Home::class)->name('homepage');
-
         Route::get('/about', About::class)->name('about');
         Route::get('/contact', Contact::class)->name('contact');
         Route::get('/faq', Faq::class)->name('faq');
         Route::get('/home', Home::class)->name('home');
         Route::get('/projects',Project::class)->name('project');
+        Route::get('/blog',Blog::class)->name('blog');
         Route::get('/techstack', TechStack::class)->name('techstack');
 
     });
 });
 
+Route::middleware([Authenticated::class,AccountisValid::class,AccountisAdmin::class])->group(function () {
+    Route::prefix('user')->group(function () {
+        Route::get('/profile', Profile::class)->name('user.profile');
+    });
 
+});
 Route::get('/createpost', CreatePost::class)->name('createpost');
 
 

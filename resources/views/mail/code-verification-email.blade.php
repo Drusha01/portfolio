@@ -62,14 +62,14 @@
     <div class="container">
         <div class="header">
             <div class="logo">
-            <img src="<?php echo $message->embed(asset('images/logo/logo.png') ); ?>">
+            <img src="<?php echo $message->embed(asset('assets/page/dev.png') ); ?>">
             </div>
             <h1>Drusha's portfolio</h1>
         </div>
 
         <p>Dear {{$email}},</p>
 
-        <p>Thank you for registering with the WMSU Testing and Evaluation Center.</p>
+        <p>Thank you for registering with Drusha's portfolio.</p>
 
         <p>Your verification code is:</p>
         <p class="verification-code">{{$code}}</p> <!-- Replace with your verification code -->

@@ -62,7 +62,7 @@ class ForgotPassword extends Component
                         function($message) {
                     $message->to($this->email, $this->email)->subject
                        ('Account Recovery');
-                    $message->from('xyz@gmail.com','WMSU TESTING AND EVALUATION CENTER');
+                    $message->from('drusha@hanricksondumapit.me','DRUSHA\'s PORTFOLIO');
                 });
                 $deleted = DB::table('user_forgot_passwords')
                     ->where('user_forgot_password_email', '=', $this->email)
@@ -72,24 +72,24 @@ class ForgotPassword extends Component
                     'user_forgot_password_hash' => $hash,
                 ]);
                 $request->session()->put('user_email', $this->email);
-                $this->dispatchBrowserEvent('swal:redirect',[
-                    'position'          									=> 'center',
-                    'icon'              									=> 'success',
-                    'title'             									=> 'Link has been emailed!',
-                    'showConfirmButton' 									=> 'true',
-                    'timer'             									=> '1500',
-                    'link'              									=> '#'
-                ]);
+                $this->dispatchBrowserEvent('swal:redirect',
+                    position          									: 'center',
+                    icon              									: 'success',
+                    title             									: 'Link has been emailed!',
+                    showConfirmButton									: 'true',
+                    timer             									: '1500',
+                    link              									: '#'
+                );
             }else{
                 sleep(5);
-                $this->dispatchBrowserEvent('swal:redirect',[
-                    'position'          									=> 'center',
-                    'icon'              									=> 'success',
-                    'title'             									=> 'Link has been emailed!',
-                    'showConfirmButton' 									=> 'true',
-                    'timer'             									=> '1500',
-                    'link'              									=> '#'
-                ]);
+                $this->dispatchBrowserEvent('swal:redirect',
+                    position          									: 'center',
+                    icon              									: 'success',
+                    title             									: 'Link has been emailed!',
+                    showConfirmButton 									: 'true',
+                    timer             									: '1500',
+                    link             									: '#'
+                );
             }
         }
     }

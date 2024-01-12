@@ -62,7 +62,7 @@
     <div class="container">
         <div class="header">
             <div class="logo">
-            <img src="<?php echo $message->embed(asset('images/logo/logo.png') ); ?>">
+            <img src="<?php echo $message->embed(asset('assets/page/dev.png') ); ?>">
             </div>
             <h1>Drusha's portfolio</h1>
         </div>

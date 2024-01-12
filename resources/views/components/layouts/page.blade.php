@@ -35,6 +35,9 @@
             window.addEventListener('refresh-page', event => {
                 window.location.reload(false); 
             })
+            document.addEventListener('livewire:navigating', () => {
+                window.scrollBy(0, -2000);
+            })
         </script>
     </body>
 </html>

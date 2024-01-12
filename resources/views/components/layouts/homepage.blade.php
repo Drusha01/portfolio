@@ -30,6 +30,15 @@
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
         }
+
+        ::-webkit-scrollbar {
+            appearance: none;
+            width: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: gray;
+            border-radius: 0px;
+        }
        
 
 
@@ -55,6 +64,10 @@
         <script>
             window.addEventListener('refresh-page', event => {
                 window.location.reload(false); 
+            })
+
+            document.addEventListener('livewire:navigating', () => {
+                window.scrollBy(0, -2000);
             })
         </script>
     </body>
