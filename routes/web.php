@@ -34,7 +34,15 @@ use App\Livewire\Page\TechStack\TechStack;
 use App\Livewire\User\Profile\Profile as UserProfile;
 
 // admin
-use App\Livewire\Admin\Dashboard\Dashboard;
+use App\Livewire\Admin\About\About as AdminAbout;
+use App\Livewire\Admin\Blog\Blog as AdminBlog;
+use App\Livewire\Admin\Contact\Contact as AdminContact;
+use App\Livewire\Admin\Dashboard\Dashboard as AdminDashboard;
+use App\Livewire\Admin\Faq\Faq as AdminFaq;
+use App\Livewire\Admin\Homepage\Homepage as AdminHomepage;
+use App\Livewire\Admin\Project\Project as AdminProject;
+use App\Livewire\Admin\Techstack\Techstack as AdminTechstack;
+
 use App\Livewire\Admin\Profile\Profile as AdminProfile;
 
 /*
@@ -81,17 +89,24 @@ Route::middleware([Darkmode::class])->group(function () {
     });
 });
 
-Route::middleware([Authenticated::class,AccountisValid::class,AccountisAdmin::class])->group(function () {
+Route::middleware([Darkmode::class,Authenticated::class,AccountisValid::class,AccountisAdmin::class])->group(function () {
     Route::prefix('user')->group(function () {
         Route::get('/profile', UserProfile::class)->name('user.user-profile');
     });
 
 });
 
-Route::middleware([Authenticated::class,AccountisValid::class,AccountisUser::class])->group(function () {
+Route::middleware([Darkmode::class,Authenticated::class,AccountisValid::class,AccountisUser::class])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/', Dashboard::class)->name('admin.home-dashboard');
-        Route::get('/dashboard', Dashboard::class)->name('admin.dashboard');
+        Route::get('/', AdminDashboard::class)->name('admin.home-dashboard');
+        Route::get('/dashboard', AdminDashboard::class)->name('admin.dashboard');
+        Route::get('/homepage', AdminHomepage::class)->name('admin.homepage');
+        Route::get('/about', AdminAbout::class)->name('admin.about');
+        Route::get('/faq', AdminFaq::class)->name('admin.faq');
+        Route::get('/techstack', AdminTechstack::class)->name('admin.techstack');
+        Route::get('/projects', AdminProject::class)->name('admin.projects');
+        Route::get('/blogs', AdminBlog::class)->name('admin.blogs');
+        Route::get('/contact', AdminContact::class)->name('admin.contact');
         Route::get('/profile', AdminProfile::class)->name('admin.admin-profile');
     });
 });

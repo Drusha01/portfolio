@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Livewire\Admin\Dashboard;
+namespace App\Livewire\Components\Sidebar\AdminSidebar;
 
 use Livewire\Component;
 use Illuminate\Http\Request;
 
-class Dashboard extends Component
+class AdminSidebar extends Component
 {
-    public $title = 'About';
-
     public $mode;
     public $background = "282828";
     public $color = 'fff';
@@ -18,8 +16,6 @@ class Dashboard extends Component
     }
     public function render()
     {
-        return view('livewire.admin.dashboard.dashboard')   
-        ->layout('components.layouts.admin',[
-        'title'=>$this->title]);
+        return view('livewire.components.sidebar.admin-sidebar.admin-sidebar');
     }
 }

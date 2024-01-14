@@ -6,7 +6,10 @@
         <div class="col">
             <div class="row">
                 <div class="col lead pt-4 px-4">
-                    Dashboard
+                    About
+                </div>
+                <div class="maincontent">
+
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@
         <div class="col">
             <div class="row">
                 <div class="col lead pt-4 px-4">
-                    Dashboard
+                    TechStack
                 </div>
             </div>
         </div>

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire\Admin\Dashboard;
+namespace App\Livewire\Admin\Techstack;
 
 use Livewire\Component;
 use Illuminate\Http\Request;
 
-class Dashboard extends Component
+class Techstack extends Component
 {
     public $title = 'About';
 
@@ -18,7 +18,7 @@ class Dashboard extends Component
     }
     public function render()
     {
-        return view('livewire.admin.dashboard.dashboard')   
+        return view('livewire.admin.techstack.techstack')   
         ->layout('components.layouts.admin',[
         'title'=>$this->title]);
     }
