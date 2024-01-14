@@ -1,5 +1,5 @@
 <div>
-    <div class="row" style="margin:75px 0px 0px 0px; padding:0px;">
+    <div class="row" style="margin:70px 0px 0px 0px; padding:0px;">
         <div class="col p-0 shadow " id="sidebar" style="background:#{{$background}};height:calc(100vh - 90px);max-width:280px;">
             @livewire('components.sidebar.admin-sidebar.admin-sidebar')
         </div>
