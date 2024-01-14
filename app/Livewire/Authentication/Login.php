@@ -32,10 +32,6 @@ class Login extends Component
         $data = $request->session()->all();
         if(!isset($data['user_id'])){ 
            $user_details =DB::table('users as u')
-                ->join('user_status as us', 'u.user_status_id', '=', 'us.user_status_id')
-                ->join('user_sex as usex', 'u.user_sex_id', '=', 'usex.user_sex_id')
-                ->join('user_genders as ug', 'u.user_gender_id', '=', 'ug.user_gender_id')
-                ->join('user_roles as ur', 'u.user_role_id', '=', 'ur.user_role_id')
                 ->where(['u.user_email'=> $this->username,'u.user_email_verified'=> 1])
                 ->orWhere(
                     function($query) {
@@ -43,21 +39,44 @@ class Login extends Component
                         ->where(['u.user_name'=> $this->username,'u.user_name_verified'=> 1]);
                        })
                 ->first();
-
+                // dd($user_details);
             if( $user_details && password_verify($this->password,$user_details->user_password)){
                 $request->session()->regenerate();
 
                 $request->session()->put('user_id', $user_details->user_id);
                 
                 //append it to session
-                $this->dispatch('swal:redirect',
-                    position         									: 'center',
-                    icon              									: 'success',
-                    title             									: 'Welcome back crimson!',
-                    showConfirmButton 									: 'true',
-                    timer             									: '1500',
-                    link              									: 'student/profile'
-                );
+                if( $user_details->user_role_id == 1){
+                    $this->dispatch('swal:redirect',
+                        position         									: 'center',
+                        icon              									: 'success',
+                        title             									: 'Welcome back Drusha!',
+                        showConfirmButton 									: 'true',
+                        timer             									: '1500',
+                        link              									: 'user/'
+                    );
+                }else{
+
+                    if( $user_details->user_id == 1){
+                        $this->dispatch('swal:redirect',
+                            position         									: 'center',
+                            icon              									: 'success',
+                            title             									: 'Welcome back Drusha!',
+                            showConfirmButton 									: 'true',
+                            timer             									: '1500',
+                            link              									: 'admin/'
+                        );
+                    }else{
+                        $this->dispatch('swal:redirect',
+                            position         									: 'center',
+                            icon              									: 'success',
+                            title             									: 'Welcome back admin!',
+                            showConfirmButton 									: 'true',
+                            timer             									: '1500',
+                            link              									: 'admin/'
+                        );
+                    }
+                }
             }else{
                 $this->dispatch('swal:redirect',
                     position          									: 'center',

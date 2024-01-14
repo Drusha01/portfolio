@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AccountisStudent
+class AccountisUser
 {
     /**
      * Handle an incoming request.
@@ -27,8 +27,8 @@ class AccountisStudent
             ->first();
         }
         
-        if(isset($this->user_details->user_role_details) && $this->user_details->user_role_details == 'student'){
-            return redirect('/student/profile');
+        if(isset($this->user_details->user_role_details) && $this->user_details->user_role_details == 'user'){
+            return redirect('/user/profile');
         }
         return $next($request);
     }

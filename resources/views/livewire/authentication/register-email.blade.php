@@ -2,7 +2,7 @@
     <div class="d-flex vh-100 py-3">
         <div class="container p-4 d-flex  align-self-center justify-content-center" >
             <div class="row border rounded-4 shadow bg-white" >
-                <img class="col-md-6 p-0 rounded-start-4 d-none d-md-block" src="{{ asset('assets/page/dev.png') }}" alt="" style="object-fit:cover;height:inherit;" >
+                <img class="col-md-6 p-0 rounded-start-4 d-none d-md-block" src="{{ asset('assets/page/dev.png') }}" alt="" style="object-fit:cover;max-height:600px;height:inherit;" >
                 <div class="col-md-6 p-3 py-5 align-self-center">
                     <div class="row">
                         <h3>

@@ -8,7 +8,7 @@ use App\Http\Middleware\Authenticated;
 use App\Http\Middleware\Unauthenticated;
 use App\Http\Middleware\AccountisValid;
 use App\Http\Middleware\AccountisAdmin;
-use App\Http\Middleware\AccountisStudent;
+use App\Http\Middleware\AccountisUser;
 use App\Http\Middleware\Darkmode;
 
 // authentication
@@ -31,7 +31,11 @@ use App\Livewire\Page\Blog\Blog;
 use App\Livewire\Page\TechStack\TechStack;
 
 // user
-use App\Livewire\User\Profile\Profile;
+use App\Livewire\User\Profile\Profile as UserProfile;
+
+// admin
+use App\Livewire\Admin\Dashboard\Dashboard;
+use App\Livewire\Admin\Profile\Profile as AdminProfile;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,10 +83,19 @@ Route::middleware([Darkmode::class])->group(function () {
 
 Route::middleware([Authenticated::class,AccountisValid::class,AccountisAdmin::class])->group(function () {
     Route::prefix('user')->group(function () {
-        Route::get('/profile', Profile::class)->name('user.profile');
+        Route::get('/profile', UserProfile::class)->name('user.user-profile');
     });
 
 });
+
+Route::middleware([Authenticated::class,AccountisValid::class,AccountisUser::class])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/', Dashboard::class)->name('admin.home-dashboard');
+        Route::get('/dashboard', Dashboard::class)->name('admin.dashboard');
+        Route::get('/profile', AdminProfile::class)->name('admin.admin-profile');
+    });
+});
+
 Route::get('/createpost', CreatePost::class)->name('createpost');
 
 

@@ -11,8 +11,8 @@
                     </div>
                     <div class="row">
                         <form wire:submit.prevent="login()">
-                            <input class="form-control my-2" type="text" placeholder="Username / Email address">
-                            <input class="form-control" type="password" placeholder="Enter Password">
+                            <input class="form-control my-2" type="text" wire:model.defer="username" placeholder="Username / Email address">
+                            <input class="form-control" type="password" wire:model.defer="password" placeholder="Enter Password">
                             <div class="d-grid gap-2 mt-2">
                                 <button type="submit"class="btn btn-block btn-primary ">Login</button>
                             </div>
