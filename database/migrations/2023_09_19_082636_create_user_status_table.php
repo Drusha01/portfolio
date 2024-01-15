@@ -15,7 +15,7 @@ class CreateUserStatusTable extends Migration
     {
         DB::statement('CREATE TABLE user_status(
             user_status_id INT PRIMARY KEY AUTO_INCREMENT,
-            user_status_details VARCHAR(100) UNIQUE,
+            user_status_details VARCHAR(100),
             date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
             date_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         );');

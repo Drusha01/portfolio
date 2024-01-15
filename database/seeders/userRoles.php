@@ -14,26 +14,27 @@ class userRoles extends Seeder
      */
     public function run()
     {
+        DB::statement('DELETE FROM user_roles WHERE 1;');
         DB::statement('INSERT INTO user_roles VALUES(
-            NULL,
+            1,
             "user",
             NOW(),
             NOW()
         );');
         DB::statement('INSERT INTO user_roles VALUES(
-            NULL,
+            2,
             "admin",
             NOW(),
             NOW()
         );');
         DB::statement('INSERT INTO user_roles VALUES(
-            NULL,
+            3,
             "superadmin",
             NOW(),
             NOW()
         );');
         DB::statement('INSERT INTO user_roles VALUES(
-            NULL,
+            4,
             "",
             NOW(),
             NOW()

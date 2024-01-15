@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement('CREATE TABLE education(
+        DB::statement('CREATE TABLE experiences(
             id INT PRIMARY KEY AUTO_INCREMENT,
             user_id INT NOT NULL,
             logo VARCHAR(100) NOT NULL,
@@ -27,9 +27,8 @@ return new class extends Migration
             date_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         );');
 
-        DB::statement('CREATE INDEX idx_logo ON education(logo(10));');
-        DB::statement('CREATE INDEX idx_number_order ON education(number_order);');
-
+        DB::statement('CREATE INDEX idx_logo ON experiences(logo(10));');
+        DB::statement('CREATE INDEX idx_number_order ON experiences(number_order);');
     }
 
     /**
@@ -37,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('education');
+        Schema::dropIfExists('experiences');
     }
 };

@@ -14,20 +14,21 @@ class userStatus extends Seeder
      */
     public function run()
     {
+        DB::statement('DELETE FROM user_status WHERE 1;');
         DB::statement('INSERT INTO user_status VALUES(
-            NULL,
+            1,
             "active",
             NOW(),
             NOW()
         );');
         DB::statement('INSERT INTO user_status VALUES(
-            NULL,
+            2,
             "inactive",
             NOW(),
             NOW()
         );');
         DB::statement('INSERT INTO user_status VALUES(
-            NULL,
+            3,
             "deleted",
             NOW(),
             NOW()

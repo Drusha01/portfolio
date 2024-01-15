@@ -2,7 +2,7 @@
     <section id="blog" class="p-5" >
         <div class="container  text-center p-sm-1">
             <div class="align-items-center">
-                <h3 class="h1 pb-5 text-uppercase">MyBlog</h3>
+                <h3 class="h1 pb-5 text-uppercase">MyBlogs</h3>
             </div>
             <div class="row">
                 <div class="col-lg-7 col-md-12 col-sm-12 mx-lg-5 ">

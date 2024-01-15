@@ -14,38 +14,39 @@ class userGenders extends Seeder
      */
     public function run()
     {
+        DB::statement('DELETE FROM user_genders WHERE 1;');
         DB::statement('INSERT INTO user_genders VALUES(
-            NULL,
+            1,
             "",
             NOW(),
             NOW()
         );');
         DB::statement('INSERT INTO user_genders VALUES(
-            NULL,
+            2,
             "Male",
             NOW(),
             NOW()
         );');
         DB::statement('INSERT INTO user_genders VALUES(
-            NULL,
+            3,
             "Female",
             NOW(),
             NOW()
         );');
         DB::statement('INSERT INTO user_genders VALUES(
-            NULL,
+            4,
             "Transgender",
             NOW(),
             NOW()
         );');
         DB::statement('INSERT INTO user_genders VALUES(
-            NULL,
+            5,
             "Two Spirit female",
             NOW(),
             NOW()
         );');
         DB::statement('INSERT INTO user_genders VALUES(
-            NULL,
+            6,
             "Two Spirit male",
             NOW(),
             NOW()

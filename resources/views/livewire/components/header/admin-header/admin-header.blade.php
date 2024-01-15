@@ -2,10 +2,10 @@
     <header class="p-2 fixed-top shadow align-items-center @if($mode == 1) bg-white @else bg-dark @endif" data-bs-theme="light">
         <div class="container-fluid mx-3 d-flex justify-content-between align-items-center" >
             <h1 class="logo mr-auto">
-                <a href="{{ Route('home') }}" class="align-items-center link-underline link-underline-opacity-0 @if($mode == 1) text-dark @else text-white @endif">
+                <a href="{{ Route('admin.dashboard') }}" class="align-items-center link-underline link-underline-opacity-0 @if($mode == 1) text-dark @else text-white @endif">
                     <span class="">
                         <img src="{{ asset('assets\page\home.jpg') }}" alt="Drusha Corp" class="object-fit-cover" width="40px" height="40px">
-                        Portfolio
+                            Drusha
                     </span>
                     
                 </a>

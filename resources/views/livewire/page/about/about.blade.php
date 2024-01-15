@@ -11,7 +11,70 @@
             </div>
         </div>
     </section>
-    <section id="education" class="pt-5 pb-5" style="@if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif">
+    <section id="about-content" class="p-1" style="@if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif">
+        <div class="container  my-5 p-sm-1">
+            <div class="align-items-center text-center">
+                <div class="row ">
+                    <div class=" col-md-3 px-md-5 col-6 mb-4">
+                        <a href="#" class="link-underline link-underline-opacity-0">
+                            <img src="{{ asset('assets/logo/facebook.png') }}" alt="" width="60px" >
+                        </a>    
+                    </div>
+                    <div class="col-md-3 px-md-5 col-6 mb-4">
+                        <a href="#" class="link-underline link-underline-opacity-0">
+                            <img src="{{ asset('assets/logo/instagram.png') }}" alt="" width="60px" >
+                        </a>
+                    </div>
+                    <div class="col-md-3 px-md-5 col-6 mb-4">
+                        <a href="#" class="link-underline link-underline-opacity-0">
+                            <img src="{{ asset('assets/logo/linkedin.png') }}" alt="" width="60px" >
+                        </a> 
+                    </div>
+                    <div class="col-md-3 px-md-5 col-6 mb-4">
+                        <a href="#" class="link-underline link-underline-opacity-0">
+                            <img src="{{ asset('assets/logo/github.png') }}" alt="" width="60px" >
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container p-5">
+            <div class="row d-flex justify-content-center g-md-5">
+                <div class="col-md-6 text-center">
+                    <img class="img-fluid " src="{{ asset('assets/page/coding.jpg') }}" alt="" style="border-radius:50%;width:300px" >
+                </div>
+                <div class="col-md-6">
+                    <h3 class="h1 pb-3 text-uppercase">About</h3>
+                    <p class="h5 pb-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis modi nulla, veritatis deleniti harum velit ipsum et sunt doloremque magni quia placeat reprehenderit quas minus voluptatibus ipsam eligendi id esse!</p>
+                    <p class="h5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui illum neque commodi consectetur dolorem veritatis aut quis architecto doloribus voluptate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="experience" class="pt-5 pb-5" @if($mode == 0) style="background:#282828;color:white" @else bg-dark style="background:#fff;color:dark" @endif>
+        <div class="container my-5 p-sm-1">
+            <div class="align-items-center">
+                <h3 class="h1 pb-5 text-uppercase text-center">Experiences</h3>
+                <div class="row">
+                    <div class="col-12 p-5">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2">
+                                <img class="pt-2 pb-2 " src="{{ asset('assets/page/atgs.jpg') }}" alt="" width="80px" >
+                            </div>
+                            <div class="col-10">
+                                <a href="#"  class="link-underline link-underline-opacity-0 @if($mode == 1) link-dark @else link-light @endif ">
+                                    <h3 >Ally Techno Grit Solutions</h3>
+                                </a>
+                                <p>June 2023 - Sept 2023 | Brgy. San Antonio Pasig City, Metro Manila</p>
+                                <p>Internship</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="education" class="pt-5 pb-5" style="@if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif"> 
         <div class="container my-5 p-sm-1">
             <div class="align-items-center">
                 <h3 class="h1 pb-5 text-uppercase text-center ">Education</h3>

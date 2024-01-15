@@ -14,20 +14,21 @@ class userSex extends Seeder
      */
     public function run()
     {
+        DB::statement('DELETE FROM user_sex WHERE 1;');
         DB::statement('INSERT INTO user_sex VALUES(
-            NULL,
+            1,
             "",
             NOW(),
             NOW()
         );');
         DB::statement('INSERT INTO user_sex VALUES(
-            NULL,
+            2,
             "Male",
             NOW(),
             NOW()
         );');
         DB::statement('INSERT INTO user_sex VALUES(
-            NULL,
+            3,
             "Female",
             NOW(),
             NOW()

@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             userSex::class,
             userStatus::class,
             adminseeders::class,
+            table_seeders::class,
+            column_seeders::class,
         ]);
     }
 }
