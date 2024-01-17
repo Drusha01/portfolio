@@ -17,6 +17,7 @@ return new class extends Migration
             user_id INT NOT NULL,
             active BOOL,
             name VARCHAR(255),
+            column_name VARCHAR(255),
             class VARCHAR(255),
             style VARCHAR(255),
             column_order INT,

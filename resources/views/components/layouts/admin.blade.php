@@ -149,6 +149,12 @@
                     window.close();
                 });
             });
+            window.addEventListener('openModal', function(modal_id){
+                $('#'+modal_id.detail).modal('toggle');
+            }); 
+            window.addEventListener('closeModal', function(modal_id){
+                $('#'+modal_id.detail).modal('toggle');
+            }); 
         </script>
     </body>
 </html>
