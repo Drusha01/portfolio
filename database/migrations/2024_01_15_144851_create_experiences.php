@@ -29,6 +29,7 @@ return new class extends Migration
 
         DB::statement('CREATE INDEX idx_logo ON experiences(logo(10));');
         DB::statement('CREATE INDEX idx_number_order ON experiences(number_order);');
+        DB::statement('CREATE INDEX idx_user_id ON experiences(user_id);');
     }
 
     /**

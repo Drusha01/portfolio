@@ -15,7 +15,7 @@ class table_seeders extends Seeder
     {
         DB::statement('DELETE FROM tables WHERE 1;');
         DB::statement('INSERT INTO tables VALUES(
-            1,
+            NULL,
             "achievements",
             1,
             1,
@@ -23,7 +23,7 @@ class table_seeders extends Seeder
             NOW()
         );');
         DB::statement('INSERT INTO tables VALUES(
-            2,
+            NULL,
             "experience",
             1,
             1,
@@ -31,13 +31,23 @@ class table_seeders extends Seeder
             NOW()
         );');
         DB::statement('INSERT INTO tables VALUES(
-            3,
+            NULL,
             "education",
             1,
             1,
             NOW(),
             NOW()
         );');
+        DB::statement('INSERT INTO tables VALUES(
+            NULL,
+            "about_pages",
+            1,
+            1,
+            NOW(),
+            NOW()
+        );');
+
+
         
     }
 }

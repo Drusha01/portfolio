@@ -19,6 +19,20 @@ class About extends Component
     public $background = "282828";
     public $color = 'fff';
 
+    public $about_page_active;
+    public $about_page_max_display;
+    public $about_page_filter = [];
+    public $about_page_data = [];
+    public $about_page = [
+        'id' => NULL,
+        'user_id' => NULL,
+        'image' => NULL,
+        'header'  => NULL,
+        'content' => NULL,
+        'button' => NULL,
+        'link' => NULL,
+    ];
+
     public $achievements_active;
     public $achievements_max_display;
     public $achievements_filter = [];
@@ -57,8 +71,33 @@ class About extends Component
         'number_order' => NULL,
     ];
 
+    public function boot(Request $request){
+        $data = $request->session()->all();
+        $this->mode = $data['mode'];
 
+        if(!isset($data['user_id'])){
+            header("Location: /login");
+            die();
+        }else{
+            $user_status = DB::table('users as u')
+            ->select('u.user_status_id','us.user_status_details')
+            ->join('user_status as us', 'u.user_status_id', '=', 'us.user_status_id')
+            ->where('user_id','=', $data['user_id'])
+            ->first();
+        }
+
+        if(isset($user_status->user_status_details) && $user_status->user_status_details == 'deleted' ){
+            header("Location: /deleted");
+            die();
+        }
+
+        if(isset($user_status->user_status_details) && $user_status->user_status_details == 'inactive' ){
+            header("Location: /deleted");
+            die();
+        }
+    }
     public function update_data(){
+
         $table = self::get_table_info('experience');
         $this->experience_active = $table->table_isactive;
         $this->experience_max_display = $table->table_max_display;
@@ -103,14 +142,65 @@ class About extends Component
             ]);
         }
 
+        $table = self::get_table_info('about_pages');
+        $this->about_page_active = $table->table_isactive;
+        $this->about_page_max_display = $table->table_max_display;
+
+        $about_page_filter = DB::table('table_columns')
+            ->where('user_id','=', $this->user_id )
+            ->where('table_id','=',$table->id)
+            ->orderBy('column_order','asc')
+            ->get()
+            ->toArray();
+        $this->about_page_filter = [];
+        foreach ($about_page_filter as $key => $value) {
+            array_push($this->about_page_filter,[
+                'id' => intval($value->id),
+                'active'=> boolval($value->active),
+                'name' => $value->name,
+                'column_name' => $value->column_name,
+                'class' => $value->class,
+                'style'=> $value->style
+            ]);
+        }
+
         $this->experience_data = DB::table('experiences')
+            ->where('user_id','=',$this->user_id )
+            ->orderBy('number_order','asc')
             ->get()
             ->toArray();
 
         $this->education_data = DB::table('education')
+            ->where('user_id','=',$this->user_id )
+            ->orderBy('number_order','asc')
             ->get()
             ->toArray();
 
+        $this->about_page_data = DB::table('about_pages')
+            ->where('user_id','=',$this->user_id )
+            ->get()
+            ->toArray();
+    }
+
+    public function update_about_page_filter(Request $request){
+        $data = $request->session()->all();
+        foreach ($this->about_page_filter as $key => $value) {
+            DB::table('table_columns')
+                ->where('id','=', $value['id'])
+                ->where('user_id','=',$data['user_id'])
+                ->update([
+                    'active' => boolval($value['active']),
+            ]);
+        }
+        $this->dispatch('swal:redirect',
+            position         									: 'center',
+            icon              									: 'success',
+            title             									: 'Successfully updated!',
+            showConfirmButton 									: 'true',
+            timer             									: '1000',
+            link              									: '#'
+        );
+        self::update_data();
     }
 
     public function update_experience_filter(Request $request){
@@ -121,9 +211,6 @@ class About extends Component
                 ->where('user_id','=',$data['user_id'])
                 ->update([
                     'active' => boolval($value['active']),
-                    'name' => $value['name'],
-                    'class' => $value['class'],
-                    'style'=> $value['style']
             ]);
         }
         $this->dispatch('swal:redirect',
@@ -134,6 +221,7 @@ class About extends Component
             timer             									: '1000',
             link              									: '#'
         );
+        self::update_data();
     }
     public function update_education_filter(Request $request){
         $data = $request->session()->all();
@@ -143,9 +231,6 @@ class About extends Component
                 ->where('user_id','=',$data['user_id'])
                 ->update([
                     'active' => boolval($value['active']),
-                    'name' => $value['name'],
-                    'class' => $value['class'],
-                    'style'=> $value['style']
             ]);
         }
         $this->dispatch('swal:redirect',
@@ -156,6 +241,7 @@ class About extends Component
             timer             									: '1000',
             link              									: '#'
         );
+        self::update_data();
     }
     public function mount(Request $request){
         $data = $request->session()->all();
@@ -250,8 +336,8 @@ class About extends Component
         }
     }
     public function toggle_active($table_name){
-        if($table_name == 'about-page'){
-
+        if($table_name == 'about_pages'){
+            $this->about_page_active = self::update_active_table($table_name, !$this->about_page_active);
         }else if($table_name == 'about-content'){
 
         }else if($table_name == 'achievements'){
@@ -274,6 +360,17 @@ class About extends Component
         );
     }
     public function add_row($modal_id){
+
+        $this->about_page = [
+            'id' => NULL,
+            'user_id' => NULL,
+            'image' => NULL,
+            'header'  => NULL,
+            'content' => NULL,
+            'button' => NULL,
+            'link' => NULL,
+        ];
+
         $this->experience = [
             'id' => NULL,
             'user_id' => NULL,
@@ -353,7 +450,47 @@ class About extends Component
                 return 0;
             } 
         }
+        return 0;
     }
+
+    // about page CRUD
+    public function add_about_page(Request $request,$modal_id){
+        $data = $request->session()->all();
+        if($this->about_page['image']){
+            $about_page['image'] = self::save_image($this->about_page['image'],'about_pages','about_pages','image');
+            if($about_page['image'] == 0){
+                return;
+            }
+        }
+        if(!strlen($this->about_page['header'])>0){
+            return;
+        }
+        if(!strlen($this->about_page['content'])>0){
+            return;
+        }
+        if(DB::table('about_pages')
+            ->insert([
+                'id' => NULL,
+                'user_id' =>  $data['user_id'],
+                'image' => $about_page['image'],
+                'header'  => $this->about_page['header'],
+                'content' => $this->about_page['content'],
+                'button' => $this->about_page['button'],
+                'link' => $this->about_page['link'],
+        ])){
+            $this->dispatch('swal:redirect',
+                position         									: 'center',
+                icon              									: 'success',
+                title             									: 'Successfully added!',
+                showConfirmButton 									: 'true',
+                timer             									: '1000',
+                link              									: '#'
+            );
+            $this->dispatch('openModal',$modal_id);
+        }
+        self::update_data();
+    }
+
 
     // experiece CRUD 
     public function add_experience(Request $request,$modal_id){
@@ -388,9 +525,8 @@ class About extends Component
                 DB::raw('count(*) as number_order')
             )
             ->get()
-            ->first()->number_order;
+            ->first()->number_order+1;
 
-        // insert
         if(DB::table('experiences')
             ->insert([
                 'id' => NULL,
@@ -430,30 +566,24 @@ class About extends Component
             'link'=> NULL,
             'number_order' => NULL,
         ];
-        $this->dispatch('openModal',$modal_id
-        );
+        $this->dispatch('openModal',$modal_id);
     }
-    public function save_delete_experience(Request $request,$modal_id,$id){
+    public function save_delete_experience(Request $request,$modal_id){
         $data = $request->session()->all();
+      
+        $this->user_id = $data['user_id'];
         $experience = DB::table('experiences')
             ->where('user_id','=',$data['user_id'])
-            ->where('id','=',$id)
+            ->where('id','=',$this->experience['id'])
             ->first();
-        // delete file
+
         if(file_exists(public_path('storage').'/content/experience/'.$experience->logo)){
             unlink(public_path('storage').'/content/experience/'.$experience->logo);
         }
-        // update order
-        $experience_data = DB::table('experiences')
-            ->get()
-            ->toArray();
         
-        // foreach ($experience_data as $key => $value) {
-        //     dd($value);
-        // }
         if(DB::table('experiences')
             ->where('user_id','=',$data['user_id'])
-            ->where('id','=',$id)
+            ->where('id','=',$this->experience['id'])
             ->delete()){
             $this->dispatch('swal:redirect',
                 position         									: 'center',
@@ -463,6 +593,22 @@ class About extends Component
                 timer             									: '1000',
                 link              									: '#'
             );
+
+            $experience_data = DB::table('experiences')
+            ->where('user_id','=',$data['user_id'])
+            ->orderBy('number_order','asc')
+            ->get()
+            ->toArray();
+    
+        
+            foreach ($experience_data as $key => $value) {
+                DB::table('experiences')
+                    ->where('user_id','=',$data['user_id'])
+                    ->where('id','=', $value->id)
+                    ->update([
+                        'number_order'=> $key+1
+                ]);
+            }
         }else{
             $this->dispatch('swal:redirect',
                 position         									: 'center',
@@ -477,6 +623,166 @@ class About extends Component
         $this->dispatch('openModal',$modal_id);
         self::update_data();
     }
+    public function edit_experience(Request $request,$modal_id,$id){
+        $data = $request->session()->all();
+        $experience = DB::table('experiences')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$id)
+            ->first();
+        $this->experience = [
+            'id' =>  $experience->id,
+            'user_id' => $experience->user_id,
+            'logo' => NULL,
+            'title' => $experience->title,
+            'start_date' => $experience->start_date,
+            'end_date' => $experience->end_date,
+            'location' => $experience->location,
+            'type' => $experience->type,
+            'link'=> $experience->link,
+            'number_order' => $experience->id,
+        ];
+        $this->dispatch('openModal',$modal_id);
+    }
+    public function save_edit_experience(Request $request,$modal_id){
+        $data = $request->session()->all();
+        if($this->experience['logo']){
+            $experienceLogo = self::save_image($this->experience['logo'],'experience','experiences','logo');
+            if($experienceLogo == 0){
+                return;
+            }else{
+                $experience = DB::table('experiences')
+                    ->where('user_id','=',$data['user_id'])
+                    ->where('id','=',$this->experience['id'])
+                    ->first();
+                if(file_exists(public_path('storage').'/content/experience/'.$experience->logo)){
+                    unlink(public_path('storage').'/content/experience/'.$experience->logo);
+                }
+            }
+        }else{
+            $experience = DB::table('experiences')
+                ->where('user_id','=',$data['user_id'])
+                ->where('id','=',$this->experience['id'])
+                ->first();
+            $this->experience['logo'] = $experience->logo;
+        }
+        if(!strlen($this->experience['title'])>0){
+            return;
+        }
+        if(!$this->experience['start_date']){
+            return;
+        }
+        if(!strlen($this->experience['end_date'])>-1){
+            return;
+        }
+        if(!strlen($this->experience['location'])>0){
+            return;
+        }
+        if(!strlen($this->experience['type'])>0){
+            return;
+        }
+        if(!strlen($this->experience['link'])>-1){
+            return;
+        }
+
+        if(DB::table('experiences')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$this->experience['id'])
+            ->update([
+                'user_id' =>  $data['user_id'],
+                'logo' =>    $experienceLogo,
+                'title' =>  $this->experience['title'],
+                'start_date' =>  $this->experience['start_date'],
+                'end_date' =>  $this->experience['end_date'],
+                'location' =>  $this->experience['location'],
+                'type' =>  $this->experience['type'],
+                'link' =>  $this->experience['link'],
+        ])){
+            $this->dispatch('swal:redirect',
+                position         									: 'center',
+                icon              									: 'success',
+                title             									: 'Successfully added!',
+                showConfirmButton 									: 'true',
+                timer             									: '1000',
+                link              									: '#'
+            );
+            $this->dispatch('openModal',$modal_id);
+            self::update_data();
+        }
+    }
+
+    public function move_up_experience(Request $request,$id){
+        $data = $request->session()->all();
+        $count = DB::table('experiences')
+            ->select(
+                DB::raw('count(*) as number_of_rows')
+            )
+            ->where('user_id','=',$data['user_id'])
+            ->first()->number_of_rows;
+        $current = DB::table('experiences')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$id)
+            ->first();
+        if( $count > 1 && $current->number_order != 1){
+            $prev = DB::table('experiences')
+            ->where('user_id','=',$data['user_id'])
+            ->where('number_order','<',$current->number_order)
+            ->orderBy('number_order','desc')
+            ->first();
+
+            DB::table('experiences')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$prev->id)
+            ->update([
+                'number_order' => $current->number_order
+            ]);
+            DB::table('experiences')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$current->id)
+            ->update([
+                'number_order' => $prev->number_order
+            ]);
+            self::update_data();
+        }
+    }
+    public function move_down_experience(Request $request,$id){
+        $data = $request->session()->all();
+        $count = DB::table('experiences')
+            ->select(
+                DB::raw('count(*) as number_of_rows')
+            )
+            ->where('user_id','=',$data['user_id'])
+            ->first()->number_of_rows;
+        $current = DB::table('experiences')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$id)
+            ->first();
+            $current = DB::table('experiences')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$id)
+            ->first();
+        if( $count > 1 && $current->number_order != $count){
+            $prev = DB::table('experiences')
+            ->where('user_id','=',$data['user_id'])
+            ->where('number_order','>',$current->number_order)
+            ->orderBy('number_order','asc')
+            ->first();
+
+            DB::table('experiences')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$prev->id)
+            ->update([
+                'number_order' => $current->number_order
+            ]);
+            DB::table('experiences')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$current->id)
+            ->update([
+                'number_order' => $prev->number_order
+            ]);
+            self::update_data();
+        }
+    }
+    
 
     // education CRUD
     public function add_education(Request $request,$modal_id){
@@ -541,5 +847,77 @@ class About extends Component
     }
     public function delete_education($modal_id,$id){
         dd($modal_id,$id);
+    }
+    public function move_up_education(Request $request,$id){
+        $data = $request->session()->all();
+        $count = DB::table('education')
+            ->select(
+                DB::raw('count(*) as number_of_rows')
+            )
+            ->where('user_id','=',$data['user_id'])
+            ->first()->number_of_rows;
+        $current = DB::table('education')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$id)
+            ->first();
+        if( $count > 1 && $current->number_order != 1){
+            $prev = DB::table('education')
+            ->where('user_id','=',$data['user_id'])
+            ->where('number_order','<',$current->number_order)
+            ->orderBy('number_order','desc')
+            ->first();
+
+            DB::table('education')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$prev->id)
+            ->update([
+                'number_order' => $current->number_order
+            ]);
+            DB::table('education')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$current->id)
+            ->update([
+                'number_order' => $prev->number_order
+            ]);
+            self::update_data();
+        }
+    }
+    public function move_down_education(Request $request,$id){
+        $data = $request->session()->all();
+        $count = DB::table('education')
+            ->select(
+                DB::raw('count(*) as number_of_rows')
+            )
+            ->where('user_id','=',$data['user_id'])
+            ->first()->number_of_rows;
+        $current = DB::table('education')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$id)
+            ->first();
+            $current = DB::table('education')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$id)
+            ->first();
+        if( $count > 1 && $current->number_order != $count){
+            $prev = DB::table('education')
+            ->where('user_id','=',$data['user_id'])
+            ->where('number_order','>',$current->number_order)
+            ->orderBy('number_order','asc')
+            ->first();
+
+            DB::table('education')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$prev->id)
+            ->update([
+                'number_order' => $current->number_order
+            ]);
+            DB::table('education')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$current->id)
+            ->update([
+                'number_order' => $prev->number_order
+            ]);
+            self::update_data();
+        }
     }
 }

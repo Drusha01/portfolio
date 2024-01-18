@@ -18,6 +18,8 @@ use App\Livewire\Authentication\RegisterEmail;
 use App\Livewire\Authentication\ForgotPassword;
 use App\Livewire\Authentication\AccountRecovery;
 use App\Livewire\Authentication\ChangeEmail;
+use App\Livewire\Authentication\Inactive;
+use App\Livewire\Authentication\Deleted;
 
 use App\Livewire\CreatePost;
 
@@ -68,6 +70,10 @@ Route::middleware([Unauthenticated::class])->group(function () {
     Route::get('/register-email',RegisterEmail::class)->name('register-email');
     Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
     Route::get('/account/recovery/{hash}', AccountRecovery::class)->name('account-recovery');
+});
+Route::middleware([Authenticated::class])->group(function () {
+    Route::get('/deleted', Deleted::class)->name('deleted');
+    Route::get('/inactive', Inactive::class)->name('inactive');
 });
 
 Route::middleware([Authenticated::class,AccountisValid::class])->group(function () {

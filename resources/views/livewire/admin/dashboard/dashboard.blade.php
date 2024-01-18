@@ -1,13 +1,24 @@
 <div>
+    @if($mode == 0)
+        <style>
+        
+            input::placeholder {
+                color: white !important;
+            }
+        </style>
+      @endif
     <div class="row" style="margin:70px 0px 0px 0px; padding:0px;">
-        <div class="col p-0 shadow " id="sidebar" style="background:#{{$background}};height:calc(100vh - 90px);max-width:280px;">
+        <div class="col p-0 border-end @if($mode) border-dark @else @endif" id="sidebar" style="@if($mode == 1)background-color:white;color:black; @else background-color:#232323;color:white; @endif height:calc(100vh - 70px);max-width:280px;">
             @livewire('components.sidebar.admin-sidebar.admin-sidebar')
         </div>
-        <div class="col">
+        <div class="col" style="@if($mode == 1) background-color:white;color:black; @else background-color:#242424;color:white; @endif">
             <div class="row">
                 <div class="col lead pt-4 px-4">
                     Dashboard
                 </div>
+            </div>
+            <div class="row px-3 pt-2">
+                dashboard content
             </div>
         </div>
     </div>
