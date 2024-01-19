@@ -20,11 +20,11 @@
             <div class="row px-3 pt-2">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button wire:ignore.self wire:click="update_data()" class="nav-link active" id="about-page-tab" data-bs-toggle="tab" data-bs-target="#about-page-tab-pane" type="button" role="tab" aria-controls="about-page-tab-pane" aria-selected="true">FAQ</button>
+                        <button wire:ignore.self wire:click="update_data()" class="nav-link active" id="faq-tab" data-bs-toggle="tab" data-bs-target="#faq-tab-pane" type="button" role="tab" aria-controls="faq-tab-pane" aria-selected="true">FAQ</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div wire:ignore.self class="tab-pane fade show active" id="about-page-tab-pane" role="tabpanel" aria-labelledby="about-page-tab" tabindex="0">
+                    <div wire:ignore.self class="tab-pane fade show active" id="faq-tab-pane" role="tabpanel" aria-labelledby="faq-tab" tabindex="0">
                         <div class="row d-flex">
                             <div class="col">
                                 <div class="row py-2">

@@ -80,6 +80,47 @@ class table_seeders extends Seeder
             NOW()
         );');
 
+        // projects
+        DB::statement('INSERT INTO tables VALUES(
+            NULL,
+            "projects",
+            1,
+            1,
+            NOW(),
+            NOW()
+        );');
+
+        DB::statement('INSERT INTO tables VALUES(
+            NULL,
+            "project_image_contents",
+            1,
+            1,
+            NOW(),
+            NOW()
+        );');
+
+        DB::statement('INSERT INTO tables VALUES(
+            NULL,
+            "project_developers",
+            1,
+            1,
+            NOW(),
+            NOW()
+        );');
+
+        DB::statement('INSERT INTO tables VALUES(
+            NULL,
+            "developers",
+            1,
+            1,
+            NOW(),
+            NOW()
+        );');
+
+
+
+
+
 
         
     }

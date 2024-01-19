@@ -11,19 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement('CREATE TABLE projects(
+        
+        DB::statement('CREATE TABLE project_developers(
             id INT PRIMARY KEY AUTO_INCREMENT,
             user_id INT NOT NULL,
-            title VARCHAR(255) NOT NULL,
-            content VARCHAR(1024) NOT NULL,
-            button VARCHAR(100) , 
-            link  VARCHAR(255), 
+            project_id INT NOT NULL,
+            developer_id INT NOT NULL,
             number_order INT NOT NULL,
             date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
             date_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         );');
 
-        DB::statement('CREATE INDEX idx_user_id ON projects(user_id);');
+        DB::statement('CREATE INDEX idx_user_id ON project_developers(user_id);');
+        DB::statement('CREATE INDEX idx_project_id ON project_developers(project_id);');
+        DB::statement('CREATE INDEX idx_developer_id ON project_developers(developer_id);');
     }
 
     /**
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('project_developers');
     }
 };
