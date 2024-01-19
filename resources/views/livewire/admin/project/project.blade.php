@@ -5,6 +5,19 @@
             input::placeholder {
                 color: gray !important;
             }
+            .selectheader{
+                padding:10px;
+                border-radius:5px;
+                color:white;
+                background:#242424;
+                border-color:white;
+                font-size:16px;
+
+            }
+            select option{
+            color: white;
+            background-color: gray;
+            }
         </style>
     @endif
     <div class="row" style="margin:70px 0px 0px 0px; padding:0px;">
@@ -20,16 +33,16 @@
             <div class="row px-3 pt-2">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button wire:ignore.self wire:click="update_data()" class="nav-link active" id="project-tab" data-bs-toggle="tab" data-bs-target="#project-tab-pane" type="button" role="tab" aria-controls="project-tab-pane" aria-selected="true">Projects</button>
+                        <button @if($mode== 0)style="background-color:#242424;;color:white;border-bottom-color: white" @endif wire:ignore.self wire:click="update_data()" class="nav-link active"id="project-tab" data-bs-toggle="tab" data-bs-target="#project-tab-pane" type="button" role="tab" aria-controls="project-tab-pane" aria-selected="true">Projects</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button wire:ignore.self wire:click="update_data()" class="nav-link" id="project-image-content-tab" data-bs-toggle="tab" data-bs-target="#project-image-content-tab-pane" type="button" role="tab" aria-controls="project-image-content-tab-pane" aria-selected="true">Project Image Content</button>
+                        <button @if($mode== 0)style="background-color:#242424;;color:white;border-bottom-color: white"@endif wire:ignore.self wire:click="update_data()" class="nav-link" id="project-image-content-tab" data-bs-toggle="tab" data-bs-target="#project-image-content-tab-pane" type="button" role="tab" aria-controls="project-image-content-tab-pane" aria-selected="true">Project Image Content</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button wire:ignore.self wire:click="update_data()" class="nav-link" id="project-developers-tab" data-bs-toggle="tab" data-bs-target="#project-developers-tab-pane" type="button" role="tab" aria-controls="project-developers-tab-pane" aria-selected="true">Project Developers</button>
+                        <button @if($mode== 0)style="background-color:#242424;;color:white;border-bottom-color: white"@endif wire:ignore.self wire:click="update_data()" class="nav-link" id="project-developers-tab" data-bs-toggle="tab" data-bs-target="#project-developers-tab-pane" type="button" role="tab" aria-controls="project-developers-tab-pane" aria-selected="true">Project Developers</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button wire:ignore.self wire:click="update_data()" class="nav-link" id="project-developers-tab" data-bs-toggle="tab" data-bs-target="#developers-tab-pane" type="button" role="tab" aria-controls="developers-tab-pane" aria-selected="true">Developers</button>
+                        <button @if($mode== 0)style="background-color:#242424;;color:white;border-bottom-color: white;"@endif wire:ignore.self wire:click="update_data()" class="nav-link" id="project-developers-tab" data-bs-toggle="tab" data-bs-target="#developers-tab-pane" type="button" role="tab" aria-controls="developers-tab-pane" aria-selected="true">Developers</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -153,7 +166,7 @@
                                         </button>
                                         <input class="form-control mx-1" style="max-width:300px;@if($mode ==0) background-color:#282828;color:white; @endif" type="text" id="search" placeholder="Search ... "/> 
                                         <div class="col-2">
-                                            <select class="form-select" aria-label="Default select example" selected wire:model="image_content_project_id" wire:change="update_image_content_data()">
+                                            <select class="@if($mode == 1) form-select @else selectheader @endif" aria-label="Default select example" selected wire:model="image_content_project_id" wire:change="update_image_content_data()">
                                                 <option value="0">Select Project</option>
                                                 @foreach ($project_data as $key =>$value)
                                                     <option value="{{$value->id}}">{{$value->title}}</option>
@@ -260,7 +273,7 @@
                                         </button>
                                         <input class="form-control mx-1" style="max-width:300px;@if($mode ==0) background-color:#282828;color:white; @endif" type="text" id="search" placeholder="Search ... "/> 
                                         <div class="col-2">
-                                            <select class="form-select" aria-label="Default select example" selected wire:model="project_developer_project_id" wire:change="update_project_developer_data()">
+                                            <select class="@if($mode == 1) form-select @else selectheader @endif" aria-label="Default select example" selected wire:model="project_developer_project_id" wire:change="update_project_developer_data()">
                                                 <option value="0">Select Project</option>
                                                 @foreach ($project_data as $key =>$value)
                                                     <option value="{{$value->id}}">{{$value->title}}</option>

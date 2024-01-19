@@ -20,10 +20,10 @@
             <div class="row px-3 pt-2">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button wire:ignore.self wire:click="update_data()" class="nav-link active" id="about-page-tab" data-bs-toggle="tab" data-bs-target="#about-page-tab-pane" type="button" role="tab" aria-controls="about-page-tab-pane" aria-selected="true">About-page</button>
+                        <button @if($mode== 0)style="background-color:#242424;;color:white;border-bottom-color: white;"@endif wire:ignore.self wire:click="update_data()" class="nav-link active" id="about-page-tab" data-bs-toggle="tab" data-bs-target="#about-page-tab-pane" type="button" role="tab" aria-controls="about-page-tab-pane" aria-selected="true">About-page</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button wire:ignore.self wire:click="update_data()" class="nav-link" id="about-content-tab" data-bs-toggle="tab" data-bs-target="#about-content-tab-pane" type="button" role="tab" aria-controls="about-content-tab-pane" aria-selected="false">About-content</button>
+                        <button @if($mode== 0)style="background-color:#242424;;color:white;border-bottom-color: white;"@endif wire:ignore.self wire:click="update_data()" class="nav-link" id="about-content-tab" data-bs-toggle="tab" data-bs-target="#about-content-tab-pane" type="button" role="tab" aria-controls="about-content-tab-pane" aria-selected="false">About-content</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button wire:ignore.self wire:click="update_data()" class="nav-link" id="achievements-tab" data-bs-toggle="tab" data-bs-target="#achievements-tab-pane" type="button" role="tab" aria-controls="achievements-tab-pane" aria-selected="false">Achievements</button>
