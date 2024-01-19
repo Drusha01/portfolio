@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement('CREATE TABLE faq(
+        DB::statement('CREATE TABLE about_content(
             id INT PRIMARY KEY AUTO_INCREMENT,
             user_id INT NOT NULL,
-            question VARCHAR(255) NOT NULL,
-            answer VARCHAR(512) NOT NULL,
-            link VARCHAR(255),
-            number_order INT NOT NULL,
+            image VARCHAR(100) , 
+            header  VARCHAR(255) NOT NULL, 
+            content VARCHAR(512) NOT NULL, 
             date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
             date_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         );');
+
+        DB::statement('CREATE INDEX idx_logo ON about_content(image(10));');
+        DB::statement('CREATE INDEX idx_user_id ON about_content(user_id);');
     }
 
     /**
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('faq');
+        Schema::dropIfExists('about_content');
     }
 };

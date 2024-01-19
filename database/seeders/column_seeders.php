@@ -341,7 +341,7 @@ class column_seeders extends Seeder
             "image",
             "",
             "",
-            11,
+            1,
             NOW(),
             NOW()
         );');
@@ -354,7 +354,7 @@ class column_seeders extends Seeder
             "header",
             "",
             "",
-            11,
+            2,
             NOW(),
             NOW()
         );');
@@ -367,7 +367,7 @@ class column_seeders extends Seeder
             "content",
             "",
             "",
-            11,
+            3,
             NOW(),
             NOW()
         );');
@@ -380,7 +380,7 @@ class column_seeders extends Seeder
             "button",
             "",
             "",
-            11,
+            4,
             NOW(),
             NOW()
         );');
@@ -394,7 +394,7 @@ class column_seeders extends Seeder
             "link",
             "",
             "",
-            11,
+            5,
             NOW(),
             NOW()
         );');
@@ -407,7 +407,7 @@ class column_seeders extends Seeder
             "date_created",
             "",
             "",
-            11,
+            6,
             NOW(),
             NOW()
         );');
@@ -420,7 +420,7 @@ class column_seeders extends Seeder
             "date_updated",
             "",
             "",
-            11,
+            7,
             NOW(),
             NOW()
         );');
@@ -433,10 +433,264 @@ class column_seeders extends Seeder
             "id",
             "text-center",
             "",
-            11,
+            8,
+            NOW(),
+            NOW()
+        );');
+
+        // about content
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            5,
+            1,
+            1,
+            "Image",
+            "image",
+            "text-center",
+            "",
+            1,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            5,
+            1,
+            1,
+            "Header",
+            "header",
+            "",
+            "",
+            2,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            5,
+            1,
+            1,
+            "Content",
+            "content",
+            "",
+            "",
+            3,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            5,
+            1,
+            1,
+            "Date created",
+            "date_created",
+            "",
+            "",
+            4,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            5,
+            1,
+            1,
+            "Date updated",
+            "date_updated",
+            "",
+            "",
+            5,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            5,
+            1,
+            1,
+            "Action",
+            "id",
+            "text-center",
+            "",
+            6,
+            NOW(),
+            NOW()
+        );');
+
+        // links
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            6,
+            1,
+            1,
+            "#",
+            "id",
+            "",
+            "",
+            1,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            6,
+            1,
+            1,
+            "Image",
+            "image",
+            "text-center",
+            "",
+            2,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            6,
+            1,
+            1,
+            "Link",
+            "link",
+            "",
+            "",
+            3,
+            NOW(),
+            NOW()
+        );');
+          DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            6,
+            1,
+            1,
+            "Order",
+            "number_order",
+            "",
+            "",
+            4,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            6,
+            1,
+            1,
+            "Action",
+            "id",
+            "text-center",
+            "",
+            5,
+            NOW(),
+            NOW()
+        );');
+   
+        // faq
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            8,
+            1,
+            1,
+            "#",
+            "id",
+            "",
+            "",
+            1,
+            NOW(),
+            NOW()
+        );');
+         DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            8,
+            1,
+            1,
+            "Question",
+            "question",
+            "",
+            "",
+            2,
+            NOW(),
+            NOW()
+        );');
+         DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            8,
+            1,
+            1,
+            "Answer",
+            "answer",
+            "",
+            "",
+            3,
+            NOW(),
+            NOW()
+        );');
+         DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            8,
+            1,
+            1,
+            "Link",
+            "link",
+            "",
+            "",
+            4,
+            NOW(),
+            NOW()
+        );'); 
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            8,
+            1,
+            1,
+            "Order",
+            "number_order",
+            "",
+            "",
+            5,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            8,
+            1,
+            1,
+            "Date Created",
+            "date_created",
+            "",
+            "",
+            6,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            8,
+            1,
+            1,
+            "Date Updated",
+            "date_updated",
+            "",
+            "",
+            7,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            8,
+            1,
+            1,
+            "Action",
+            "id",
+            "text-center",
+            "",
+            8,
             NOW(),
             NOW()
         );');
         
+    
     }
 }

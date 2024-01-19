@@ -47,6 +47,39 @@ class table_seeders extends Seeder
             NOW()
         );');
 
+        DB::statement('INSERT INTO tables VALUES(
+            NULL,
+            "about_content",
+            1,
+            1,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO tables VALUES(
+            NULL,
+            "links",
+            1,
+            1,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO tables VALUES(
+            NULL,
+            "achievements",
+            1,
+            1,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO tables VALUES(
+            NULL,
+            "faq",
+            1,
+            1,
+            NOW(),
+            NOW()
+        );');
+
 
         
     }
