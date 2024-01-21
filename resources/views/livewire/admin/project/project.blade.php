@@ -6,6 +6,7 @@
                 color: gray !important;
             }
             .selectheader{
+
                 padding:10px;
                 border-radius:5px;
                 color:white;
@@ -166,7 +167,7 @@
                                         </button>
                                         <input class="form-control mx-1" style="max-width:300px;@if($mode ==0) background-color:#282828;color:white; @endif" type="text" id="search" placeholder="Search ... "/> 
                                         <div class="col-2">
-                                            <select class="@if($mode == 1) form-select @else selectheader @endif" aria-label="Default select example" selected wire:model="image_content_project_id" wire:change="update_image_content_data()">
+                                            <select class="@if($mode == 1) form-select @else form-select selectheader @endif" aria-label="Default select example" selected wire:model="image_content_project_id" wire:change="update_image_content_data()">
                                                 <option value="0">Select Project</option>
                                                 @foreach ($project_data as $key =>$value)
                                                     <option value="{{$value->id}}">{{$value->title}}</option>
@@ -273,7 +274,7 @@
                                         </button>
                                         <input class="form-control mx-1" style="max-width:300px;@if($mode ==0) background-color:#282828;color:white; @endif" type="text" id="search" placeholder="Search ... "/> 
                                         <div class="col-2">
-                                            <select class="@if($mode == 1) form-select @else selectheader @endif" aria-label="Default select example" selected wire:model="project_developer_project_id" wire:change="update_project_developer_data()">
+                                            <select class="@if($mode == 1) form-select @else form-select selectheader @endif" aria-label="Default select example" selected wire:model="project_developer_project_id" wire:change="update_project_developer_data()">
                                                 <option value="0">Select Project</option>
                                                 @foreach ($project_data as $key =>$value)
                                                     <option value="{{$value->id}}">{{$value->title}}</option>
@@ -853,7 +854,7 @@
                                             <div class="mb-3">
                                                 <label for="project-title" class="form-label">Developer</label>
                                                 <select class="form-select" aria-label="Default select example" selected wire:model.defer="project_developer.developer_id" >
-                                                    <option value="0">Select Project</option>
+                                                    <option value="0">Select Developer</option>
                                                     @if($project_developer_project_id !=0)
                                                         @foreach ($developer_data as $key => $value)
                                                             <?php $selected = true;?>
@@ -875,6 +876,77 @@
                                             <button type="submit" 
                                                 class="btn @if($mode) btn-primary @else btn-outline-primary @endif">
                                                 Add
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="editProjectDeveloper" tabindex="-1" role="dialog" aria-labelledby="editProjectDeveloperLabel" aria-hidden="true" wire:ignore.self>
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content @if($mode == 0) bg-dark text-light @endif">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editProjectDeveloperLabel">Edit Project Developer</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <form wire:submit.prevent="save_edit_project_developer('editProjectDeveloper')">
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label for="project-title" class="form-label">Developer</label>
+                                                <select class="form-select" aria-label="Default select example" selected wire:model.defer="project_developer.developer_id" >
+                                                    @if($project_developer_project_id !=0)
+                                                        @foreach ($developer_data as $key => $value)
+                                                            <?php $selected = true;?>
+                                                            @foreach($project_developer_data as $key_pd => $value_pd)
+                                                                @if($value->id == $value_pd->developer_id)
+                                                                    <?php $selected = false;?>
+                                                                @endif
+                                                                @if ($value->id == $project_developer['developer_id'])
+                                                                <?php $selected = 2;?>
+                                                           
+                                                                @endif
+                                                            @endforeach
+                                                            @if($selected == 1)
+                                                                <option value="{{$value->id}}">{{$value->full_name}}</option>
+                                                            @elseif($selected == 2)
+                                                            <option selected value="{{$value->id}}">{{$value->full_name}}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button"  class="btn @if($mode) btn-secondary @else btn-outline-secondary @endif btn-block" data-bs-dismiss="modal"  id='btn_close1'>Close</button>
+                                            <button type="submit" 
+                                                class="btn @if($mode) btn-success @else btn-outline-success @endif">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="deleteProjectDeveloper" tabindex="-1" role="dialog" aria-labelledby="deleteProjectDeveloperLabel" aria-hidden="true" wire:ignore.self>
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content @if($mode == 0) bg-dark text-light @endif">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteProjectDeveloperLabel">Edit Project Developer</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <form wire:submit.prevent="save_delete_project_developer('deleteProjectDeveloper')">
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to delete this developer?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button"  class="btn @if($mode) btn-secondary @else btn-outline-secondary @endif btn-block" data-bs-dismiss="modal"  id='btn_close1'>Close</button>
+                                            <button type="submit" 
+                                                class="btn @if($mode) btn-danger @else btn-outline-danger @endif">
+                                                Delete
                                             </button>
                                         </div>
                                     </form>

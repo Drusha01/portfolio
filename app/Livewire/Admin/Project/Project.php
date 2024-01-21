@@ -604,8 +604,6 @@ class Project extends Component
             ->where('id','=',$this->project['id'])
             ->delete()){
 
-            
-
             DB::table('project_developers')
             ->where('user_id','=',$data['user_id'])
             ->where('project_id','=',$this->project['id'])
@@ -1207,6 +1205,146 @@ class Project extends Component
                     self::update_data();
                 }
             }
+        }else{
+            $this->dispatch('swal:redirect',
+                position         									: 'center',
+                icon              									: 'warning',
+                title             									: 'Please select project!',
+                showConfirmButton 									: 'true',
+                timer             									: '1000',
+                link              									: '#'
+            );
+        }
+    }
+
+    public function edit_project_developer(Request $request,$modal_id,$id){
+        $data = $request->session()->all();
+        if(DB::table('projects')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$this->project_developer_project_id)
+            ->get()
+            ->first()){
+            $project_developer = DB::table('project_developers')
+                ->where('user_id','=',$data['user_id'])
+                ->where('project_id','=',$this->project_developer_project_id)
+                ->where('id','=',$id)
+                ->first();
+            $this->project_developer = [
+                'id' => $project_developer->id,
+                'user_id' => $project_developer->user_id,
+                'project_id' => $project_developer->project_id,
+                'developer_id' => $project_developer->developer_id,
+                'number_order' => $project_developer->number_order,
+            ];
+            $this->dispatch('openModal',$modal_id);
+            
+        }else{
+            $this->dispatch('swal:redirect',
+                position         									: 'center',
+                icon              									: 'warning',
+                title             									: 'Please select project!',
+                showConfirmButton 									: 'true',
+                timer             									: '1000',
+                link              									: '#'
+            );
+        }
+    }
+
+    public function save_edit_project_developer(Request $request,$modal_id){
+        $data = $request->session()->all();
+        if(DB::table('projects')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$this->project_developer_project_id)
+            ->get()
+            ->first()){
+          
+            DB::table('project_developers')
+                ->where('user_id','=',$data['user_id'])
+                ->where('project_id','=',$this->project_developer_project_id)
+                ->where('id','=',$this->project_developer['id'])
+                ->update([
+                    'developer_id'=>$this->project_developer['developer_id']
+                ]);
+
+            $this->dispatch('swal:redirect',
+                position         									: 'center',
+                icon              									: 'success',
+                title             									: 'Successfully updated!',
+                showConfirmButton 									: 'true',
+                timer             									: '1000',
+                link              									: '#'
+            );
+            $this->dispatch('openModal',$modal_id);
+            self::update_data();
+        }else{
+            $this->dispatch('swal:redirect',
+                position         									: 'center',
+                icon              									: 'warning',
+                title             									: 'Please select project!',
+                showConfirmButton 									: 'true',
+                timer             									: '1000',
+                link              									: '#'
+            );
+        }
+    }
+
+    public function delete_project_developer(Request $request,$modal_id,$id){
+        $data = $request->session()->all();
+        if(DB::table('projects')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$this->project_developer_project_id)
+            ->get()
+            ->first()){
+            $project_developer = DB::table('project_developers')
+                ->where('user_id','=',$data['user_id'])
+                ->where('project_id','=',$this->project_developer_project_id)
+                ->where('id','=',$id)
+                ->first();
+            $this->project_developer = [
+                'id' => $project_developer->id,
+                'user_id' => $project_developer->user_id,
+                'project_id' => $project_developer->project_id,
+                'developer_id' => $project_developer->developer_id,
+                'number_order' => $project_developer->number_order,
+            ];
+            $this->dispatch('openModal',$modal_id);
+            
+        }else{
+            $this->dispatch('swal:redirect',
+                position         									: 'center',
+                icon              									: 'warning',
+                title             									: 'Please select project!',
+                showConfirmButton 									: 'true',
+                timer             									: '1000',
+                link              									: '#'
+            );
+        }
+    }
+
+    public function save_delete_project_developer(Request $request,$modal_id){
+        $data = $request->session()->all();
+        if(DB::table('projects')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$this->project_developer_project_id)
+            ->get()
+            ->first()){
+           
+            DB::table('project_developers')
+                ->where('user_id','=',$data['user_id'])
+                ->where('project_id','=',$this->project_developer_project_id)
+                ->where('id','=',$this->project_developer['id'])
+                ->delete();
+
+            $this->dispatch('swal:redirect',
+                position         									: 'center',
+                icon              									: 'success',
+                title             									: 'Successfully deleted!',
+                showConfirmButton 									: 'true',
+                timer             									: '1000',
+                link              									: '#'
+            );
+            $this->dispatch('openModal',$modal_id);
+            self::update_data();
         }else{
             $this->dispatch('swal:redirect',
                 position         									: 'center',

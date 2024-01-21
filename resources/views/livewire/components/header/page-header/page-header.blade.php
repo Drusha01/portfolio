@@ -1,5 +1,5 @@
 <div style="font-family: 'Roboto';font-size: 13px;">
-    <div style="width:100%;padding-top: 70px;" >
+    <div style="width:100%;padding-top: 60px;" >
     </div>
     <header class="p-2 fixed-top shadow @if($mode == 1) bg-white @else bg-dark @endif" data-bs-theme="light" style="max-height:70px;" >
         <div class="container d-flex justify-content-between align-items-center " >
