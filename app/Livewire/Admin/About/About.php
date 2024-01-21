@@ -1384,25 +1384,16 @@ class About extends Component
     }
     public function save_edit_experience(Request $request,$modal_id){
         $data = $request->session()->all();
-        if($this->experience['logo']){
-            $experienceLogo = self::save_image($this->experience['logo'],'experience','experiences','logo');
-            if($experienceLogo == 0){
-                return;
-            }else{
-                $experience = DB::table('experiences')
-                    ->where('user_id','=',$data['user_id'])
-                    ->where('id','=',$this->experience['id'])
-                    ->first();
-                if(file_exists(public_path('storage').'/content/experience/'.$experience->logo)){
-                    unlink(public_path('storage').'/content/experience/'.$experience->logo);
-                }
-            }
-        }else{
-            $experience = DB::table('experiences')
+        $experience = DB::table('experiences')
                 ->where('user_id','=',$data['user_id'])
                 ->where('id','=',$this->experience['id'])
                 ->first();
-            $this->experience['logo'] = $experience->logo;
+        $experienceLogo  = $experience->logo;
+        if($this->experience['logo']){
+            $experienceLogo = self::save_image($this->experience['logo'],'experience','experiences','logo');
+            if(file_exists(public_path('storage').'/content/experience/'.$experience->logo)){
+                unlink(public_path('storage').'/content/experience/'.$experience->logo);
+            }
         }
         if(!strlen($this->experience['title'])>0){
             return;
@@ -1412,6 +1403,22 @@ class About extends Component
         }
         if(!strlen($this->experience['end_date'])>-1){
             return;
+        }else{
+            if($this->experience['end_date']){
+                DB::table('experiences')
+                ->where('user_id','=',$data['user_id'])
+                ->where('id','=',$this->experience['id'])
+                ->update([
+                    'end_date' =>  $this->experience['end_date'],
+                ]);
+            }else{
+                DB::table('experiences')
+                ->where('user_id','=',$data['user_id'])
+                ->where('id','=',$this->experience['id'])
+                ->update([
+                    'end_date' =>  NULL,
+                ]);
+            }
         }
         if(!strlen($this->experience['location'])>0){
             return;
@@ -1431,22 +1438,22 @@ class About extends Component
                 'logo' =>    $experienceLogo,
                 'title' =>  $this->experience['title'],
                 'start_date' =>  $this->experience['start_date'],
-                'end_date' =>  $this->experience['end_date'],
                 'location' =>  $this->experience['location'],
                 'type' =>  $this->experience['type'],
                 'link' =>  $this->experience['link'],
         ])){
-            $this->dispatch('swal:redirect',
-                position         									: 'center',
-                icon              									: 'success',
-                title             									: 'Successfully added!',
-                showConfirmButton 									: 'true',
-                timer             									: '1000',
-                link              									: '#'
-            );
-            $this->dispatch('openModal',$modal_id);
-            self::update_data();
+           
         }
+        $this->dispatch('swal:redirect',
+        position         									: 'center',
+        icon              									: 'success',
+        title             									: 'Successfully updated!',
+        showConfirmButton 									: 'true',
+        timer             									: '1000',
+        link              									: '#'
+    );
+    $this->dispatch('openModal',$modal_id);
+    self::update_data();
     }
 
     public function move_up_experience(Request $request,$id){

@@ -10,12 +10,14 @@
                         <h3 class="h6 text-uppercase">© {{date("Y")}}. All rights reserved.</h3>
                     </div>
                     <div class="col-sm-4 p-1">
-                        <a href="#" class="link-underline link-underline-opacity-0 p-2">
-                            <img src="{{ asset('assets/logo/facebook.png') }}" alt="" width="40px" >
-                        </a>    
-                        <a href="#" class="link-underline link-underline-opacity-0 p-2">
-                            <img src="{{ asset('assets/logo/instagram.png') }}" alt="" width="40px" >
-                        </a>
+                        @foreach($links_data as $key => $value)
+                            @if( ($key) == $links_max_display )
+                                @break;
+                            @endif
+                            <a href="@if($value->link){{$value->link}} @else # @endif" class="link-underline link-underline-opacity-0 p-2">
+                                <img src="{{asset('storage/content/links/'.$value->image)}}" alt="" width="40px" >
+                            </a> 
+                        @endforeach   
                     </div>
                 </div> 
             </div>

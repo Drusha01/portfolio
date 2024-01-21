@@ -368,22 +368,22 @@
                                                                 <td class="">
                                                                     @if($key === array_key_first($skill_data) && array_key_first($skill_data) !== array_key_last($skill_data) )
                                                                     <div class="btn-group-vertical btn-group-sm">
-                                                                        <button type="button" class="btn  @if($mode == 1) btn-outline-dark @else btn-outline-light @endif " wire:click="move_down_skills({{$value->id}})">
+                                                                        <button type="button" class="btn  @if($mode == 1) btn-outline-dark @else btn-outline-light @endif " wire:click="move_down_skill({{$value->id}})">
                                                                             <i class="bi bi-chevron-down"></i>
                                                                         </button>
                                                                     </div>   
                                                                     @elseif($key === array_key_last($skill_data) && array_key_first($skill_data) !== array_key_last($skill_data))
                                                                     <div class="btn-group-vertical btn-group-sm ">
-                                                                        <button type="button" class="btn @if($mode == 1) btn-outline-dark @else btn-outline-light @endif" wire:click="move_up_skills({{$value->id}})">
+                                                                        <button type="button" class="btn @if($mode == 1) btn-outline-dark @else btn-outline-light @endif" wire:click="move_up_skill({{$value->id}})">
                                                                             <i class="bi bi-chevron-up"></i>
                                                                         </button>
                                                                     </div>  
                                                                     @else
                                                                     <div class="btn-group-vertical btn-group-sm ">
-                                                                        <button type="button" class="btn @if($mode == 1) btn-outline-dark @else btn-outline-light @endif" wire:click="move_up_skills({{$value->id}})">
+                                                                        <button type="button" class="btn @if($mode == 1) btn-outline-dark @else btn-outline-light @endif" wire:click="move_up_skill({{$value->id}})">
                                                                             <i class="bi bi-chevron-up"></i>
                                                                         </button>
-                                                                        <button type="button" class="btn @if($mode == 1) btn-outline-dark @else btn-outline-light @endif" wire:click="move_down_skills({{$value->id}})">
+                                                                        <button type="button" class="btn @if($mode == 1) btn-outline-dark @else btn-outline-light @endif" wire:click="move_down_skill({{$value->id}})">
                                                                             <i class="bi bi-chevron-down"></i>
                                                                         </button>
                                                                     </div>  
@@ -1099,7 +1099,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content @if($mode == 0) bg-dark text-light @endif">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteSkillLabel">Delete Skill</h5>
+                                    <h5 class="modal-title" id="deleteLinkLabel">Delete Skill</h5>
                                 </div>
                                 <div class="modal-body">
                                     <form wire:submit.prevent="save_delete_skill('deleteSkill')">
