@@ -11,17 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement('CREATE TABLE tables(
+        DB::statement('CREATE TABLE blogs(
             id INT PRIMARY KEY AUTO_INCREMENT,
             user_id INT NOT NULL,
-            table_name VARCHAR(255) ,
-            table_max_display INT,
-            table_isactive BOOL DEFAULT 1,
+            image VARCHAR(100) NOT NULL , 
+            title VARCHAR(255) NOT NULL,
+            content VARCHAR(1023) NOT NULL,
+            link  VARCHAR(255), 
+            button VARCHAR(100),
             date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
             date_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         );');
-        DB::statement('CREATE INDEX idx_table_name ON tables(table_name(10));');
-        DB::statement('CREATE INDEX idx_user_id ON tables(user_id);');
+
+        
+        DB::statement('CREATE INDEX idx_user_id ON blogs(user_id);');
+        DB::statement('CREATE INDEX idx_image ON blogs(image(10));');
+
     }
 
     /**
@@ -29,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tables');
+        Schema::dropIfExists('blogs');
     }
 };

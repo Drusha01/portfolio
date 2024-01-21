@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Livewire\Admin\Homepage;
+namespace App\Livewire\Admin\Settings;
 
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
-class Homepage extends Component
+
+class Settings extends Component
 {
+    use WithFileUploads;
     public $title = 'About';
 
     public $mode;
@@ -17,11 +19,9 @@ class Homepage extends Component
     public $user_id;
 
     public function update_data(){
-        dd(DB::table('tables')
-            ->where('user_id','=',$this->user_id)
-            ->get()
-            ->toArray());
+        
     }
+
     public function mount(Request $request){
         $data = $request->session()->all();
         $this->mode = $data['mode'];
@@ -29,9 +29,10 @@ class Homepage extends Component
 
         self::update_data();
     }
+
     public function render()
     {
-        return view('livewire.admin.homepage.homepage')   
+        return view('livewire.admin.settings.settings')   
         ->layout('components.layouts.admin',[
         'title'=>$this->title]);
     }

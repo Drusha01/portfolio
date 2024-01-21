@@ -1,6 +1,6 @@
 <div style="min-height:80vh;@if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif">
     <section id="map-section">
-        <div id="map" style=" width: 100%;height:340px;opacity:.8"></div>
+        <div id="map" style=" width:100%;height:340px;opacity:.8"></div>
     </section>
     <section id="contact-info">
         <div class="row p-5">
@@ -19,11 +19,54 @@
             </div>
         </div>
     </section>
+
+    <section id="contact-info">
+        <div class="container-md mt-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-4 ">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h4><i class="bi bi-pin-map"></i> Location</h4>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col">
+                            sdfasf
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h4><i class="bi bi-envelope"></i> Email</h4>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col">
+                            hanz.dumapit53@gmail.com
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                <div class="row">
+                        <div class="col text-center">
+                            <h4><i class="bi bi-telephone"></i> Call</h4>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col">
+                            + 63 926 582 7342
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
    
     <section id="contact-form">
         <div class="container-md mt-5 ">
             <div class="row d-flex justify-content-center">
-                <div class="col-lg-10 bg-light shadow justify-content-center p-3 mb-5 rounded-4">
+                <div class="col-lg-10 @if($mode == 1) bg-light @else bg-dark @endif shadow justify-content-center p-3 mb-5 rounded-4">
                     <form action="" class="">
                         <div class="row pt-5">
                             <div class="col-sm-6 mb-3">

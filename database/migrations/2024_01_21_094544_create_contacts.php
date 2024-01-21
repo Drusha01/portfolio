@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement('CREATE TABLE tables(
+        DB::statement('CREATE TABLE contacts(
             id INT PRIMARY KEY AUTO_INCREMENT,
             user_id INT NOT NULL,
-            table_name VARCHAR(255) ,
-            table_max_display INT,
-            table_isactive BOOL DEFAULT 1,
+            longitude DOUBLE NOT NULL,
+            latitude DOUBLE NOT NULL,
+            zoom FLOAT NOT NULL,
             date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
             date_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         );');
-        DB::statement('CREATE INDEX idx_table_name ON tables(table_name(10));');
-        DB::statement('CREATE INDEX idx_user_id ON tables(user_id);');
+
+        DB::statement('CREATE INDEX idx_user_id ON contacts(user_id);');
     }
 
     /**
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tables');
+        Schema::dropIfExists('contacts');
     }
 };

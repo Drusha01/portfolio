@@ -1103,6 +1103,284 @@ class column_seeders extends Seeder
             NOW()
         );');
         
-    
+        // blogs
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            13,
+            1,
+            1,
+            "#",
+            "id",
+            "text-center",
+            "",
+            1,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            13,
+            1,
+            1,
+            "Image",
+            "image",
+            "",
+            "",
+            2,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            13,
+            1,
+            1,
+            "Title",
+            "title",
+            "",
+            "",
+            3,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            13,
+            1,
+            1,
+            "Content",
+            "content",
+            "",
+            "",
+            4,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            13,
+            1,
+            1,
+            "Button",
+            "button",
+            "",
+            "",
+            5,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            13,
+            1,
+            1,
+            "Link",
+            "link",
+            "",
+            "",
+            6,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            13,
+            1,
+            1,
+            "Tags",
+            "id",
+            "text-center",
+            "",
+            7,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            13,
+            1,
+            1,
+            "Date Created",
+            "date_created",
+            "text-center",
+            "",
+            8,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            13,
+            1,
+            1,
+            "Date Updated",
+            "date_updated",
+            "text-center",
+            "",
+            9,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            13,
+            1,
+            1,
+            "Action",
+            "id",
+            "text-center",
+            "",
+            10,
+            NOW(),
+            NOW()
+        );');
+
+        // contact
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            14,
+            1,
+            1,
+            "Longitude",
+            "longitude",
+            "",
+            "",
+            1,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            14,
+            1,
+            1,
+            "Latitude",
+            "latitude",
+            "",
+            "",
+            2,
+            NOW(),
+            NOW()
+        );');
+       
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            14,
+            1,
+            1,
+            "Zoom",
+            "zoom",
+            "",
+            "",
+            3,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            14,
+            1,
+            1,
+            "Action",
+            "id",
+            "text-center",
+            "",
+            4,
+            NOW(),
+            NOW()
+        );');
+
+        // contact info
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            15,
+            1,
+            1,
+            "#",
+            "id",
+            "",
+            "",
+            4,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            15,
+            1,
+            1,
+            "Contact Title",
+            "contact_title",
+            "",
+            "",
+            4,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            15,
+            1,
+            1,
+            "Contact Details",
+            "contact_details",
+            "",
+            "",
+            4,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            15,
+            1,
+            1,
+            "Order",
+            "number_order",
+            "",
+            "",
+            4,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            15,
+            1,
+            1,
+            "Date Created",
+            "date_created",
+            "",
+            "",
+            5,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            15,
+            1,
+            1,
+            "Date Updated",
+            "date_updated",
+            "",
+            "",
+            6,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            15,
+            1,
+            1,
+            "Action",
+            "id",
+            "text-center",
+            "",
+            7,
+            NOW(),
+            NOW()
+        );');
     }
 }

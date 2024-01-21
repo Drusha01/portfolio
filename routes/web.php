@@ -44,6 +44,7 @@ use App\Livewire\Admin\Faq\Faq as AdminFaq;
 use App\Livewire\Admin\Homepage\Homepage as AdminHomepage;
 use App\Livewire\Admin\Project\Project as AdminProject;
 use App\Livewire\Admin\Techstack\Techstack as AdminTechstack;
+use App\Livewire\Admin\Settings\Settings as AdminSettings;
 
 use App\Livewire\Admin\Profile\Profile as AdminProfile;
 
@@ -114,6 +115,7 @@ Route::middleware([Darkmode::class,Authenticated::class,AccountisValid::class,Ac
         Route::get('/blogs', AdminBlog::class)->name('admin.blogs');
         Route::get('/contact', AdminContact::class)->name('admin.contact');
         Route::get('/profile', AdminProfile::class)->name('admin.admin-profile');
+        Route::get('/settings', AdminSettings::class)->name('admin.settings');
     });
 });
 

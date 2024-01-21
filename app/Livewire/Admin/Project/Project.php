@@ -339,9 +339,10 @@ class Project extends Component
         ->layout('components.layouts.admin',[
         'title'=>$this->title]);
     }
-    public function update_active_table($table_name,$isactive){
+   public function update_active_table($table_name,$isactive){
         if(DB::table('tables')
             ->where('table_name','=',$table_name)
+            ->where('user_id','=',$this->user_id)
             ->update(['table_isactive' => $isactive])){
             return self::get_table_info($table_name)->table_isactive;
         }
@@ -349,6 +350,7 @@ class Project extends Component
     public function update_max_display($table_name,$max_display){
         if(DB::table('tables')
             ->where('table_name','=',$table_name)
+            ->where('user_id','=',$this->user_id)
             ->update(['table_max_display' => $max_display])){
             return self::get_table_info($table_name)->table_max_display;
         }
@@ -356,6 +358,7 @@ class Project extends Component
     public function get_table_info($table_name){
         return (DB::table('tables')
         ->where('table_name','=',$table_name)
+        ->where('user_id','=',$this->user_id)
         ->first());
     }
     public function max_display($table_name){
