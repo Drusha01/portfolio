@@ -27,6 +27,7 @@ return new class extends Migration
         DB::statement('CREATE INDEX idx_user_id ON developers(user_id);');
         DB::statement('CREATE INDEX idx_image ON developers(image(10));');
         DB::statement('CREATE INDEX idx_fullname ON developers(full_name(10));');
+        DB::statement('CREATE INDEX idx_number_order ON developers(number_order);');
     }
 
     /**

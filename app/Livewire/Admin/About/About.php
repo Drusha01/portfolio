@@ -57,6 +57,17 @@ class About extends Component
         'number_order' => NULL,
     ];
 
+    public $skill_active;
+    public $skill_max_display;
+    public $skill_filter = [];
+    public $skill_data = [];
+    public $skill = [
+        'id' => NULL,
+        'user_id' => NULL,
+        'image' => NULL,
+        'header'  => NULL,
+    ];
+
     public $achievements_active;
     public $achievements_max_display;
     public $achievements_filter = [];
@@ -234,6 +245,28 @@ class About extends Component
             ]);
         }
 
+        $table = self::get_table_info('skills');
+        $this->skill_active = $table->table_isactive;
+        $this->skill_max_display = $table->table_max_display;
+
+        $skill_filter = DB::table('table_columns')
+            ->where('user_id','=', $this->user_id )
+            ->where('table_id','=',$table->id)
+            ->orderBy('column_order','asc')
+            ->get()
+            ->toArray();
+        $this->skill_filter = [];
+        foreach ($skill_filter as $key => $value) {
+            array_push($this->skill_filter,[
+                'id' => intval($value->id),
+                'active'=> boolval($value->active),
+                'name' => $value->name,
+                'column_name' => $value->column_name,
+                'class' => $value->class,
+                'style'=> $value->style
+            ]);
+        }
+
         $this->experience_data = DB::table('experiences')
             ->where('user_id','=',$this->user_id )
             ->orderBy('number_order','asc')
@@ -257,6 +290,12 @@ class About extends Component
             ->toArray();
 
         $this->links_data = DB::table('links')
+            ->where('user_id','=',$this->user_id )
+            ->orderBy('number_order','asc')
+            ->get()
+            ->toArray();
+
+        $this->skill_data = DB::table('skills')
             ->where('user_id','=',$this->user_id )
             ->orderBy('number_order','asc')
             ->get()
@@ -324,7 +363,26 @@ class About extends Component
         );
         self::update_data();
     }
-
+    public function update_skill_filter(Request $request){
+        $data = $request->session()->all();
+        foreach ($this->skill_filter as $key => $value) {
+            DB::table('table_columns')
+                ->where('id','=', $value['id'])
+                ->where('user_id','=',$data['user_id'])
+                ->update([
+                    'active' => boolval($value['active']),
+            ]);
+        }
+        $this->dispatch('swal:redirect',
+            position         									: 'center',
+            icon              									: 'success',
+            title             									: 'Successfully updated!',
+            showConfirmButton 									: 'true',
+            timer             									: '1000',
+            link              									: '#'
+        );
+        self::update_data();
+    }
     public function update_experience_filter(Request $request){
         $data = $request->session()->all();
         foreach ($this->experience_filter as $key => $value) {
@@ -432,6 +490,29 @@ class About extends Component
                 $table = self::get_table_info($table_name);
                 $this->links_max_display = $table->table_max_display;
             }
+        }else if($table_name == 'skills'){
+            if($this->skill_max_display >= 0 && $this->skill_max_display <= 100){
+                $this->skill_max_display = self::update_max_display($table_name, $this->skill_max_display );
+                $this->dispatch('swal:redirect',
+                    position         									: 'center',
+                    icon              									: 'success',
+                    title             									: 'Successfully updated!',
+                    showConfirmButton 									: 'true',
+                    timer             									: '1000',
+                    link              									: '#'
+                );
+            }else{
+                $this->dispatch('swal:redirect',
+                    position         									: 'center',
+                    icon              									: 'warning',
+                    title             									: 'Invalid Input!',
+                    showConfirmButton 									: 'true',
+                    timer             									: '1000',
+                    link              									: '#'
+                );
+                $table = self::get_table_info($table_name);
+                $this->skill_max_display = $table->table_max_display;
+            }
         }else if($table_name == 'achievements'){
            
         }
@@ -494,6 +575,9 @@ class About extends Component
         }else if($table_name == 'achievements'){
             $this->achievements_active = self::update_active_table($table_name, !$this->achievements_active);
         }
+        else if($table_name == 'skills'){
+            $this->skill_active = self::update_active_table($table_name, !$this->skill_active);
+        }
         else if($table_name == 'experience'){
             $this->experience_active = self::update_active_table($table_name, !$this->experience_active);
         }
@@ -535,6 +619,13 @@ class About extends Component
             'image' => NULL,
             'link'  => NULL,
             'number_order' => NULL,
+        ];
+
+        $this->skill = [
+            'id' => NULL,
+            'user_id' => NULL,
+            'image' => NULL,
+            'header'  => NULL,
         ];
 
         $this->experience = [
@@ -1729,4 +1820,244 @@ class About extends Component
             self::update_data();
         }
     }
+
+
+    // SKILL CRUD
+    public function save_add_skill(Request $request,$modal_id){
+        $data = $request->session()->all();
+        if($this->skill['image']){
+            $skill['image'] = self::save_image($this->skill['image'],'skills','skills','image');
+            if($skill['image'] == 0){
+                return;
+            }
+        }
+        if(!strlen($this->skill['header'])>0){
+            return;
+        }
+        $this->skill['number_order'] = DB::table('skills')
+        ->select(
+            DB::raw('count(*) as number_order')
+        )
+        ->get()
+        ->first()->number_order+1;
+
+        if(DB::table('skills')
+            ->insert([
+                'id' => NULL,
+                'user_id' =>  $data['user_id'],
+                'image' => $skill['image'],
+                'header' => $this->skill['header'],
+                'number_order' => $this->skill['number_order'],
+        ])){
+            $this->dispatch('swal:redirect',
+                position         									: 'center',
+                icon              									: 'success',
+                title             									: 'Successfully added!',
+                showConfirmButton 									: 'true',
+                timer             									: '1000',
+                link              									: '#'
+            );
+            $this->dispatch('openModal',$modal_id);
+        }
+        self::update_data();
+    }
+
+    public function edit_skill(Request $request,$modal_id,$id){
+        $data = $request->session()->all();
+        $skill = DB::table('skills')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$id)
+            ->first();
+
+        $this->skill = [
+            'id' =>  $skill->id,
+            'user_id' => $skill->user_id,
+            'image' => NULL,
+            'header'  => $skill->header,
+            'number_order' => $skill->number_order,
+        ];
+        $this->dispatch('openModal',$modal_id);
+    }
+    public function save_edit_skill(Request $request,$modal_id){
+        $data = $request->session()->all();
+        $skill = DB::table('skills')
+        ->where('user_id','=',$data['user_id'])
+        ->where('id','=',$this->skill['id'])
+        ->first();
+        $skillimage = $skill->image;
+
+        if($this->skill['image']){
+            $skillimage = self::save_image($this->skill['image'],'skills','skills','image');
+            if($skillimage !=0){
+                if(file_exists(public_path('storage').'/content/skills/'.$skill->image)){
+                    unlink(public_path('storage').'/content/skills/'.$skill->image);
+                }
+            }
+        }
+        if(!strlen($this->skill['header'])>0){
+            return;
+        }
+        
+
+        if(DB::table('skills')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$this->skill['id'])
+            ->update([
+                'image' => $skillimage,
+                'header' => $this->skill['header'],
+        ])){
+            $this->dispatch('swal:redirect',
+                position         									: 'center',
+                icon              									: 'success',
+                title             									: 'Successfully updated!',
+                showConfirmButton 									: 'true',
+                timer             									: '1000',
+                link              									: '#'
+            );
+            $this->dispatch('openModal',$modal_id);
+        }
+        self::update_data();
+    }
+
+    public function delete_skill(Request $request,$modal_id,$id){
+        $data = $request->session()->all();
+        $skill = DB::table('skills')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$id)
+            ->first();
+
+        $this->skill = [
+            'id' =>  $skill->id,
+            'user_id' => $skill->user_id,
+            'image' => NULL,
+            'header'  => $skill->header,
+            'number_order' => $skill->number_order,
+        ];
+        $this->dispatch('openModal',$modal_id);
+    }
+
+    public function save_delete_skill(Request $request,$modal_id){
+        $data = $request->session()->all();
+        
+        $this->user_id = $data['user_id'];
+        $skill = DB::table('skills')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$this->skill['id'])
+            ->first();
+
+        if(file_exists(public_path('storage').'/content/skills/'.$skill->image)){
+            unlink(public_path('storage').'/content/skills/'.$skill->image);
+        }
+            
+        if(DB::table('skills')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$this->skill['id'])
+            ->delete()){
+            $this->dispatch('swal:redirect',
+                position         									: 'center',
+                icon              									: 'success',
+                title             									: 'Successfully deleted!',
+                showConfirmButton 									: 'true',
+                timer             									: '1000',
+                link              									: '#'
+            );
+
+            $skills = DB::table('skills')
+            ->where('user_id','=',$data['user_id'])
+            ->orderBy('number_order','asc')
+            ->get()
+            ->toArray();
+    
+        
+            foreach ($skills as $key => $value) {
+                DB::table('skills')
+                    ->where('user_id','=',$data['user_id'])
+                    ->where('id','=', $value->id)
+                    ->update([
+                        'number_order'=> $key+1
+                ]);
+            }
+        }else{
+            $this->dispatch('swal:redirect',
+                position         									: 'center',
+                icon              									: 'warning',
+                title             									: 'Unsuccessfully deleted!',
+                showConfirmButton 									: 'true',
+                timer             									: '1000',
+                link              									: '#'
+            );
+        }
+        $this->dispatch('openModal',$modal_id);
+        self::update_data();
+    }
+    public function move_up_skills(Request $request,$id){
+        $data = $request->session()->all();
+        $count = DB::table('skills')
+            ->select(
+                DB::raw('count(*) as number_of_rows')
+            )
+            ->where('user_id','=',$data['user_id'])
+            ->first()->number_of_rows;
+        $current = DB::table('skills')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$id)
+            ->first();
+        if( $count > 1 && $current->number_order != 1){
+            $prev = DB::table('skills')
+            ->where('user_id','=',$data['user_id'])
+            ->where('number_order','<',$current->number_order)
+            ->orderBy('number_order','desc')
+            ->first();
+
+            DB::table('skills')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$prev->id)
+            ->update([
+                'number_order' => $current->number_order
+            ]);
+            DB::table('skills')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$current->id)
+            ->update([
+                'number_order' => $prev->number_order
+            ]);
+            self::update_data();
+        }
+    }
+    public function move_down_skills(Request $request,$id){
+        $data = $request->session()->all();
+        $count = DB::table('skills')
+            ->select(
+                DB::raw('count(*) as number_of_rows')
+            )
+            ->where('user_id','=',$data['user_id'])
+            ->first()->number_of_rows;
+        $current = DB::table('skills')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$id)
+            ->first();
+        if( $count > 1 && $current->number_order != $count){
+            $prev = DB::table('skills')
+            ->where('user_id','=',$data['user_id'])
+            ->where('number_order','>',$current->number_order)
+            ->orderBy('number_order','asc')
+            ->first();
+
+            DB::table('skills')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$prev->id)
+            ->update([
+                'number_order' => $current->number_order
+            ]);
+            DB::table('skills')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$current->id)
+            ->update([
+                'number_order' => $prev->number_order
+            ]);
+            self::update_data();
+        }
+    }
+
+
 }

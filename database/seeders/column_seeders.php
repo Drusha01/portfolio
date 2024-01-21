@@ -1382,5 +1382,98 @@ class column_seeders extends Seeder
             NOW(),
             NOW()
         );');
+
+        // skills
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            7,
+            1,
+            1,
+            "#",
+            "id",
+            "",
+            "",
+            1,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            7,
+            1,
+            1,
+            "Image",
+            "image",
+            "text-center",
+            "",
+            2,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            7,
+            1,
+            1,
+            "Header",
+            "header",
+            "",
+            "",
+            3,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            7,
+            1,
+            1,
+            "Date Created",
+            "date_created",
+            "",
+            "",
+            4,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            7,
+            1,
+            1,
+            "Date Updated",
+            "date_updated",
+            "",
+            "",
+            5,
+            NOW(),
+            NOW()
+        );');
+         DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            7,
+            1,
+            1,
+            "Order",
+            "number_order",
+            "",
+            "",
+            6,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            7,
+            1,
+            1,
+            "Action",
+            "id",
+            "text-center",
+            "",
+            7,
+            NOW(),
+            NOW()
+        );');
     }
 }

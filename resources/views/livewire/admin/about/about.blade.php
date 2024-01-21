@@ -28,9 +28,9 @@
                     <li class="nav-item" role="presentation">
                         <button @if($mode== 0)style="background-color:#242424;;color:white;border-bottom-color: white;"@endif wire:ignore.self wire:click="update_data()" class="nav-link" id="links-tab" data-bs-toggle="tab" data-bs-target="#links-tab-pane" type="button" role="tab" aria-controls="links-tab-pane" aria-selected="false">Links</button>
                     </li>
-                    <!-- <li class="nav-item" role="presentation">
-                        <button wire:ignore.self wire:click="update_data()" class="nav-link" id="achievements-tab" data-bs-toggle="tab" data-bs-target="#achievements-tab-pane" type="button" role="tab" aria-controls="achievements-tab-pane" aria-selected="false">Achievements</button>
-                    </li> -->
+                    <li class="nav-item" role="presentation">
+                        <button @if($mode== 0)style="background-color:#242424;;color:white;border-bottom-color: white;"@endif wire:ignore.self wire:click="update_data()" class="nav-link" id="skills-tab" data-bs-toggle="tab" data-bs-target="#skills-tab-pane" type="button" role="tab" aria-controls="skills-tab-pane" aria-selected="false">Skills</button>
+                    </li>
                     <li class="nav-item" role="presentation">
                         <button @if($mode== 0)style="background-color:#242424;;color:white;border-bottom-color: white;"@endif wire:ignore.self wire:click="update_data()" class="nav-link" id="experience-tab" data-bs-toggle="tab" data-bs-target="#experience-tab-pane" type="button" role="tab" aria-controls="experience-tab-pane" aria-selected="false">Experience</button>
                     </li>
@@ -306,17 +306,17 @@
                         </div>
                     </div>
 
-                    <div wire:ignore.self class="tab-pane fade" id="achievements-tab-pane" role="tabpanel" aria-labelledby="achievements-tab" tabindex="0">
+                    <div wire:ignore.self class="tab-pane fade" id="skills-tab-pane" role="tabpanel" aria-labelledby="skills-tab" tabindex="0">
                         <div class="row d-flex">
                             <div class="col">
                                 <div class="row py-2">
                                     <div class="col-12 p-0 mx-2 d-flex">
-                                        <button class="btn btn-secondary d-flex mx-1">
+                                        <button class="btn @if($mode) btn-secondary @else btn-outline-secondary @endif d-flex mx-1" data-bs-toggle="modal" data-bs-target="#skill-data-filter">
                                             <i class="bi bi-funnel-fill"></i><span>Columns</span>
                                         </button>
-                                        <input class="form-control mx-1" style="max-width:300px;" type="text" id="search" placeholder="Search ... "/> 
+                                        <input class="form-control mx-1" style="max-width:300px;@if($mode ==0) background-color:#282828;color:white; @endif" type="text" id="search" placeholder="Search ... "/> 
                                     
-                                        <button class="btn btn-primary mx-1">
+                                        <button class="btn @if($mode) btn-primary @else btn-outline-primary @endif mx-1" wire:click="add_row('addSkill')">
                                             <div><span>Add</span></div>
                                         </button>
                                         <div class="d-flex align-items-center mx-1">
@@ -325,45 +325,89 @@
                                                     Max Display
                                                 </span>
                                             </div>
-                                            <input type="number"style="max-width:70px" id="max-number" class="form-control mx-1" wire:model.defer="achievements_max_display" id="" min="1" max="100">
+                                            <input type="number"style="max-width:70px;@if($mode ==0) background-color:#282828;color:white; @endif" id="max-number" class="form-control mx-1" wire:model.defer="skill_max_display" wire:change="max_display('skills')" id="" min="0" max="100">
                                         </div>
                                         <div class="d-flex align-items-center mx-1">
                                             <div class="form-check form-switch aligh-items-center m-2">
-                                                <input class="form-check-input" type="checkbox" role="switch" @if($achievements_active == 1) checked @endif  id="achievements-active" wire:click="toggle_active('achievements')">
-                                                <label for="mode" class="form-check-label" for="flexSwitchCheckDefault"> @if($achievements_active == 1) Active @else Inactive @endif</label>
+                                                <input class="form-check-input" type="checkbox" role="switch" @if($experience_active == 1) checked @endif  id="skills-active" wire:click="toggle_active('skills')">
+                                                <label for="mode" class="form-check-label" for="flexSwitchCheckDefault"> @if($skill_active == 1) Active @else Inactive @endif</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <table class="table table-striped">
+                                    <table class="table @if($mode == 1) table-striped @else table-dark @endif border">
                                         <thead class="thead-dark">
                                             <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">First</th>
-                                                <th scope="col">Last</th>
-                                                <th scope="col">Handle</th>
+                                                @foreach($skill_filter as $key =>$value)
+                                                    @if($value['active'])
+                                                        <th scope="col" wire:key="skill_filter-th-{{$key}}" class="{{$value['class']}}">{{$value['name']}}</th>
+                                                    @endif
+                                                @endforeach
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Larry</td>
-                                                <td>the Bird</td>
-                                                <td>@twitter</td>
-                                            </tr>
+                                            @if($skill_data)
+                                                @foreach ($skill_data as $key =>$value)
+                                                    <tr wire:key="experience-{{$key}}" class="align-middle">
+                                                        @foreach($skill_filter as $filter_key =>$filter_value)
+                                                            @if($filter_value['name'] == '#'  && $filter_value['active'])
+                                                                <th scope="col" >
+                                                                    <span class="d-flex text-center align-items-center">
+                                                                        {{ $key+1  }}
+                                                                    </span>
+                                                                </th>
+                                                                
+                                                            @elseif($filter_value['name'] == 'Action'  && $filter_value['active'])
+                                                                <td class="text-center">
+                                                                    <button class="btn @if($mode) btn-success @else btn-outline-success @endif "  wire:click="edit_skill('editSkill',{{$value->id}})">Edit</button>
+                                                                    <button class="btn @if($mode) btn-danger @else btn-outline-danger @endif" wire:click="delete_skill('deleteSkill',{{$value->id}})">Delete</button>
+                                                                </td>
+                                                            @elseif ($filter_value['name'] == 'Order'  && $filter_value['active'])
+                                                                <td class="">
+                                                                    @if($key === array_key_first($skill_data) && array_key_first($skill_data) !== array_key_last($skill_data) )
+                                                                    <div class="btn-group-vertical btn-group-sm">
+                                                                        <button type="button" class="btn  @if($mode == 1) btn-outline-dark @else btn-outline-light @endif " wire:click="move_down_skills({{$value->id}})">
+                                                                            <i class="bi bi-chevron-down"></i>
+                                                                        </button>
+                                                                    </div>   
+                                                                    @elseif($key === array_key_last($skill_data) && array_key_first($skill_data) !== array_key_last($skill_data))
+                                                                    <div class="btn-group-vertical btn-group-sm ">
+                                                                        <button type="button" class="btn @if($mode == 1) btn-outline-dark @else btn-outline-light @endif" wire:click="move_up_skills({{$value->id}})">
+                                                                            <i class="bi bi-chevron-up"></i>
+                                                                        </button>
+                                                                    </div>  
+                                                                    @else
+                                                                    <div class="btn-group-vertical btn-group-sm ">
+                                                                        <button type="button" class="btn @if($mode == 1) btn-outline-dark @else btn-outline-light @endif" wire:click="move_up_skills({{$value->id}})">
+                                                                            <i class="bi bi-chevron-up"></i>
+                                                                        </button>
+                                                                        <button type="button" class="btn @if($mode == 1) btn-outline-dark @else btn-outline-light @endif" wire:click="move_down_skills({{$value->id}})">
+                                                                            <i class="bi bi-chevron-down"></i>
+                                                                        </button>
+                                                                    </div>  
+                                                                    @endif
+                                                                </td>
+                                                            @elseif ($filter_value['name'] == 'Image'  && $filter_value['active'])
+                                                                <td class="">
+                                                                    <a href="{{asset('storage/content/skills/'.$value->{$filter_value['column_name']})}}" target="blank">
+                                                                        <img src="{{asset('storage/content/skills/'.$value->{$filter_value['column_name']})}}" alt="" style="height: 100px; ">
+                                                                    </a>
+                                                                </td>
+                                                            @else
+                                                                @if(  $filter_value['active'])
+                                                                <td>{{ $value->{$filter_value['column_name']} }}</td>
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr class="align-middle ">
+                                                    <th colspan="100" class="text-center">NO RECORD</th>
+                                                </tr>
+                                            @endif 
                                         </tbody>
                                     </table>
                                 </div>
@@ -946,6 +990,119 @@
                                 </div>
                                 <div class="modal-body">
                                     <form wire:submit.prevent="save_delete_link('deleteLink')">
+                                        <div class="modal-body">
+                                           <p> Are you sure you want to delete this row?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button"  class="btn @if($mode) btn-secondary @else btn-outline-secondary @endif btn-block" data-bs-dismiss="modal"  id='btn_close1'>Close</button>
+                                            <button type="submit" class="btn @if($mode) btn-danger @else btn-outline-danger @endif">
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="skill-data-filter" tabindex="-1" role="dialog" aria-labelledby="skill-data-filterLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content @if($mode == 0) bg-dark text-light @endif">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="sortingModalLabel">Sort&nbsp;Columns for Skill</h5>
+                                </div>
+                                <div class="modal-body">
+                                    @foreach($skill_filter as $key =>$value)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="skill_filter-{{$loop->iteration}}"
+                                            wire:model.defer="skill_filter.{{$key}}.active">
+                                        <label class="form-check-label" for="skill_filter-{{$loop->iteration}}">
+                                            {{$value['name']}}
+                                        </label>
+                                    </div>
+                                    @endforeach
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button"  class="btn @if($mode) btn-secondary @else btn-outline-secondary @endif btn-block" data-bs-dismiss="modal"  id='btn_close1'>Close</button>
+                                    <button wire:click="update_skill_filter()"  data-bs-dismiss="modal" 
+                                        class="btn @if($mode) btn-success @else btn-outline-success @endif">
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="addSkill" tabindex="-1" role="dialog" aria-labelledby="addSkillLabel" aria-hidden="true" wire:ignore.self>
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content @if($mode == 0) bg-dark text-light @endif">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addSkillLabel">Add Skill</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <form wire:submit.prevent="save_add_skill('addSkill')">
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label for="announcement_image" class="form-label">Image</label>
+                                                <input class="form-control" type="file" id="" wire:model.defer="skill.image" accept="image/*" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="link-link" class="form-label">Header</label>
+                                                <input type="text" id="skill-header" class="form-control" wire:model="skill.header" placeholder="Enter header ..." required >
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button"  class="btn @if($mode) btn-secondary @else btn-outline-secondary @endif btn-block" data-bs-dismiss="modal"  id='btn_close1'>Close</button>
+                                            <button type="submit" 
+                                                class="btn @if($mode) btn-primary @else btn-outline-primary @endif">
+                                                Add
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="editSkill" tabindex="-1" role="dialog" aria-labelledby="editLinkLabel" aria-hidden="true" wire:ignore.self>
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content @if($mode == 0) bg-dark text-light @endif">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editLink">Edit Skill</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <form wire:submit.prevent="save_edit_skill('editSkill')">
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label for="announcement_image" class="form-label">Image</label>
+                                                <input class="form-control" type="file" id="" wire:model.defer="skill.image" accept="image/*" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="link-link" class="form-label">Header</label>
+                                                <input type="text" id="skill-header" class="form-control" wire:model="skill.header" placeholder="Enter header ..." required >
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button"  class="btn @if($mode) btn-secondary @else btn-outline-secondary @endif btn-block" data-bs-dismiss="modal"  id='btn_close1'>Close</button>
+                                            <button type="submit" 
+                                                class="btn @if($mode) btn-success @else btn-outline-success @endif">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="deleteSkill" tabindex="-1" role="dialog" aria-labelledby="deleteSkillLabel" aria-hidden="true" wire:ignore.self>
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content @if($mode == 0) bg-dark text-light @endif">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteSkillLabel">Delete Skill</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <form wire:submit.prevent="save_delete_skill('deleteSkill')">
                                         <div class="modal-body">
                                            <p> Are you sure you want to delete this row?</p>
                                         </div>
