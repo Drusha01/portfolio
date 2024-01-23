@@ -875,6 +875,10 @@
                                                     @endif
                                                 </select>
                                             </div>
+                                            <div class="mb-3">
+                                                <label for="project-title" class="form-label">Role</label>
+                                                <input type="text" id="project-title" class="form-control" wire:model.defer="project_developer.role" placeholder="Enter role ..." required >
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button"  class="btn @if($mode) btn-secondary @else btn-outline-secondary @endif btn-block" data-bs-dismiss="modal"  id='btn_close1'>Close</button>
@@ -921,6 +925,10 @@
                                                         @endforeach
                                                     @endif
                                                 </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="project-title" class="form-label">Role</label>
+                                                <input type="text" id="project-title" class="form-control" wire:model.defer="project_developer.role" placeholder="Enter role ..." required >
                                             </div>
                                         </div>
                                         <div class="modal-footer">

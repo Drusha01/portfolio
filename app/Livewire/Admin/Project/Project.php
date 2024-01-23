@@ -54,6 +54,7 @@ class Project extends Component
         'user_id' => NULL,
         'project_id' => NULL,
         'developer_id' => NULL,
+        'role' => NULL,
         'number_order' => NULL,
     ];
 
@@ -212,7 +213,7 @@ class Project extends Component
                 'd.full_name',
                 'd.image',
                 'd.linkedinlink' ,
-                'd.role',
+                'pd.role',
                 'd.description' ,
                 'pd.number_order' ,
                 
@@ -1179,6 +1180,9 @@ class Project extends Component
                 ->where('id','=',$this->project_developer['developer_id'] )
                 ->get()
                 ->first()){
+                if(!strlen($this->project_developer['role'])>0){
+                    return;
+                }
 
                 $this->project_developer['number_order'] = DB::table('project_developers')
                     ->select(
@@ -1193,6 +1197,7 @@ class Project extends Component
                         'user_id' => $data['user_id'],
                         'project_id' => $this->project_developer_project_id,
                         'developer_id' => $this->project_developer['developer_id'],
+                        'role' =>$this->project_developer['role'],
                         'number_order' => $this->project_developer['number_order'] ,
                 ])){
                     $this->dispatch('swal:redirect',
@@ -1237,6 +1242,7 @@ class Project extends Component
                 'user_id' => $project_developer->user_id,
                 'project_id' => $project_developer->project_id,
                 'developer_id' => $project_developer->developer_id,
+                'role' => $project_developer->role,
                 'number_order' => $project_developer->number_order,
             ];
             $this->dispatch('openModal',$modal_id);
@@ -1260,13 +1266,18 @@ class Project extends Component
             ->where('id','=',$this->project_developer_project_id)
             ->get()
             ->first()){
+
+            if(!strlen($this->project_developer['role'])>0){
+                return;
+            }
           
             DB::table('project_developers')
                 ->where('user_id','=',$data['user_id'])
                 ->where('project_id','=',$this->project_developer_project_id)
                 ->where('id','=',$this->project_developer['id'])
                 ->update([
-                    'developer_id'=>$this->project_developer['developer_id']
+                    'developer_id'=>$this->project_developer['developer_id'],
+                    'role' =>$this->project_developer['role'],
                 ]);
 
             $this->dispatch('swal:redirect',

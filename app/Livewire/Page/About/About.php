@@ -15,6 +15,7 @@ class About extends Component
     public $mode;
     public $background = "282828";
     public $color = 'fff';
+    public $color_toggle = false;
 
     public $about_page_active;
     public $about_page_max_display;
@@ -106,6 +107,7 @@ class About extends Component
    
     public function boot(Request $request){
         $data = $request->session()->all();
+        $this->mode = $data['mode'];
         if ($request->is('about/*')) {
             $value = substr($request->path(),strlen('about/'));
            if( $value){
@@ -125,28 +127,9 @@ class About extends Component
                 ->where('user_name','=','Drusha01')
                 ->first()->user_id;
         }
-        $this->mode = $data['mode'];
 
-        if(!isset($data['user_id'])){
-            header("Location: /login");
-            die();
-        }else{
-            $user_status = DB::table('users as u')
-            ->select('u.user_status_id','us.user_status_details')
-            ->join('user_status as us', 'u.user_status_id', '=', 'us.user_status_id')
-            ->where('user_id','=', $data['user_id'])
-            ->first();
-        }
 
-        if(isset($user_status->user_status_details) && $user_status->user_status_details == 'deleted' ){
-            header("Location: /deleted");
-            die();
-        }
-
-        if(isset($user_status->user_status_details) && $user_status->user_status_details == 'inactive' ){
-            header("Location: /deleted");
-            die();
-        }
+       
     }
     public function update_data(){
 

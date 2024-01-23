@@ -86,7 +86,7 @@ Route::middleware([Darkmode::class])->group(function () {
         Route::get('faq', Faq::class)->name('faq.drusha');
         Route::get('home', Home::class)->name('home.drusha');
         Route::get('projects',Project::class)->name('project.drusha');
-        Route::get('blog',Blog::class)->name('blog.drusha');
+        Route::get('blogs',Blog::class)->name('blog.drusha');
         Route::get('techstack', TechStack::class)->name('techstack.drusha');
 
         Route::get('homepage/{id}', Home::class)->name('homepage');
@@ -95,7 +95,7 @@ Route::middleware([Darkmode::class])->group(function () {
         Route::get('faq/{id}', Faq::class)->name('faq');
         Route::get('home/{id}', Home::class)->name('home');
         Route::get('projects/{id}',Project::class)->name('project');
-        Route::get('blog/{id}',Blog::class)->name('blog');
+        Route::get('blogs/{id}',Blog::class)->name('blog');
         Route::get('techstack/{id}', TechStack::class)->name('techstack');
 
     });

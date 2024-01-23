@@ -155,6 +155,7 @@ class About extends Component
                 'style'=> $value->style
             ]);
         }
+        
 
         $table = self::get_table_info('education');
         $this->education_active = $table->table_isactive;

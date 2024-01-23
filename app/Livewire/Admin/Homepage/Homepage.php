@@ -25,7 +25,7 @@ class Homepage extends Component
     public function mount(Request $request){
         $data = $request->session()->all();
         $this->mode = $data['mode'];
-     
+        $this->user_id =  $data['user_id']; 
 
         self::update_data();
     }

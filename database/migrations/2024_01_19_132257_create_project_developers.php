@@ -17,6 +17,7 @@ return new class extends Migration
             user_id INT NOT NULL,
             project_id INT NOT NULL,
             developer_id INT NOT NULL,
+            role VARCHAR(100) NOT NULL,
             number_order INT NOT NULL,
             date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
             date_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP

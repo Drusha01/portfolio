@@ -1,6 +1,7 @@
 <div>
     @if($about_page_data && $about_page_active)
-    <section id="about" class="p-lg-0 pt-lg-0 text-center text-sm-start" @if($mode == 0) style="background:#282828;color:white" @else bg-dark style="background:#fff;color:dark" @endif>
+    <?php $color_toggle = !$color_toggle;?>
+    <section id="about" class="p-lg-0 pt-lg-0 text-center text-sm-start" style="@if($color_toggle) @if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif @else @if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif @endif">
         <div class="container">
             <div class="d-sm-flex align-items-center">
                 <img class="img-sm-fluid w-50  " src="{{asset('storage/content/about_pages/'.$about_page_data['0']->image)}}" alt="logo" class="logo">
@@ -28,7 +29,8 @@
     @endif
 
     @if(($links_data && $links_active) || ($about_content_data && $about_content_active) )
-    <section id="about-content" class="p-1" style="@if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif">
+    <?php $color_toggle = !$color_toggle;?>
+    <section id="about-content" class="p-1"  style="@if($color_toggle) @if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif @else @if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif @endif">
         @if($links_data && $links_active)
         <div class="container  my-5 p-sm-1">
             <div class="align-items-center text-center">
@@ -38,7 +40,7 @@
                             @break;
                         @endif
                         <div class=" col-md-3 px-md-5 col-6 mb-4">
-                            <a href="@if($value->link){{$value->link}} @else # @endif" class="link-underline link-underline-opacity-0">
+                            <a href="@if($value->link){{$value->link}} @else # @endif" target="_blank" class="link-underline link-underline-opacity-0">
                                 <img src="{{asset('storage/content/links/'.$value->image)}}" alt="" width="60px" >
                             </a>    
                         </div>
@@ -104,7 +106,8 @@
     </section> -->
     @endif
     @if($experience_data && $experience_active)
-    <section id="experience" class="pt-5 pb-5" @if($mode == 0) style="background:#282828;color:white" @else bg-dark style="background:#fff;color:dark" @endif>
+    <?php $color_toggle = !$color_toggle;?>
+    <section id="experience" class="pt-5 pb-5"style="@if($color_toggle) @if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif @else @if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif @endif">
         <div class="container my-5 p-sm-1">
             <div class="align-items-center">
                 <h3 class="h1 pb-5 text-uppercase text-center">Experiences</h3>
@@ -163,7 +166,8 @@
     </section> -->
     @endif
     @if($education_data && $education_active)
-    <section id="education" class="pt-5 pb-5" style="@if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif"> 
+    <?php $color_toggle = !$color_toggle;?>
+    <section id="education" class="pt-5 pb-5" style="@if($color_toggle) @if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif @else @if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif @endif"> 
         <div class="container my-5 p-sm-1">
             <div class="align-items-center">
                 <h3 class="h1 pb-5 text-uppercase text-center ">Education</h3>
