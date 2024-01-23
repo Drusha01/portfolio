@@ -12,6 +12,7 @@ class PageFooter extends Component
 {
     public $mode;
     public $user_id;
+    public $request;
 
     public $links_active;
     public $links_max_display;
@@ -66,7 +67,26 @@ class PageFooter extends Component
     public function mount(Request $request){
         $data = $request->session()->all();
         $this->mode = $data['mode'];
-        $this->user_id = $data['user_id'];
+
+        if ($request->is('*/*')) {
+            $value = substr($request->path(),strpos($request->path(),'/')+1);
+           if( $value){
+                $this->user_id = intval($value);
+                if(DB::table('users as u')
+                    ->where('user_id','=',$this->user_id)
+                    ->first()){
+
+                }else{
+                    return redirect('/');
+                }
+            }else{
+                $this->user_id = 1;
+            }
+        }else{
+            $this->user_id = DB::table('users as u')
+                ->where('user_name','=','Drusha01')
+                ->first()->user_id;
+        }
 
         self::update_data();
     }

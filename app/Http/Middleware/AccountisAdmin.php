@@ -28,7 +28,7 @@ class AccountisAdmin
         }
         
         if(isset($this->user_details->user_role_details) && $this->user_details->user_role_details == 'admin'){
-            return redirect('/admin/admin-dashboard');
+            return redirect('/admin/dashboard');
         }
         return $next($request);
     }

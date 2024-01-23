@@ -103,8 +103,28 @@ class About extends Component
         'number_order' => NULL,
     ];
 
+   
     public function boot(Request $request){
         $data = $request->session()->all();
+        if ($request->is('about/*')) {
+            $value = substr($request->path(),strlen('about/'));
+           if( $value){
+                $this->user_id = intval($value);
+
+                if(DB::table('users as u')
+                    ->where('user_id','=',$this->user_id)
+                    ->first()){
+
+                }else{
+                    $this->user_id = 1;
+                    return redirect('/about');
+                }
+            }
+        }else{
+            $this->user_id = DB::table('users as u')
+                ->where('user_name','=','Drusha01')
+                ->first()->user_id;
+        }
         $this->mode = $data['mode'];
 
         if(!isset($data['user_id'])){
@@ -307,7 +327,6 @@ class About extends Component
     public function mount(Request $request){
         $data = $request->session()->all();
         $this->mode = $data['mode'];
-        $this->user_id =  $data['user_id']; 
 
         self::update_data();
     }
