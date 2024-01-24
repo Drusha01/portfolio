@@ -19,7 +19,7 @@ class Unauthenticated
     {
         $data = $request->session()->all();
         if(isset($data['user_id'])){
-            return redirect('/student/profile');
+            return redirect('/admin/dashboard');
         }
         return $next($request);
     }

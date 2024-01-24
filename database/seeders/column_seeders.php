@@ -914,7 +914,7 @@ class column_seeders extends Seeder
             "full_name",
             "",
             "",
-            1,
+            2,
             NOW(),
             NOW()
         );');
@@ -927,7 +927,20 @@ class column_seeders extends Seeder
             "image",
             "text-center",
             "",
+            3,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            11,
             1,
+            1,
+            "Role",
+            "role",
+            "",
+            "",
+            4,
             NOW(),
             NOW()
         );');
@@ -940,7 +953,7 @@ class column_seeders extends Seeder
             "linkedinlink",
             "",
             "",
-            1,
+            5,
             NOW(),
             NOW()
         );');
@@ -953,7 +966,7 @@ class column_seeders extends Seeder
             "number_order",
             "text-center",
             "",
-            1,
+            6,
             NOW(),
             NOW()
         );');
@@ -966,7 +979,7 @@ class column_seeders extends Seeder
             "id",
             "text-center",
             "",
-            1,
+            7,
             NOW(),
             NOW()
         );');

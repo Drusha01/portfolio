@@ -26,10 +26,15 @@
             @livewire('components.sidebar.admin-sidebar.admin-sidebar')
         </div>
         <div class="col" style="@if($mode == 1) background-color:white;color:black; @else background-color:#242424;color:white; @endif">
-            <div class="row">
-                <div class="col lead pt-4 px-4">
-                    Projects
+            <div class="d-flex justify-content-between">
+                <div class=" lead pt-4 px-4">
+                    Projects  
                 </div>
+                <a class="pt-4 px-4" href="/project/{{$user_id}}" target="_blank">
+                    <button class="btn btn-outline-secondary" >
+                        View Page
+                    </button>
+                </a>
             </div>
             <div class="row px-3 pt-2">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -870,6 +875,10 @@
                                                     @endif
                                                 </select>
                                             </div>
+                                            <div class="mb-3">
+                                                <label for="project-title" class="form-label">Role</label>
+                                                <input type="text" id="project-title" class="form-control" wire:model.defer="project_developer.role" placeholder="Enter role ..." required >
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button"  class="btn @if($mode) btn-secondary @else btn-outline-secondary @endif btn-block" data-bs-dismiss="modal"  id='btn_close1'>Close</button>
@@ -916,6 +925,10 @@
                                                         @endforeach
                                                     @endif
                                                 </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="project-title" class="form-label">Role</label>
+                                                <input type="text" id="project-title" class="form-control" wire:model.defer="project_developer.role" placeholder="Enter role ..." required >
                                             </div>
                                         </div>
                                         <div class="modal-footer">

@@ -111,6 +111,7 @@
         var marker1 = new mapboxgl.Marker({ color: 'red'})
         .setLngLat( [{{$lng}},{{$lat}}])
         .addTo(map);
+      
     </script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel="stylesheet">
     <script onload="map_contact();" src="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"></script>

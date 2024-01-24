@@ -17,10 +17,10 @@ class Homepage extends Component
     public $user_id;
 
     public function update_data(){
-        dd(DB::table('tables')
-            ->where('user_id','=',$this->user_id)
-            ->get()
-            ->toArray());
+        // dd(DB::table('tables')
+        //     ->where('user_id','=',$this->user_id)
+        //     ->get()
+        //     ->toArray());
     }
     public function mount(Request $request){
         $data = $request->session()->all();

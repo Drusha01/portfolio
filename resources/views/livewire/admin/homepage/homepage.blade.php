@@ -12,10 +12,15 @@
             @livewire('components.sidebar.admin-sidebar.admin-sidebar')
         </div>
         <div class="col" style="@if($mode == 1) background-color:white;color:black; @else background-color:#242424;color:white; @endif">
-            <div class="row">
-                <div class="col lead pt-4 px-4">
-                    Homepage
+            <div class="d-flex justify-content-between">
+                <div class=" lead pt-4 px-4">
+                    Homepage  
                 </div>
+                <a class="pt-4 px-4" href="/homepage/{{$user_id}}" target="_blank">
+                    <button class="btn btn-outline-secondary" >
+                        View Page
+                    </button>
+                </a>
             </div>
             <div class="row px-3 pt-2">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">

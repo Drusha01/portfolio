@@ -59,10 +59,6 @@ use App\Livewire\Admin\Profile\Profile as AdminProfile;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-
-});
 
 Route::get('/logout', Signout::class)->middleware(Logout::class)->name('logout');
 
@@ -83,15 +79,24 @@ Route::middleware([Authenticated::class,AccountisValid::class])->group(function 
 
 
 Route::middleware([Darkmode::class])->group(function () {
+    Route::get('/', Home::class)->name('homepage.drusha');
     Route::prefix('/')->group(function () {
-        Route::get('/', Home::class)->name('homepage');
-        Route::get('/about', About::class)->name('about');
-        Route::get('/contact', Contact::class)->name('contact');
-        Route::get('/faq', Faq::class)->name('faq');
-        Route::get('/home', Home::class)->name('home');
-        Route::get('/projects',Project::class)->name('project');
-        Route::get('/blog',Blog::class)->name('blog');
-        Route::get('/techstack', TechStack::class)->name('techstack');
+        Route::get('about', About::class)->name('about.drusha');
+        Route::get('contact', Contact::class)->name('contact.drusha');
+        Route::get('faq', Faq::class)->name('faq.drusha');
+        Route::get('home', Home::class)->name('home.drusha');
+        Route::get('projects',Project::class)->name('project.drusha');
+        Route::get('blogs',Blog::class)->name('blog.drusha');
+        Route::get('techstack', TechStack::class)->name('techstack.drusha');
+
+        Route::get('homepage/{id}', Home::class)->name('homepage');
+        Route::get('about/{id}', About::class)->name('about');
+        Route::get('contact/{id}', Contact::class)->name('contact');
+        Route::get('faq/{id}', Faq::class)->name('faq');
+        Route::get('home/{id}', Home::class)->name('home');
+        Route::get('projects/{id}',Project::class)->name('project');
+        Route::get('blogs/{id}',Blog::class)->name('blog');
+        Route::get('techstack/{id}', TechStack::class)->name('techstack');
 
     });
 });
@@ -104,18 +109,17 @@ Route::middleware([Darkmode::class,Authenticated::class,AccountisValid::class,Ac
 });
 
 Route::middleware([Darkmode::class,Authenticated::class,AccountisValid::class,AccountisUser::class])->group(function () {
-    Route::prefix('admin')->group(function () {
-        Route::get('/', AdminDashboard::class)->name('admin.home-dashboard');
-        Route::get('/dashboard', AdminDashboard::class)->name('admin.dashboard');
-        Route::get('/homepage', AdminHomepage::class)->name('admin.homepage');
-        Route::get('/about', AdminAbout::class)->name('admin.about');
-        Route::get('/faq', AdminFaq::class)->name('admin.faq');
-        Route::get('/techstack', AdminTechstack::class)->name('admin.techstack');
-        Route::get('/projects', AdminProject::class)->name('admin.projects');
-        Route::get('/blogs', AdminBlog::class)->name('admin.blogs');
-        Route::get('/contact', AdminContact::class)->name('admin.contact');
-        Route::get('/profile', AdminProfile::class)->name('admin.admin-profile');
-        Route::get('/settings', AdminSettings::class)->name('admin.settings');
+    Route::prefix('admin/')->group(function () {
+        Route::get('dashboard', AdminDashboard::class)->name('admin.dashboard');
+        Route::get('homepage', AdminHomepage::class)->name('admin.homepage');
+        Route::get('about', AdminAbout::class)->name('admin.about');
+        Route::get('faq', AdminFaq::class)->name('admin.faq');
+        Route::get('techstack', AdminTechstack::class)->name('admin.techstack');
+        Route::get('projects', AdminProject::class)->name('admin.projects');
+        Route::get('blogs', AdminBlog::class)->name('admin.blogs');
+        Route::get('contact', AdminContact::class)->name('admin.contact');
+        Route::get('profile', AdminProfile::class)->name('admin.admin-profile');
+        Route::get('settings', AdminSettings::class)->name('admin.settings');
     });
 });
 

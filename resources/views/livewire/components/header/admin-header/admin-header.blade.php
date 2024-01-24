@@ -24,13 +24,13 @@
                     <a class="dropdown-toggle link-underline link-underline-opacity-0 @if($mode == 1) link-dark @else link-light @endif" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <span>
                             <img src="{{ asset('assets\page\home.jpg') }}" alt="Drusha Corp" class="object-fit-cover rounded-circle mx-3" width="40px" height="40px">
-                            Hanrickson E. Dumapit
+                            {{$fullname}}
                         </span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        
+                        <li><a class="dropdown-item" href="{{ Route('admin.admin-profile') }}" wire:navigate.hover>Profile</a></li>
+                        <li><a class="dropdown-item" href="{{ Route('logout') }}" >Logout</a></li>
                     </ul>
                     </div>
                 </div>

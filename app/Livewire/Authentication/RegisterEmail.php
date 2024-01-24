@@ -355,7 +355,7 @@ class RegisterEmail extends Component
                 'user_status_id' => 1,
                 'user_sex_id' => 1,
                 'user_gender_id' => 1,
-                'user_role_id' => 1,
+                'user_role_id' => 2,
                 'user_name' => $data['user_name'],
                 'user_email' => $data['user_email'],
                 'user_phone' => NULL,
@@ -391,7 +391,49 @@ class RegisterEmail extends Component
                 $request->session()->regenerate();
 
                 $request->session()->put('user_id', $user_details->user_id);
+
+                $tables = DB::table('tables')
+                    ->where('user_id','=','1')
+                    ->get()
+                    ->toArray();
+                foreach ($tables as $key => $value) {
+                    DB::table('tables')
+                        ->insert([
+                            'user_id'=>$user_details->user_id,
+                            'table_name' =>$value->table_name,
+                            'table_max_display' =>$value->table_max_display,
+                            'table_isactive'  =>$value->table_isactive,
+                    ]);
+
+                    $usertable = DB::table('tables')
+                        ->where('user_id','=',$user_details->user_id)
+                        ->orderBy('id','desc')
+                        ->first();
+                    $table_columns = DB::table('table_columns')
+                    ->where('user_id','=','1')
+                    ->where('table_id','=',$value->id)
+                    ->get()
+                    ->toArray();
+
+                    foreach ($table_columns as $table_column_key => $table_column_value) {
+                        DB::table('table_columns')
+                            ->insert([
+                                'table_id'=>$usertable->id,
+                                'user_id'=>$user_details->user_id,
+                                'active'=>$table_column_value->active,
+                                'name'=>$table_column_value->name,
+                                'column_name'=>$table_column_value->column_name,
+                                'class'=>$table_column_value->class,
+                                'style'=>$table_column_value->style,
+                                'column_order'=>$table_column_value->column_order,
+                            ]);
+                    }
+                }
+
                 
+               
+                
+
                 //append it to session
                 $this->dispatch('swal:redirect',
                     position          									:   'center',
@@ -399,7 +441,7 @@ class RegisterEmail extends Component
                     title             									:   'Successfully signed up!',
                     showConfirmButton 									:   'true',
                     timer             									:   '1500',
-                    link              									:   'user/profile'
+                    link              									:   'admin/dashboard'
                 );
             }else{
                 $this->dispatch('swal:redirect',

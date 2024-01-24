@@ -12,10 +12,15 @@ class Techstack extends Component
     public $mode;
     public $background = "282828";
     public $color = 'fff';
+    public $user_id;
     public function mount(Request $request){
         $data = $request->session()->all();
         $this->mode = $data['mode'];
+        $this->user_id =  $data['user_id']; 
+
+        // self::update_data();
     }
+
     public function render()
     {
         return view('livewire.admin.techstack.techstack')   

@@ -78,15 +78,7 @@ class table_seeders extends Seeder
             NOW(),
             NOW()
         );');
-        DB::statement('INSERT INTO tables VALUES(
-            NULL,
-            1,
-            "achievements",
-            1,
-            1,
-            NOW(),
-            NOW()
-        );');
+      
         DB::statement('INSERT INTO tables VALUES(
             NULL,
             1,

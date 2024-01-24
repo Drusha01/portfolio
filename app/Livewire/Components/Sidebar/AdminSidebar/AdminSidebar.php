@@ -4,6 +4,9 @@ namespace App\Livewire\Components\Sidebar\AdminSidebar;
 
 use Livewire\Component;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class AdminSidebar extends Component
 {

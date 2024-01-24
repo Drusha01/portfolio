@@ -13,8 +13,15 @@
         </div>
         <div class="col" style="@if($mode == 1) background-color:white;color:black; @else background-color:#242424;color:white; @endif">
             <div class="row">
-                <div class="col lead pt-4 px-4">
-                    FAQ
+                <div class="d-flex justify-content-between">
+                    <div class=" lead pt-4 px-4">
+                        FAQ  
+                    </div>
+                    <a class="pt-4 px-4" href="/faq/{{$user_id}}" target="_blank">
+                        <button class="btn btn-outline-secondary" >
+                            View Page
+                        </button>
+                    </a>
                 </div>
             </div>
             <div class="row px-3 pt-2">

@@ -15,6 +15,7 @@ class About extends Component
     public $mode;
     public $background = "282828";
     public $color = 'fff';
+    public $color_toggle = false;
 
     public $about_page_active;
     public $about_page_max_display;
@@ -103,30 +104,32 @@ class About extends Component
         'number_order' => NULL,
     ];
 
+   
     public function boot(Request $request){
         $data = $request->session()->all();
         $this->mode = $data['mode'];
+        if ($request->is('about/*')) {
+            $value = substr($request->path(),strlen('about/'));
+           if( $value){
+                $this->user_id = intval($value);
 
-        if(!isset($data['user_id'])){
-            header("Location: /login");
-            die();
+                if(DB::table('users as u')
+                    ->where('user_id','=',$this->user_id)
+                    ->first()){
+
+                }else{
+                    $this->user_id = 1;
+                    return redirect('/about');
+                }
+            }
         }else{
-            $user_status = DB::table('users as u')
-            ->select('u.user_status_id','us.user_status_details')
-            ->join('user_status as us', 'u.user_status_id', '=', 'us.user_status_id')
-            ->where('user_id','=', $data['user_id'])
-            ->first();
+            $this->user_id = DB::table('users as u')
+                ->where('user_name','=','Drusha01')
+                ->first()->user_id;
         }
 
-        if(isset($user_status->user_status_details) && $user_status->user_status_details == 'deleted' ){
-            header("Location: /deleted");
-            die();
-        }
 
-        if(isset($user_status->user_status_details) && $user_status->user_status_details == 'inactive' ){
-            header("Location: /deleted");
-            die();
-        }
+       
     }
     public function update_data(){
 
@@ -307,7 +310,6 @@ class About extends Component
     public function mount(Request $request){
         $data = $request->session()->all();
         $this->mode = $data['mode'];
-        $this->user_id =  $data['user_id']; 
 
         self::update_data();
     }

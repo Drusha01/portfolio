@@ -46,14 +46,15 @@ class Login extends Component
                 $request->session()->put('user_id', $user_details->user_id);
                 
                 //append it to session
+            
                 if( $user_details->user_role_id == 1){
                     $this->dispatch('swal:redirect',
                         position         									: 'center',
                         icon              									: 'success',
-                        title             									: 'Welcome back Drusha!',
+                        title             									: 'Welcome back admin!',
                         showConfirmButton 									: 'true',
                         timer             									: '1500',
-                        link              									: 'user/'
+                        link              									: 'admin/dashboard'
                     );
                 }else{
 
@@ -64,7 +65,7 @@ class Login extends Component
                             title             									: 'Welcome back Drusha!',
                             showConfirmButton 									: 'true',
                             timer             									: '1500',
-                            link              									: 'admin/'
+                            link              									: 'admin/dashboard'
                         );
                     }else{
                         $this->dispatch('swal:redirect',
@@ -73,7 +74,7 @@ class Login extends Component
                             title             									: 'Welcome back admin!',
                             showConfirmButton 									: 'true',
                             timer             									: '1500',
-                            link              									: 'admin/'
+                            link              									: 'admin/dashboard'
                         );
                     }
                 }

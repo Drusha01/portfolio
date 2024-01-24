@@ -17,6 +17,7 @@ class Logout
     public function handle(Request $request, Closure $next)
     {
         $request->session()->invalidate();
+
         return redirect('/login');
     }
 }
