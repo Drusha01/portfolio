@@ -40,6 +40,7 @@
                         @endforeach
                     @endif
                 </div>
+                @if($tag_data)
                 <div class="col-lg-3 col-md-12 col-sm-12 ">
                     <div class="col-12 px-4 shadow">
                         <div class="row">
@@ -47,7 +48,6 @@
                                 <input type="text" class="form-control" placeholder="Search category ... ">
                             </div>
                         </div>
-                        @if($tag_data)
                             <div class="row">
                                 <div class="col-12 pt-1 text-start">
                                     <p> &#160;</p>
@@ -67,9 +67,12 @@
                                     <p> &#160;</p>
                                 </div>
                             </div>
-                        @endif
+                        </div>
                     </div>
-                </div>
+                @endif
+                @if(!$tag_data && !$blog_data)
+                    <h2>NO BLOGS DATA ADDED</h2>
+                @endif
             </div>
         </div>        
     </section>

@@ -81,6 +81,7 @@ Route::middleware([Authenticated::class,AccountisValid::class])->group(function 
 Route::middleware([Darkmode::class])->group(function () {
     Route::get('/', Home::class)->name('homepage.drusha');
     Route::prefix('/')->group(function () {
+        Route::get('homepage/', Home::class)->name('homepage.drusha.default');
         Route::get('about', About::class)->name('about.drusha');
         Route::get('contact', Contact::class)->name('contact.drusha');
         Route::get('faq', Faq::class)->name('faq.drusha');

@@ -16,10 +16,6 @@ class Contact extends Component
 
     public $mode;
 
-    public $contact_data;
-    public $contact_info_data;
-
-
     public $links_active;
     public $links_max_display;
     public $links_filter = [];
@@ -29,6 +25,31 @@ class Contact extends Component
         'user_id' => NULL,
         'image' => NULL,
         'link'  => NULL,
+        'number_order' => NULL,
+    ];
+
+    public $contact_active;
+    public $contact_max_display;
+    public $contact_filter = [];
+    public $contact_data = [];
+    public $contact = [
+        'id' => NULL,
+        'user_id' => NULL,
+        'longitude' => NULL,
+        'latitude' => NULL,
+        'zoom' => NULL,
+    ];
+
+    public $contact_info_active;
+    public $contact_info_max_display;
+    public $contact_info_filter = [];
+    public $contact_info_data = [];
+    public $contact_info = [
+        'id' => NULL,
+        'user_id' => NULL,
+        'contact_icon' => NULL,
+        'contact_title' => NULL,
+        'contact_details' => NULL,
         'number_order' => NULL,
     ];
     public function boot(Request $request){
@@ -119,9 +140,9 @@ class Contact extends Component
             ->toArray();
             
         if($this->contact_data){
-            $this->lng = $this->contact_data[0]->longitude;
-            $this->lat =  $this->contact_data[0]->latitude;
-            $this->zoom = $this->contact_data[0]->zoom;
+            $this->lng = floatval($this->contact_data[0]->longitude);
+            $this->lat =  floatval($this->contact_data[0]->latitude);
+            $this->zoom = floatval($this->contact_data[0]->zoom);
         }
 
         

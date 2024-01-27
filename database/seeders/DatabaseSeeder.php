@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             adminseeders::class,
             table_seeders::class,
             column_seeders::class,
+            homepageSeeders::class,
         ]);
     }
 }

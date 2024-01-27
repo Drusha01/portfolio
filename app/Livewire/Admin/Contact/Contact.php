@@ -37,6 +37,7 @@ class Contact extends Component
     public $contact_info = [
         'id' => NULL,
         'user_id' => NULL,
+        'contact_icon' => NULL,
         'contact_title' => NULL,
         'contact_details' => NULL,
         'number_order' => NULL,
@@ -283,6 +284,7 @@ class Contact extends Component
         $this->contact_info = [
             'id' => NULL,
             'user_id' => NULL,
+            'contact_icon' => NULL,
             'contact_title' => NULL,
             'contact_details' => NULL,
             'number_order' => NULL,
@@ -418,6 +420,9 @@ class Contact extends Component
         if(!strlen($this->contact_info['contact_title'])>0){
             return;
         }
+        if(!strlen($this->contact_info['contact_icon'])>0){
+            return;
+        }
         if(!strlen($this->contact_info['contact_details'])>0){
             return;
         }
@@ -433,6 +438,7 @@ class Contact extends Component
             ->insert([
                 'id' => NULL,
                 'user_id' => $data['user_id'],
+                'contact_icon' => $this->contact_info['contact_icon'],
                 'contact_title' => $this->contact_info['contact_title'],
                 'contact_details' => $this->contact_info['contact_details'],
                 'number_order' => $this->contact_info['number_order'],
@@ -463,6 +469,7 @@ class Contact extends Component
             $this->contact_info = [
                 'id' => $contact_info->id,
                 'user_id' => $contact_info->user_id,
+                'contact_icon' => $contact_info->contact_icon,
                 'contact_title' => $contact_info->contact_title,
                 'contact_details' => $contact_info->contact_details,
                 'number_order' => $contact_info->number_order,
@@ -480,11 +487,15 @@ class Contact extends Component
         if(!strlen($this->contact_info['contact_details'])>0){
             return;
         }
+        if(!strlen($this->contact_info['contact_icon'])>0){
+            return;
+        }
 
         if(DB::table('contact_infos')
             ->where('user_id','=',$data['user_id'])  
             ->where('id','=',$this->contact_info['id'])
             ->update([
+                'contact_icon' => $this->contact_info['contact_icon'],
                 'contact_title' => $this->contact_info['contact_title'],
                 'contact_details' => $this->contact_info['contact_details'],
             ])){

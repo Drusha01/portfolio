@@ -1,4 +1,4 @@
-<div>
+<div  style="min-height:80vh;@if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif">;
     @if($about_page_data && $about_page_active)
     <?php $color_toggle = !$color_toggle;?>
     <section id="about" class="p-lg-0 pt-lg-0 text-center text-sm-start" style="@if($color_toggle) @if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif @else @if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif @endif">
@@ -277,6 +277,10 @@
             </div>
         </div>
     </section> -->
+    @endif
+
+    @if($about_page_data && $education_data && $experience_data && $links_data && $about_page_data && $about_content_data )
+        <h2> NO DATA ADDED</h2>
     @endif
 
 </div>

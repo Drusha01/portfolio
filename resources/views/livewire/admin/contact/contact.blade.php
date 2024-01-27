@@ -403,6 +403,10 @@
                                     <form wire:submit.prevent="save_add_contact_info('addContactInfo')">
                                         <div class="modal-body">
                                             <div class="mb-3">
+                                                <label for="ContactInfo-title" class="form-label">Icon</label>
+                                                <input type="text"  id="ContactInfo-Title" class="form-control" wire:model.defer="contact_info.contact_icon" placeholder="Enter contact icon ..." required>
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="ContactInfo-title" class="form-label">Title</label>
                                                 <input type="text"  id="ContactInfo-Title" class="form-control" wire:model.defer="contact_info.contact_title" placeholder="Enter contact title ..." required>
                                             </div>
@@ -433,6 +437,10 @@
                                 <div class="modal-body">
                                 <form wire:submit.prevent="save_edit_contact_info('editContactInfo')">
                                         <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label for="ContactInfo-title" class="form-label">Icon</label>
+                                                <input type="text"  id="ContactInfo-Title" class="form-control" wire:model.defer="contact_info.contact_icon" placeholder="Enter contact icon ..." required>
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="ContactInfo-title" class="form-label">Title</label>
                                                 <input type="text"  id="ContactInfo-Title" class="form-control" wire:model.defer="contact_info.contact_title" placeholder="Enter contact title ..." required>

@@ -34,16 +34,21 @@
             <div class="row px-3 pt-2">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button @if($mode== 0)style="background-color:#242424;;color:white;border-bottom-color: white" @endif wire:ignore.self wire:click="update_data()" class="nav-link active"id="project-tab" data-bs-toggle="tab" data-bs-target="#project-tab-pane" type="button" role="tab" aria-controls="project-tab-pane" aria-selected="true">User Management</button>
+                        <button @if($mode== 0)style="background-color:#242424;;color:white;border-bottom-color: white" @endif wire:ignore.self wire:click="update_data()" class="nav-link active" id="user-management-tab" data-bs-toggle="tab" data-bs-target="#user-management-tab-pane" type="button" role="tab" aria-controls="user-management-tab-pane" aria-selected="true">User Management</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button @if($mode== 0)style="background-color:#242424;;color:white;border-bottom-color: white" @endif wire:ignore.self wire:click="update_data()" class="nav-link "id="page-assets-tab" data-bs-toggle="tab" data-bs-target="#page-assets-tab-pane" type="button" role="tab" aria-controls="page-assets-tab-pane" aria-selected="true">Page Assets</button>
                     </li>
                     
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div wire:ignore.self wire:key="project" class="tab-pane fade show active" id="project-tab-pane" role="tabpanel" aria-labelledby="project-tab" tabindex="0">
-                    
+                    <div wire:ignore.self wire:key="user-management" class="tab-pane fade show active" id="user-management-tab-pane" role="tabpanel" aria-labelledby="user-management-tab" tabindex="0">
+                        user
+                    </div>
+                    <div wire:ignore.self wire:key="page-assets" class="tab-pane fade show " id="page-assets-tab-pane" role="tabpanel" aria-labelledby="page-assets-tab" tabindex="0">
+                        page assets
                     </div>
 
-                    
 
                 </div>
             </div>

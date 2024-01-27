@@ -118,6 +118,8 @@
                 });
             </script>
                 @endforeach
+            @else
+                <h2> NO PROJECTS ADDED</h2>
             @endif
         </div>
     </section>

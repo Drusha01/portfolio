@@ -20,49 +20,32 @@
         </div>
     </section>
 
+    @if($contact_info_data)
     <section id="contact-info">
         <div class="container-md mt-5">
             <div class="row d-flex justify-content-center">
-                <div class="col-md-4 ">
-                    <div class="row">
-                        <div class="col text-center">
-                            <h4><i class="bi bi-pin-map"></i> Location</h4>
+                @foreach($contact_info_data as $key => $value)
+                    @if( ($key) == $contact_info_max_display )
+                        @break;
+                    @endif
+                    <div class="col-md-4 ">
+                        <div class="row">
+                            <div class="col text-center">
+                                <h4><?php echo $value->contact_icon?> {{ $value->contact_title}}</h4>
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col">
+                                {{ $value->contact_details}}
+                            </div>
                         </div>
                     </div>
-                    <div class="row text-center">
-                        <div class="col">
-                            sdfasf
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="row">
-                        <div class="col text-center">
-                            <h4><i class="bi bi-envelope"></i> Email</h4>
-                        </div>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col">
-                            hanz.dumapit53@gmail.com
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center">
-                <div class="row">
-                        <div class="col text-center">
-                            <h4><i class="bi bi-telephone"></i> Call</h4>
-                        </div>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col">
-                            + 63 926 582 7342
-                        </div>
-                    </div>
-                </div>
+
+                @endforeach
             </div>
         </div>
     </section>
-   
+    @endif
     <section id="contact-form">
         <div class="container-md mt-5 ">
             <div class="row d-flex justify-content-center">

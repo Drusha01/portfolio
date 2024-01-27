@@ -159,6 +159,15 @@ class table_seeders extends Seeder
             NOW(),
             NOW()
         );');
+        DB::statement('INSERT INTO tables VALUES(
+            NULL,
+            1,
+            "homepages",
+            1,
+            1,
+            NOW(),
+            NOW()
+        );');
 
 
 

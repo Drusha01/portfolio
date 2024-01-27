@@ -1313,7 +1313,20 @@ class column_seeders extends Seeder
             "id",
             "",
             "",
-            4,
+            1,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            15,
+            1,
+            1,
+            "Contact Icon",
+            "contact_icon",
+            "",
+            "",
+            2,
             NOW(),
             NOW()
         );');
@@ -1326,7 +1339,7 @@ class column_seeders extends Seeder
             "contact_title",
             "",
             "",
-            4,
+            3,
             NOW(),
             NOW()
         );');
@@ -1352,7 +1365,7 @@ class column_seeders extends Seeder
             "number_order",
             "",
             "",
-            4,
+            5,
             NOW(),
             NOW()
         );');
@@ -1365,7 +1378,7 @@ class column_seeders extends Seeder
             "date_created",
             "",
             "",
-            5,
+            6,
             NOW(),
             NOW()
         );');
@@ -1378,7 +1391,7 @@ class column_seeders extends Seeder
             "date_updated",
             "",
             "",
-            6,
+            7,
             NOW(),
             NOW()
         );');
@@ -1391,7 +1404,7 @@ class column_seeders extends Seeder
             "id",
             "text-center",
             "",
-            7,
+            8,
             NOW(),
             NOW()
         );');
@@ -1485,6 +1498,113 @@ class column_seeders extends Seeder
             "text-center",
             "",
             7,
+            NOW(),
+            NOW()
+        );');
+        // homepages
+
+
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            16,
+            1,
+            1,
+            "#",
+            "id",
+            "",
+            "",
+            1,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            16,
+            1,
+            1,
+            "Table Name",
+            "table_name",
+            "",
+            "",
+            2,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            16,
+            1,
+            1,
+            "IsActive?",
+            "table_isactive",
+            "",
+            "",
+            3,
+            NOW(),
+            NOW()
+        );');
+         DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            16,
+            1,
+            1,
+            "Max Display",
+            "table_max_display",
+            "",
+            "",
+            4,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            16,
+            1,
+            1,
+            "Order",
+            "number_order",
+            "text-center",
+            "",
+            5,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            16,
+            1,
+            1,
+            "Date Created",
+            "date_created",
+            "",
+            "",
+            6,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            16,
+            1,
+            1,
+            "Date Updated",
+            "date_updated",
+            "",
+            "",
+            7,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            16,
+            1,
+            1,
+            "Action",
+            "id",
+            "text-center",
+            "",
+            8,
             NOW(),
             NOW()
         );');

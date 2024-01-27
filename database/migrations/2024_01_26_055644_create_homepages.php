@@ -11,19 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement('CREATE TABLE contact_infos(
+        DB::statement('CREATE TABLE homepages(
             id INT PRIMARY KEY AUTO_INCREMENT,
             user_id INT NOT NULL,
-            contact_icon VARCHAR(255) NOT NULL,
-            contact_title VARCHAR(255) NOT NULL,
-            contact_details VARCHAR(255) NOT NULL,
+            table_name VARCHAR(255) ,
+            table_table_name VARCHAR(255) ,
+            table_max_display INT,
+            table_isactive BOOL DEFAULT 1,
             number_order INT NOT NULL,
             date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
             date_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         );');
 
-        DB::statement('CREATE INDEX idx_user_id ON contact_infos(user_id);');
-        DB::statement('CREATE INDEX idx_number_order ON contact_infos(number_order);');
+        DB::statement('CREATE INDEX idx_user_id ON homepages(user_id);');
     }
 
     /**
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contact_infos');
+        Schema::dropIfExists('homepages');
     }
 };

@@ -4,9 +4,10 @@
     <header class="p-2 fixed-top shadow @if($mode == 1) bg-white @else bg-dark @endif" data-bs-theme="light" style="max-height:70px;" >
         <div class="container d-flex justify-content-between align-items-center " >
             <h1 class="logo mr-auto">
-                <a href="{{ Route('homepage.drusha') }}">
+                <a href="{{ Route('homepage.drusha') }}" class="text-dark link-underline link-underline-opacity-0">
                     <span>
                         <img src="{{ asset('assets\page\home.jpg') }}" alt="Drusha Corp" class="object-fit-cover" width="40px" height="40px">
+                        DRUSHA
                     </span>
                 </a>
             </h1>
@@ -18,7 +19,7 @@
                             <li class="nav-item"><a href="@if($user_id && $user_id!=1)  /homepage/{{$user_id}} @else {{ Route('homepage.drusha') }} @endif" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif active"><strong>HOME</strong></a></li>
                             <li class="nav-item"><a href="@if($user_id && $user_id!=1)  /about/{{$user_id}} @else {{ Route('about.drusha') }} @endif " wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>About</strong></a></li>
                             <li class="nav-item"><a href="@if($user_id && $user_id!=1)  /faq/{{$user_id}} @else {{ Route('faq.drusha') }} @endif " wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>FAQs</strong></a></li>
-                            <li class="nav-item"><a href="@if($user_id && $user_id!=1)  /techstack/{{$user_id}} @else {{ Route('techstack.drusha') }} @endif " wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>Tech Stack</strong></a></li>
+                            <!-- <li class="nav-item"><a href="@if($user_id && $user_id!=1)  /techstack/{{$user_id}} @else {{ Route('techstack.drusha') }} @endif " wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>Tech Stack</strong></a></li> -->
                             <li class="nav-item"><a href="@if($user_id && $user_id!=1)  /projects/{{$user_id}} @else {{ Route('project.drusha') }} @endif " wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>Projects</strong></a></li>
                             <li class="nav-item"><a href="@if($user_id && $user_id!=1)  /blogs/{{$user_id}} @else {{ Route('blog.drusha') }} @endif" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>Blog</strong></a></li>
                             <li class="nav-item"><a href="@if($user_id && $user_id!=1)  /contact/{{$user_id}} @else {{ Route('contact.drusha') }} @endif" wire:navigate.hover class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong>Contact</strong></a></li>
