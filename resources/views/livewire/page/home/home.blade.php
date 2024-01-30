@@ -1,5 +1,5 @@
 <div class="p-0 m-0" wire:scroll>
-    <div>
+    <div class="p-0 m-0">
         <div style="z-index:2;">
             @if($homepage_data )
                 @foreach( $homepage_data as $key => $value)
@@ -95,103 +95,20 @@
                                 <div class="container my-5 p-sm-1">
                                     <div class="align-items-center ">
                                         <h3 class="h1 pb-5 text-uppercase text-center">Skills</h3>
-                                        <div class="row gx-5 text-center">
-                                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pb-sm-5 pb-md-3 pb-lg-5 d-flex justify-content-center" style="" >
-                                                <a href="#" class="link-underline link-underline-opacity-0">
-                                                    <div class=" border border-dark @if($mode == 1) bg-light @else  bg-secondary @endif rounded-4 " style="--bs-bg-opacity: .5;width:200px;height:230px">
-                                                        <img class="pt-4 pb-2" src="{{ asset('assets/logo/github.png') }}" alt="" width="80px" >
-                                                        <h3 class="@if($mode == 1) text-dark @else  text-light @endif pt-5">sdfasd</h3>
+                                        <div class="row gx-5 text-center d-flex justify-content-center">
+                                            @foreach($this->skill_data as $skill_key => $skill_value)
+                                                @if( ($skill_key) == $value->table_max_display )
+                                                    @break;
+                                                @endif
+                                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pb-sm-5 pb-md-3 pb-lg-5 d-flex justify-content-center" style="" >
+                                                        <a href="#" class="link-underline link-underline-opacity-0">
+                                                            <div class=" border border-dark @if($mode == 1) bg-light @else  bg-secondary @endif rounded-4 " style="--bs-bg-opacity: .5;width:200px;height:230px">
+                                                                <img class="pt-4 pb-2" src="{{asset('storage/content/skills/'.$skill_value->image)}}" alt="" width="80px" >
+                                                                <h3 class="@if($mode == 1) text-dark @else  text-light @endif pt-5">{{$skill_value->header}}</h3>
+                                                            </div>
+                                                        </a>
                                                     </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pb-sm-5 pb-md-3 pb-lg-5 d-flex justify-content-center" style="" >
-                                                <a href="#" class="link-underline link-underline-opacity-0">
-                                                    <div class=" border border-dark @if($mode == 1) bg-light @else  bg-secondary @endif rounded-4 " style="--bs-bg-opacity: .5;width:200px;height:230px">
-                                                        <img class="pt-4 pb-2" src="{{ asset('assets/logo/github.png') }}" alt="" width="80px" >
-                                                        <h3 class="@if($mode == 1) text-dark @else  text-light @endif pt-5">sdfasd</h3>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pb-sm-5 pb-md-3 pb-lg-5 d-flex justify-content-center" style="" >
-                                                <a href="#" class="link-underline link-underline-opacity-0">
-                                                    <div class=" border border-dark @if($mode == 1) bg-light @else  bg-secondary @endif rounded-4 " style="--bs-bg-opacity: .5;width:200px;height:230px">
-                                                        <img class="pt-4 pb-2" src="{{ asset('assets/logo/github.png') }}" alt="" width="80px" >
-                                                        <h3 class="@if($mode == 1) text-dark @else  text-light @endif pt-5">sdfasd</h3>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pb-sm-5 pb-md-3 pb-lg-5 d-flex justify-content-center" style="" >
-                                                <a href="#" class="link-underline link-underline-opacity-0">
-                                                    <div class=" border border-dark @if($mode == 1) bg-light @else  bg-secondary @endif rounded-4 " style="--bs-bg-opacity: .5;width:200px;height:230px">
-                                                        <img class="pt-4 pb-2" src="{{ asset('assets/logo/github.png') }}" alt="" width="80px" >
-                                                        <h3 class="@if($mode == 1) text-dark @else  text-light @endif pt-5">sdfasd</h3>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pb-sm-5 pb-md-3 pb-lg-5 d-flex justify-content-center" style="" >
-                                                <a href="#" class="link-underline link-underline-opacity-0">
-                                                    <div class=" border border-dark @if($mode == 1) bg-light @else  bg-secondary @endif rounded-4 " style="--bs-bg-opacity: .5;width:200px;height:230px">
-                                                        <img class="pt-4 pb-2" src="{{ asset('assets/logo/github.png') }}" alt="" width="80px" >
-                                                        <h3 class="@if($mode == 1) text-dark @else  text-light @endif pt-5">sdfasd</h3>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pb-sm-5 pb-md-3 pb-lg-5 d-flex justify-content-center" style="" >
-                                                <a href="#" class="link-underline link-underline-opacity-0">
-                                                    <div class=" border border-dark @if($mode == 1) bg-light @else  bg-secondary @endif rounded-4 " style="--bs-bg-opacity: .5;width:200px;height:230px">
-                                                        <img class="pt-4 pb-2" src="{{ asset('assets/logo/github.png') }}" alt="" width="80px" >
-                                                        <h3 class="@if($mode == 1) text-dark @else  text-light @endif pt-5">sdfasd</h3>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pb-sm-5 pb-md-3 pb-lg-5 d-flex justify-content-center" style="" >
-                                                <a href="#" class="link-underline link-underline-opacity-0">
-                                                    <div class=" border border-dark @if($mode == 1) bg-light @else  bg-secondary @endif rounded-4 " style="--bs-bg-opacity: .5;width:200px;height:230px">
-                                                        <img class="pt-4 pb-2" src="{{ asset('assets/logo/github.png') }}" alt="" width="80px" >
-                                                        <h3 class="@if($mode == 1) text-dark @else  text-light @endif pt-5">sdfasd</h3>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pb-sm-5 pb-md-3 pb-lg-5 d-flex justify-content-center" style="" >
-                                                <a href="#" class="link-underline link-underline-opacity-0">
-                                                    <div class=" border border-dark @if($mode == 1) bg-light @else  bg-secondary @endif rounded-4 " style="--bs-bg-opacity: .5;width:200px;height:230px">
-                                                        <img class="pt-4 pb-2" src="{{ asset('assets/logo/github.png') }}" alt="" width="80px" >
-                                                        <h3 class="@if($mode == 1) text-dark @else  text-light @endif pt-5">sdfasd</h3>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pb-sm-5 pb-md-3 pb-lg-5 d-flex justify-content-center" style="" >
-                                                <a href="#" class="link-underline link-underline-opacity-0">
-                                                    <div class=" border border-dark @if($mode == 1) bg-light @else  bg-secondary @endif rounded-4 " style="--bs-bg-opacity: .5;width:200px;height:230px">
-                                                        <img class="pt-4 pb-2" src="{{ asset('assets/logo/github.png') }}" alt="" width="80px" >
-                                                        <h3 class="@if($mode == 1) text-dark @else  text-light @endif pt-5">sdfasd</h3>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pb-sm-5 pb-md-3 pb-lg-5 d-flex justify-content-center" style="" >
-                                                <a href="#" class="link-underline link-underline-opacity-0">
-                                                    <div class=" border border-dark @if($mode == 1) bg-light @else  bg-secondary @endif rounded-4 " style="--bs-bg-opacity: .5;width:200px;height:230px">
-                                                        <img class="pt-4 pb-2" src="{{ asset('assets/logo/github.png') }}" alt="" width="80px" >
-                                                        <h3 class="@if($mode == 1) text-dark @else  text-light @endif pt-5">sdfasd</h3>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pb-sm-5 pb-md-3 pb-lg-5 d-flex justify-content-center" style="" >
-                                                <a href="#" class="link-underline link-underline-opacity-0">
-                                                    <div class=" border border-dark @if($mode == 1) bg-light @else  bg-secondary @endif rounded-4 " style="--bs-bg-opacity: .5;width:200px;height:230px">
-                                                        <img class="pt-4 pb-2" src="{{ asset('assets/logo/github.png') }}" alt="" width="80px" >
-                                                        <h3 class="@if($mode == 1) text-dark @else  text-light @endif pt-5">sdfasd</h3>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pb-sm-5 pb-md-3 pb-lg-5 d-flex justify-content-center" style="" >
-                                                <a href="#" class="link-underline link-underline-opacity-0">
-                                                    <div class=" border border-dark @if($mode == 1) bg-light @else  bg-secondary @endif rounded-4 " style="--bs-bg-opacity: .5;width:200px;height:230px">
-                                                        <img class="pt-4 pb-2" src="{{ asset('assets/logo/github.png') }}" alt="" width="80px" >
-                                                        <h3 class="@if($mode == 1) text-dark @else  text-light @endif pt-5">sdfasd</h3>
-                                                    </div>
-                                                </a>
-                                            </div>
+                                            @endforeach
                                             
 
                                         </div>
