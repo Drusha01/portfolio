@@ -7,7 +7,9 @@
                 <a href="{{ Route('homepage.drusha') }}" class="text-dark link-underline link-underline-opacity-0">
                     <span>
                         <img src="{{ asset('assets\page\home.jpg') }}" alt="Drusha Corp" class="object-fit-cover" width="40px" height="40px">
-                        DRUSHA
+                        <span class="@if($mode == 0) text-white @else text-dark @endif">
+                            DRUSHA
+                        </span>
                     </span>
                 </a>
             </h1>

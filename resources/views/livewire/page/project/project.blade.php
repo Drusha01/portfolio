@@ -1,4 +1,4 @@
-<div  style="min-height:80vh;@if($mode == 0) background:#282828;color:white; @else background:#fff;color:dark; @endif  font-family: 'Open Sans', sans-serif;font-size: 16px;">
+<div class="p-0 m-0" style="min-height:80vh;@if($mode == 0) background:#282828;color:white; @else background:#fff;color:dark; @endif  font-family: 'Open Sans', sans-serif;font-size: 16px;">
     <section id="project" class="" >
         <div class="container text-center  ">
             <div class="align-items-center">

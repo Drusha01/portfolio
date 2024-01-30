@@ -1,4 +1,4 @@
-<div  wire:scroll>
+<div class="p-0 m-0" wire:scroll>
     <div>
         <div style="z-index:2;">
             @if($homepage_data )

@@ -1,4 +1,4 @@
-<div  style="min-height:80vh;@if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif">
+<div class="p-0 m-0" style="min-height:80vh;@if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif">
     <section id="faq" class="p-5" >
         <div class="container  text-center p-sm-1">
             <div class="align-items-center">
