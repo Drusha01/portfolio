@@ -95,7 +95,7 @@
                                 <div class="container my-5 p-sm-1">
                                     <div class="align-items-center ">
                                         <h3 class="h1 pb-5 text-uppercase text-center">Skills</h3>
-                                        <div class="row gx-5 text-center d-flex justify-content-center">
+                                        <div class="row gx-5 text-center">
                                             @foreach($this->skill_data as $skill_key => $skill_value)
                                                 @if( ($skill_key) == $value->table_max_display )
                                                     @break;
