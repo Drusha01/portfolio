@@ -22,6 +22,13 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
         
     </head>
+    <style>
+        body {
+            font-family: 'Roboto';font-size: 13px;
+            padding:0;
+            margin:0;
+        }
+    </style>
     <body>
         <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoiZHJ1c2hhIiwiYSI6ImNscXkyenV3cDBrdjMyanBjc2Fib2h4eWIifQ.00MiJujxN4t1DZH5ksedbA';

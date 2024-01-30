@@ -1,7 +1,7 @@
 <div  style="min-height:80vh;@if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif" class="p-0 m-0">;
     @if($about_page_data && $about_page_active)
     <?php $color_toggle = !$color_toggle;?>
-    <section id="about" class="p-lg-0 pt-lg-0 text-center text-sm-start" style="@if($color_toggle) @if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif @else @if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif @endif">
+    <section id="about" class=" text-center text-sm-start" style="@if($color_toggle) @if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif @else @if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif @endif">
         <div class="container">
             <div class="d-sm-flex align-items-center">
                 <img class="img-sm-fluid w-50  " src="{{asset('storage/content/about_pages/'.$about_page_data['0']->image)}}" alt="logo" class="logo">
