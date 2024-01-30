@@ -279,8 +279,6 @@
     </section> -->
     @endif
 
-    @if($about_page_data && $education_data && $experience_data && $links_data && $about_page_data && $about_content_data )
-        <h2> NO DATA ADDED</h2>
-    @endif
+    
 
 </div>

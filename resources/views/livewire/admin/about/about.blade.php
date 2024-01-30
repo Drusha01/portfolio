@@ -1080,7 +1080,7 @@
                                         <div class="modal-body">
                                             <div class="mb-3">
                                                 <label for="announcement_image" class="form-label">Image</label>
-                                                <input class="form-control" type="file" id="" wire:model.defer="skill.image" accept="image/*" required>
+                                                <input class="form-control" type="file" id="" wire:model.defer="skill.image" accept="image/*" >
                                             </div>
                                             <div class="mb-3">
                                                 <label for="link-link" class="form-label">Header</label>

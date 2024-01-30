@@ -71,7 +71,7 @@
                             <li class="nav-item"><a href="{{ Route('blog.drusha') }}" wire:navigate class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong><i class="bi bi-file-earmark-richtext"></i> Blog</strong></a></li> 
                             <li class="nav-item"><a href="{{ Route('contact.drusha') }}" wire:navigate.hover class="nav-link @if($mode == 0) text-white @else text-dark @endif"><strong><i class="bi bi-telephone"></i> Contact</strong></a></li>
                             <li class="nav-item"><a href="{{ Route('contact.drusha') }}" wire:navigate.hover class="nav-link @if($mode == 0) text-white @else text-dark @endif"><i class="bi bi-folder"></i> <strong>CV </strong></a></li>
-                            <li class="nav-item"><a href="{{ Route('contact.drusha') }}" wire:navigate.hover class="nav-link @if($mode == 0) text-white @else text-dark @endif"><i class="bi bi-incognito"></i> <strong>Secret </strong></a></li>
+                            <li class="nav-item"><a href="{{ Route('login') }}" wire:navigate.hover class="nav-link @if($mode == 0) text-white @else text-dark @endif"><i class="bi bi-incognito"></i> <strong>Secret </strong></a></li>
                             <li class="nav-item aligh-items-center"> 
                             <a class="form-check form-switch aligh-items-center">
                                 <input class="form-check-input" type="checkbox" role="switch" @if($mode == 1) @else checked @endif id="mode" wire:click="mode_toggle()">
