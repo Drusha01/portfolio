@@ -78,7 +78,7 @@ class RegisterEmail extends Component
                         function($message) {
                     $message->to($this->email, $this->email)->subject
                        ('Account Verification');
-                    $message->from('drusha@hanricksondumapit.me','DRUSHA\'s PORTFOLIO');
+                    $message->from('support@hanricksondumapit.me','DRUSHA\'s PORTFOLIO');
                  });
                 $deleted = DB::table('user_activations')
                     ->where('user_activation_email', '=', $this->email)

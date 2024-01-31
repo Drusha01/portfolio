@@ -62,7 +62,7 @@ class ForgotPassword extends Component
                         function($message) {
                     $message->to($this->email, $this->email)->subject
                        ('Account Recovery');
-                    $message->from('drusha@hanricksondumapit.me','DRUSHA\'s PORTFOLIO');
+                    $message->from('support@hanricksondumapit.me','DRUSHA\'s PORTFOLIO');
                 });
                 $deleted = DB::table('user_forgot_passwords')
                     ->where('user_forgot_password_email', '=', $this->email)

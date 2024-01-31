@@ -21,8 +21,7 @@
     <style>
         body {
             font-family: 'Roboto';font-size: 13px;
-            padding:0;
-            margin:0;
+   
             @if($mode == 1)
             background: linear-gradient(-68deg, #FFFFFF, #F0F0F0, #FDEDE8, #CCFFFF);
             @else
