@@ -359,7 +359,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            @if ($exp_key !== array_key_last($experience_data)) 
+                                            @if ($exp_key !== array_key_last($this->experience_data)) 
                                             <div class="col-12 p-1">
                                                 <hr>
                                             </div>
