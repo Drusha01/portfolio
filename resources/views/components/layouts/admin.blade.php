@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{url('/bootstrap-icons-1.11.2')}}/font/bootstrap-icons.min.css">
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
   
-        <title>{{ $title ?? 'Page Title' }}</title>
+        <title>Hanrickson Dumapit - {{ $title ?? 'Page Title' }}</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <link rel="icon" href="{{ asset('assets/favicon/favicon.ico') }}" type="image/x-icon"></head>
 

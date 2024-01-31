@@ -6,7 +6,7 @@
             <h1 class="logo mr-auto">
                 <a href="{{ Route('homepage.drusha') }}" class="text-dark link-underline link-underline-opacity-0">
                     <span>
-                        <img src="{{ asset('assets\page\home.jpg') }}" alt="Drusha Corp" class="object-fit-cover" width="40px" height="40px">
+                        <img src="{{ asset('assets\page\home.png') }}" alt="Drusha Corp" class="object-fit-cover" width="40px" height="40px">
                         <span class="@if($mode == 0) text-white @else text-dark @endif d-none d-lg-inline-block">
                             DRUSHA
                         </span>

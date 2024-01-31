@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{url('/bootstrap-icons-1.11.2')}}/font/bootstrap-icons.min.css">
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
   
-        <title>{{ $title ?? 'Page Title' }}</title>
+        <title>Hanrickson Dumapit - {{ $title ?? 'Page Title' }}</title>
         <link rel="icon" href="{{ asset('assets/favicon/favicon.ico') }}" type="image/x-icon"></head>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />

@@ -10,7 +10,7 @@
 
      
 
-        <title>{{ $title ?? 'Page Title' }}</title>
+        <title>Hanrickson Dumapit - {{ $title ?? 'Page Title' }}</title>
         <link rel="icon" href="{{ asset('assets/favicon/favicon.ico') }}" type="image/x-icon"></head>
            
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

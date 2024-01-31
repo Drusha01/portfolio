@@ -4,7 +4,7 @@
             <h1 class="logo mr-auto">
                 <a href="{{ Route('admin.dashboard') }}" class="align-items-center link-underline link-underline-opacity-0 @if($mode == 1) text-dark @else text-white @endif">
                     <span>
-                        <img src="{{ asset('assets\page\home.jpg') }}" alt="Drusha Corp" class="object-fit-cover" width="40px" height="40px">
+                        <img src="{{ asset('assets\page\home.png') }}" alt="Drusha Corp" class="object-fit-cover" width="40px" height="40px">
                         <span class="@if($mode == 0) text-white @else text-dark @endif d-none d-lg-inline-block">
                             DRUSHA
                         </span>
@@ -22,7 +22,7 @@
                     <div class="col">
                     <a class="dropdown-toggle link-underline link-underline-opacity-0 @if($mode == 1) link-dark @else link-light @endif" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <span>
-                            <img src="{{ asset('assets\page\home.jpg') }}" alt="Drusha Corp" class="object-fit-cover rounded-circle mx-3" width="40px" height="40px">
+                            <img src="{{ asset('assets\page\home.png') }}" alt="Drusha Corp" class="object-fit-cover rounded-circle mx-3" width="40px" height="40px">
                             <span class="@if($mode == 0) text-white @else text-dark @endif d-none d-lg-inline-block">
                             {{$fullname}}
                             </span>
