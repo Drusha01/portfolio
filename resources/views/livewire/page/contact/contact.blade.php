@@ -28,7 +28,7 @@
                     @if( ($key) == $contact_info_max_display )
                         @break;
                     @endif
-                    <div class="col-md-4 ">
+                    <div class="col-md-4 p-4">
                         <div class="row">
                             <div class="col text-center">
                                 <h4><?php echo $value->contact_icon?> {{ $value->contact_title}}</h4>
