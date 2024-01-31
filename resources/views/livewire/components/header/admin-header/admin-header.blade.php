@@ -16,7 +16,7 @@
                     <div class="col p-0">
                         <div class="form-check form-switch aligh-items-center m-2 d-none d-lg-inline-block">
                             <input class="form-check-input" id="mode" type="checkbox" role="switch" @if($mode == 1) @else checked @endif id="mode" wire:click="mode_toggle()">
-                            <label for="mode" class="form-check-label @if($mode == 0) text-white @else text-dark @endif"" for="flexSwitchCheckDefault"> @if($mode == 1) Light @else Dark @endif</label>
+                            <label for="mode" class="form-check-label @if($mode == 0) text-white @else text-dark @endif"" for="flexSwitchCheckDefault"> Dark </label>
                         </div>
                     </div>
                     <div class="col">
@@ -32,7 +32,7 @@
                         <li><a class="dropdown-item" href="{{ Route('admin.admin-profile') }}" wire:navigate.hover>Profile</a></li>
                         <li class="form-check form-switch aligh-items-center m-2 d-block d-sm-block d-md-none">
                             <input class="form-check-input" id="mode" type="checkbox" role="switch" @if($mode == 1) @else checked @endif id="mode" wire:click="mode_toggle()">
-                            <label for="mode" class="form-check-label @if($mode == 0) text-secondary @else text-secondary @endif"" for="flexSwitchCheckDefault"> @if($mode == 1) Light @else Dark @endif</label>
+                            <label for="mode" class="form-check-label @if($mode == 0) text-secondary @else text-secondary @endif"" for="flexSwitchCheckDefault"> Dark </label>
                         </li>
                         <li><a class="dropdown-item" href="{{ Route('logout') }}" >Logout</a></li>
                     </ul>

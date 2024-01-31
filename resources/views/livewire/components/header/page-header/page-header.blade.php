@@ -28,7 +28,7 @@
                             <li class="nav-item aligh-items-center"> 
                             <a class="form-check form-switch aligh-items-center m-2">
                                 <input class="form-check-input" id="mode" type="checkbox" role="switch" @if($mode == 1) @else checked @endif id="mode" wire:click="mode_toggle()">
-                                <label for="mode" class="form-check-label @if($mode == 0) text-white @else text-dark @endif"" for="flexSwitchCheckDefault"> @if($mode == 1) Light @else Dark @endif</label>
+                                <label for="mode" class="form-check-label @if($mode == 0) text-white @else text-dark @endif"" for="flexSwitchCheckDefault"> Dark </label>
                             </a>
                             </li>
                         </ul>
@@ -77,7 +77,7 @@
                             <li class="nav-item aligh-items-center"> 
                             <a class="form-check form-switch aligh-items-center">
                                 <input class="form-check-input" type="checkbox" role="switch" @if($mode == 1) @else checked @endif id="mode" wire:click="mode_toggle()">
-                                <label class="form-check-label @if($mode == 0) text-white @else text-dark @endif"" for="flexSwitchCheckDefault"> @if($mode == 1) Light @else Dark @endif</label>
+                                <label class="form-check-label @if($mode == 0) text-white @else text-dark @endif"" for="flexSwitchCheckDefault"> Dark </label>
                             </a>
                             </li>
                         </ul>
