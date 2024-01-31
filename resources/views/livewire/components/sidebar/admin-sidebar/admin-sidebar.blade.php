@@ -1,5 +1,5 @@
 <div>
-    <ul class="sidebar-nav p-0 m-0" style="list-style: none;">
+    <ul class="sidebar-nav p-0 m-0 sidebar-admin" style="list-style: none;">
         <li class="nav-item h6 m-0 p-0" id="sidebarlink"><a href="{{Route('admin.dashboard') }}" wire:navigate style="@if(request()->is('admin/dashboard*')) @if($mode == 0) background-color:#484848;color:#fff; @else background-color:#f1f1f1;color:#111111; @endif @endif width:inherit;height:inherit" class="nav-link px-4 py-3 link-underline link-underline-opacity-0 "><strong><i class="bi bi-file-earmark-bar-graph"></i> &nbsp;&nbsp;Dashboard</strong></a></li>
         <li class="nav-item h6 m-0 p-0" id="sidebarlink"><a href="{{Route('admin.homepage') }}" wire:navigate style="@if(request()->is('admin/homepage*')) @if($mode == 0) background-color:#484848;color:#fff; @else background-color:#f1f1f1;color:#111111; @endif @endif width:inherit;height:inherit" class="nav-link px-4 py-3 link-underline link-underline-opacity-0 "><strong><i class="bi bi-house-door"></i> &nbsp;&nbsp;Homepage</strong></a></li>
         <li class="nav-item h6 m-0 p-0" id="sidebarlink"><a href="{{Route('admin.about') }}" wire:navigate style="@if(request()->is('admin/about*')) @if($mode == 0) background-color:#484848;color:#fff; @else background-color:#f1f1f1;color:#111111; @endif @endif ;width:inherit;height:inherit" class="nav-link px-4 py-3 link-underline link-underline-opacity-0 "><strong><i class="bi bi-info-circle"></i>  &nbsp;&nbsp;About</strong></a></li>
@@ -14,6 +14,16 @@
         #sidebarlink:hover {
             color:#{{$color}};
             background-color:#484848;
+        }
+        .sidebar-admin {
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            padding-top:70px;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
         }
     </style>
     <script>

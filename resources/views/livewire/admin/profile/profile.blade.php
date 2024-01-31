@@ -8,7 +8,7 @@
         </style>
       @endif
     <div class="row" style="margin:70px 0px 0px 0px; padding:0px;">
-        <div class="col p-0 border-end @if($mode) border-dark @else @endif" id="sidebar" style="@if($mode == 1)background-color:white;color:black; @else background-color:#232323;color:white; @endif height:calc(100vh - 70px);max-width:280px;">
+        <div class="col p-0 border-end @if($mode) border-dark @else @endif" id="sidebar" style="@if($mode == 1)background-color:white;color:black; @else background-color:#232323;color:white; @endif">
             @livewire('components.sidebar.admin-sidebar.admin-sidebar')
         </div>
         <div class="col" style="@if($mode == 1) background-color:white;color:black; @else background-color:#242424;color:white; @endif">
@@ -19,18 +19,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row px-3 pt-2">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button @if($mode== 0)style="background-color:#242424;;color:white;border-bottom-color: white;"@endif wire:ignore.self wire:click="update_data()" class="nav-link active" id="about-page-tab" data-bs-toggle="tab" data-bs-target="#about-page-tab-pane" type="button" role="tab" aria-controls="about-page-tab-pane" aria-selected="true">About-page</button>
-                    </li>
-                  
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div wire:ignore.self class="tab-pane fade show active" id="about-page-tab-pane" role="tabpanel" aria-labelledby="about-page-tab" tabindex="0">
-                        about page
-                    </div>
-                </div>
+            <div class="row">
+                
             </div>
         </div>
     </div>
