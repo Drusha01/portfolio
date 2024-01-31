@@ -430,6 +430,23 @@ class RegisterEmail extends Component
                     }
                 }
 
+                $homepage = DB::table('homepages')
+                    ->where('user_id','=',1)
+                    ->get()
+                    ->toArray();
+                foreach ($homepage as $key => $value) {
+                    DB::table('homepages')
+                        ->insert([
+                            'id' => NULL,
+                            'user_id'=> $user_details->user_id,
+                            'table_name' =>  $value->table_name,
+                            'table_table_name' => $value->table_table_name,
+                            'table_max_display' => $value->table_max_display,
+                            'table_isactive' => $value->table_isactive,
+                            'number_order' => $value->number_order,
+                        ]);
+                }
+
                 
                
                 

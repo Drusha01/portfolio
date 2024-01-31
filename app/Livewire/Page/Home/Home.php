@@ -72,18 +72,17 @@ class Home extends Component
     public function boot(Request $request){
         $data = $request->session()->all();
         $this->mode = $data['mode'];
-        if ($request->is('contact/*')) {
-            $value = substr($request->path(),strlen('contact/'));
+        if ($request->is('homepage/*')) {
+            $value = substr($request->path(),strlen('homepage/'));
            if( $value){
                 $this->user_id = intval($value);
-
                 if(DB::table('users as u')
                     ->where('user_id','=',$this->user_id)
                     ->first()){
 
                 }else{
                     $this->user_id = 1;
-                    return redirect('/contact');
+                    return redirect('/homepage');
                 }
             }
         }else{

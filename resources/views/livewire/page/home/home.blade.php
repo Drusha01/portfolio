@@ -5,7 +5,6 @@
                 @foreach( $homepage_data as $key => $value)
                     @if( $value->table_name == 'About Page' && $value->table_isactive == 1 )
                         <?php $color_toggle = !$color_toggle;
-                        
                             $this->about_page_data = DB::table('about_pages')
                             ->where('user_id','=',$this->user_id )
                             ->get()
