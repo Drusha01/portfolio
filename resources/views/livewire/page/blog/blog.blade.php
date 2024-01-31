@@ -22,17 +22,47 @@
                                 <div class="row">
                                     <div class="col-12 text-start px-5 py-2"><span><i class="bi bi-person"></i> {{$value->user_firstname.' '.$value->user_middlename.' '.$value->user_lastname}}  &#160; &#160; &#160; &#160;<i class="bi bi-clock"></i> {{date_format(date_create($value->date_created), "F d, Y ")}}</span></div>
                                 </div>
+                                <?php 
+                                    $this->tag_data = DB::table('blog_tags as bt')
+                                        ->select(
+                                            'bt.id',
+                                            'tag_details',
+                                            'bt.tag_id'
+                                        )
+                                        ->join('tags as t','t.id','bt.tag_id')
+                                        ->where('user_id','=',$this->user_id )
+                                        ->where('blog_id','=',$value->id)
+                                        ->get()
+                                        ->toArray();
+                                ?>
+                                @if($this->tag_data )
+                                <div class="row px-3 mx-1 text-start" >
+                                    <div class="col-12">
+                                        <div style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; " >
+                                            @foreach($this->tag_data as $tag_key => $tag_value)
+                                                <a href="/blog/@if(isset($this->user_id) && $this->user_id !=1 ){{$this->user_id.'/'}}@endif{{'tag/'.$tag_value->tag_details}}">
+                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                        {{$tag_value->tag_details}}
+                                                    </span>
+                                                </a>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
                                 <div class="row">
                                     <div class="col-12 text-start px-5 py-2 overflow-hidden"  style="max-height:200px" >
                                         <p>{{$value->content}}</p>
                                     
                                     </div>
                                 </div>
+                                @if($value->button)
                                 <div class="row ">
                                     <div class="col-12 text-start px-5 py-4 d-flex justify-content-end">
                                         <a class="btn btn-primary " href="blog/@if(isset($user_id)){{$user_id.'/'}}@endif{{$value->id}}">{{$value->button}}</a>
                                     </div>
                                 </div>
+                                @endif
                             </div>
                             <div class="col-12 py-3 m-0 opacity-0">
                                 &#160;
@@ -69,6 +99,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 @endif
                 @if(!$tag_data && !$blog_data)
                     <h2>NO BLOGS DATA ADDED</h2>

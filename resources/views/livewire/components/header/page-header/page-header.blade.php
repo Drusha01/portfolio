@@ -46,7 +46,7 @@
                             </a>
                         @endforeach
                     @endif
-                    @if($user_id && $request)
+                    @if($user_id !=1 && $request)
                         <div><a class="btn btn-outline-warning" href="/{{$request}}">ACTUAL SITE</a></div>
                     @endif
                 <nav class="navbar  d-lg-none opacity-0  " >
