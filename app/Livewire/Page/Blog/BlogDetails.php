@@ -43,25 +43,7 @@ class BlogDetails extends Component
             ]);
         }
 
-        $this->blog_data = DB::table('blogs as b')
-            ->select(
-                'b.user_id',
-                'b.id',
-                'b.image',
-                'b.title',
-                'b.content',
-                'link',
-                'button',
-                'b.date_created',
-                'u.user_firstname',
-                'u.user_middlename',
-                'u.user_lastname',
-                )
-            ->where('b.user_id','=',1)
-            ->join('users as u','u.user_id','b.user_id')
-            ->orderBy('date_created','asc')
-            ->get()
-            ->toArray();
+        
         $this->tag_data = DB::table('blog_tags as bt')
             ->select(
                 DB::raw('count(bt.id) as count'),'bt.tag_id','tag_details'
@@ -77,6 +59,42 @@ class BlogDetails extends Component
         ->where('table_name','=',$table_name)
         ->where('user_id','=',1)
         ->first());
+    }
+
+    public function boot (Request $request){
+        if ($request->is('blogdetails/*')) {
+            $value = substr($request->path(),strlen('blogdetails/'));
+           if( $value){
+                $this->blog_id = intval($value);
+
+                if($this->blog_data = DB::table('blogs as b')
+                ->select(
+                    'b.user_id',
+                    'b.id',
+                    'b.image',
+                    'b.title',
+                    'b.content',
+                    'link',
+                    'button',
+                    'b.date_created',
+                    'u.user_firstname',
+                    'u.user_middlename',
+                    'u.user_lastname',
+                    )
+                ->where('b.user_id','=',1)
+                ->where('b.id','=',$this->blog_id )
+                ->join('users as u','u.user_id','b.user_id')
+                ->orderBy('date_created','asc')
+                ->get()
+                ->toArray()){
+
+                }else{
+                    return redirect('/blogs');
+                }
+            }
+        }else{
+            return redirect('/blogs');
+        }
     }
     public function mount(Request $request){
         $data = $request->session()->all();

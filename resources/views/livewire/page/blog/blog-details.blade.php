@@ -11,7 +11,7 @@
                             <div class="col-12 p-0 m-0 shadow">
                                 <div class="row">
                                     <div class="col">
-                                        <img class=""  alt="Hanrickson E. Dumapit Blogs {{$value->title}}" src="{{asset('storage/content/blogs/'.$value->image)}}" alt="" style="object-fit:cover;width:inherit;max-height:400px" >
+                                        <img class=""  alt="Hanrickson E. Dumapit Blogs {{$value->title}}" src="{{asset('storage/content/blogs/'.$value->image)}}" alt="" style="object-fit:cover;width:inherit;max-height:450px" >
                                     </div>
                                 </div>
                                 <div class="row">
