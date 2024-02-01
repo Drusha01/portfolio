@@ -30,7 +30,7 @@
                 <div class=" lead pt-4 px-4">
                     Projects  
                 </div>
-                <a class="pt-4 px-4" href="/project/{{$user_id}}" target="_blank">
+                <a class="pt-4 px-4" href="/projects/{{$user_id}}" target="_blank">
                     <button class="btn btn-outline-secondary" >
                         View Page
                     </button>
