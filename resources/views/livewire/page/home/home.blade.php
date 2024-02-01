@@ -268,7 +268,7 @@
                                         <div class="col-lg-5 col-md-6 rounded-4 m-3 border @if($mode == 1) border-dark @else border-light @endif" style="height:600px">
                                             <div class="row" >
                                                 <div class="col-12 rounded-4">
-                                                    <img class="pt-3 pb-3 " alt="Hanrickson E. Dumapit Web Developer" src="{{asset('storage/content/blogs/'. $blog_value->image)}}" alt="" style="object-fit:cover;width:inherit;max-height:300px" >
+                                                    <img class="pt-3 pb-3 " alt="Hanrickson E. Dumapit Web Developer" src="{{asset('storage/content/blogs/'. $blog_value->image)}}" alt="" style="object-fit:cover;width:inherit;max-height:350px" >
                                                 </div>
                                             </div>
                                             @if(isset($this->user_id) && $this->user_id ==1 )
