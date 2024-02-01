@@ -12,7 +12,7 @@
                     <section id="about" class="p-lg-0 pt-lg-0 text-center text-sm-start" style="@if($color_toggle) @if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif @else @if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif @endif">
                         <div class="container">
                             <div class="d-sm-flex align-items-center">
-                                <img class="img-sm-fluid w-50  " src="{{asset('storage/content/about_pages/'.$this->about_page_data['0']->image)}}" alt="logo" class="logo">
+                                <img class="img-sm-fluid w-50  " alt="Hanrickson E. Dumapit Web Developer"  src="{{asset('storage/content/about_pages/'.$this->about_page_data['0']->image)}}" alt="logo" class="logo">
                                 <div class="p-3">
                                     <h1>  <span class="text-danger">{{$this->about_page_data['0']->header}}</span></h1>
                                     <p class="lead my-4 d-none d-sm-block ">{{$this->about_page_data['0']->content}}</p>
@@ -55,7 +55,7 @@
                                         @endif
                                         <div class=" col-md-3 px-md-5 col-6 mb-4">
                                             <a href="@if($link_value->link){{$link_value->link}} @else # @endif" target="_blank" class="link-underline link-underline-opacity-0">
-                                                <img src="{{asset('storage/content/links/'.$link_value->image)}}" alt="" width="60px" >
+                                                <img  alt="Hanrickson E. Dumapit Web Developer" src="{{asset('storage/content/links/'.$link_value->image)}}" alt="" width="60px" >
                                             </a>    
                                         </div>
                                     @endforeach
@@ -67,7 +67,7 @@
                         <div class="container p-5">
                             <div class="row d-flex justify-content-center g-md-5">
                                 <div class="col-md-6 text-center">
-                                    <img class="img-fluid " src="{{asset('storage/content/about_content/'.$this->about_content_data['0']->image)}}" alt="" style="border-radius:50%;width:300px" >
+                                    <img class="img-fluid "  alt="Hanrickson E. Dumapit Web Developer" src="{{asset('storage/content/about_content/'.$this->about_content_data['0']->image)}}" alt="" style="border-radius:50%;width:300px" >
                                 </div>
                                 <div class="col-md-6">
                                     <h3 class="h1 pb-3 text-uppercase">{{$this->about_content_data['0']->header}}</h3>
@@ -101,7 +101,7 @@
                                                 <a href="#" class="link-underline link-underline-opacity-0">
                                                     <div class=" border border-dark @if($mode == 1) bg-light @else  bg-secondary @endif rounded-4 " style="--bs-bg-opacity: .5;width:180px;height:200px">
                                                         <div style="height:135px">
-                                                            <img class="pt-4 pb-2" src="{{asset('storage/content/skills/'.$skill_value->image)}}" alt="" width="80px" >
+                                                            <img class="pt-4 pb-2"  alt="Hanrickson E. Dumapit Web Developer" src="{{asset('storage/content/skills/'.$skill_value->image)}}" alt="" width="80px" >
                                                         </div>
                                                         <h3 class="@if($mode == 1) text-dark @else  text-light @endif align-text-bottom">{{$skill_value->header}}</h3>
                                                     </div>
@@ -143,7 +143,7 @@
                                                 <div class="swiper-slide border border-dark rounded-4 @if($mode == 1) bg-light @else bg-secondary @endif ">
                                                     <div class="row p-2">
                                                         <div class="col-6" >
-                                                            <img class="p-2 rounded-start-4" src="{{asset('storage/content/project_image_contents/'. $project_image_contents->image)}}" alt="Hanrickson E. Dumapit, Drusha" style="width:100%;height:100%;object-fit:contain">
+                                                            <img class="p-2 rounded-start-4"  alt="Hanrickson E. Dumapit Projects" src="{{asset('storage/content/project_image_contents/'. $project_image_contents->image)}}" alt="Hanrickson E. Dumapit, Drusha" style="width:100%;height:100%;object-fit:contain">
                                                         </div>
                                                         <div class="col-6 col-xs-6 p-sm-3 " style="max-height:650px;overflow: auto;">
                                                             <div class="row">
@@ -268,7 +268,7 @@
                                         <div class="col-lg-5 col-md-6 rounded-4 m-3 border @if($mode == 1) border-dark @else border-light @endif" style="height:600px">
                                             <div class="row" >
                                                 <div class="col-12 rounded-4">
-                                                    <img class="pt-3 pb-3 " src="{{asset('storage/content/blogs/'. $blog_value->image)}}" alt="" style="object-fit:cover;width:inherit;max-height:300px" >
+                                                    <img class="pt-3 pb-3 " alt="Hanrickson E. Dumapit Web Developer" src="{{asset('storage/content/blogs/'. $blog_value->image)}}" alt="" style="object-fit:cover;width:inherit;max-height:300px" >
                                                 </div>
                                             </div>
                                             @if(isset($this->user_id) && $this->user_id ==1 )
@@ -348,7 +348,7 @@
                                             <div class="col-12 p-5">
                                                 <div class="row">
                                                     <div class="col-sm-12 col-md-2">
-                                                        <img class="pt-2 pb-2 " src="{{asset('storage/content/experience/'.$exp_value->logo)}}" alt="" width="80px" >
+                                                        <img class="pt-2 pb-2 "  alt="Hanrickson E. Dumapit Experience" src="{{asset('storage/content/experience/'.$exp_value->logo)}}" alt="" width="80px" >
                                                     </div>
                                                     <div class="col-10">
                                                         <a href="@if($exp_value->link) {{$exp_value->link}} @else # @endif"  class="link-underline link-underline-opacity-0 @if($mode == 1) link-dark @else link-light @endif ">
@@ -392,7 +392,7 @@
                                         <div class="col-12 p-5">
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-2">
-                                                    <img class="pt-2 pb-2 rounded-circle" src="{{asset('storage/content/education/'.$educ_value->logo)}}" alt="" width="80px" >
+                                                    <img class="pt-2 pb-2 rounded-circle"   alt="Hanrickson E. Dumapit Web Developer" src="{{asset('storage/content/education/'.$educ_value->logo)}}" alt="" width="80px" >
                                                 </div>
                                                 <div class="col-10">
                                                     <a href="@if($educ_value->link) {{$educ_value->link}} @else # @endif"  class="link-underline link-underline-opacity-0 @if($mode == 1) link-dark @else link-light @endif ">

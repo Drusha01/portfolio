@@ -19,7 +19,7 @@
                                         <div class="swiper-wrapper mb-2" style="width:inherit;max-height:650px">
                                                 @foreach($value['project_image_contents'] as $pic_key =>$pic_value)
                                                     <div class="swiper-slide">
-                                                        <img src="{{asset('storage/content/project_image_contents/'.$pic_value['image'])}}" style="object-fit:cover;width:inherit;max-height:650px"/>
+                                                        <img  alt="Hanrickson E. Dumapit Web Developer" src="{{asset('storage/content/project_image_contents/'.$pic_value['image'])}}" style="object-fit:cover;width:inherit;max-height:650px"/>
                                                     </div>
                                                 @endforeach
                                         </div>
@@ -35,7 +35,7 @@
                                     <div thumbsSlider="" class="swiper mySwiper-{{$key}}-2" >
                                         <div class="swiper-wrapper" style="max-width:inherit;max-height:150px;">
                                             @foreach($value['project_image_contents'] as $pic_key =>$pic_value)
-                                                <img  class="col-3 swiper-slide" src="{{asset('storage/content/project_image_contents/'.$pic_value['image'])}}" />
+                                                <img  alt="Hanrickson E. Dumapit Web Developer" class="col-3 swiper-slide" src="{{asset('storage/content/project_image_contents/'.$pic_value['image'])}}" />
                                             @endforeach
                                         </div>
                                     </div>
@@ -75,7 +75,7 @@
                                     @foreach($value['project_developers'] as $pd_key =>$pd_value)
                                         <div class="col-md-6 col-lg-4 d-flex justify-content-center pt-5 pb-3 px-2" style="min-height:500px;">
                                             <div class="card mx-3 shadow" style="width: 18rem; @if($mode == 0) background:#282828;color:white; @else background:#fff;color:dark; @endif">
-                                                <img src="{{asset('storage/content/developers/'.$pd_value['image'])}}" style="max-width:inherit;max-height:200px;object-fit:cover;" class="card-img-top" alt="...">
+                                                <img  alt="Hanrickson E. Dumapit Web Developer" src="{{asset('storage/content/developers/'.$pd_value['image'])}}" style="max-width:inherit;max-height:200px;object-fit:cover;" class="card-img-top" alt="...">
                                                 <div class="card-body">
                                                     <h5 class="card-title py-2">{{$pd_value['full_name']}}</h5>
                                                     <h6 class="text-secondary py-2">{{$pd_value['role']}}</h6>
