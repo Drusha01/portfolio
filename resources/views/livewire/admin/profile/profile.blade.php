@@ -7,7 +7,7 @@
             }
         </style>
       @endif
-    <div class="row" style="margin:70px 0px 0px 0px; padding:0px;">
+    <div class="row" style="margin:0px 0px 0px 0px; padding:0px;">
         <div class="col p-0 border-end @if($mode) border-dark @else @endif" id="sidebar" style="@if($mode == 1)background-color:white;color:black; @else background-color:#232323;color:white; @endif">
             @livewire('components.sidebar.admin-sidebar.admin-sidebar')
         </div>

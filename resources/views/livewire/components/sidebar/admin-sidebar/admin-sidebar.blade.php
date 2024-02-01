@@ -15,16 +15,6 @@
             color:#{{$color}};
             background-color:#484848;
         }
-        .sidebar-admin {
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            padding-top:70px;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
     </style>
     <script>
         
