@@ -19,7 +19,7 @@ class ChangeEmail extends Component
     public function booted(Request $request){
         $user_details = $request->session()->all();
         if(!isset($user_details['user_id'])){
-            header("Location: /login");
+            header("Location: login");
             die();
         }else{
             $user_status = DB::table('users as u')
@@ -30,12 +30,12 @@ class ChangeEmail extends Component
         }
 
         if(isset($user_status->user_status_details) && $user_status->user_status_details == 'deleted' ){
-            header("Location: /deleted");
+            header("Location: deleted");
             die();
         }
 
         if(isset($user_status->user_status_details) && $user_status->user_status_details == 'inactive' ){
-            header("Location: /deleted");
+            header("Location: deleted");
             die();
         }
     }
@@ -48,6 +48,7 @@ class ChangeEmail extends Component
             ->where('user_id','=',$user_details['user_id'])
             ->get()
             ->first();
+          
         $this->user_details = [
             "user_id" => $user_details->user_id,
             "user_status_id"=> $user_details->user_status_id,
@@ -74,11 +75,11 @@ class ChangeEmail extends Component
             "user_profile_picture"=> $user_details->user_profile_picture,
             "user_formal_id"=> $user_details->user_formal_id,
             "user_code"=> NULL,
+            'user_email' => null,
             "date_created"=> $user_details->date_created,
             "date_updated"=> $user_details->date_updated,
         ];
-        $this->user_details['user_email']= null;
-
+        // dd(  $this->user_details);
     }
     public function render()
     {

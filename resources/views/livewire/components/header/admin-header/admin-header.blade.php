@@ -22,7 +22,7 @@
                     <div class="col">
                     <a class="dropdown-toggle link-underline link-underline-opacity-0 @if($mode == 1) link-dark @else link-light @endif" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <span>
-                            <img src="{{ asset('assets\page\home.png') }}"  alt="Hanrickson E. Dumapit Web Developer" class="object-fit-cover rounded-circle mx-3" width="40px" height="40px">
+                            <img src="{{asset('storage/images/original/'.$user_details['user_profile_picture'])}}"  alt="Hanrickson E. Dumapit Web Developer" class="object-fit-cover rounded-circle mx-3" width="40px" height="40px">
                             <span class="@if($mode == 0) text-white @else text-dark @endif d-none d-lg-inline-block">
                             {{$fullname}}
                             </span>
