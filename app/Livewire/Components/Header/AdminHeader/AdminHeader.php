@@ -14,15 +14,32 @@ class AdminHeader extends Component
 
     public $fullname;
 
-    public function mount(Request $request){
+    public function boot(Request $request){
         $data = $request->session()->all();
-        $this->fullname = DB::table('users as u')
-            ->select(DB::raw('CONCAT(user_firstname," ",user_middlename," ",user_lastname) as fullname'))
-            ->where('user_id','=',$data['user_id'])
-            ->first()->fullname;
         $this->mode = $data['mode'];
         $this->user_id = $data['user_id'];
+        if(!isset($data['user_id'])){
+            header("Location: /login");
+            die();
+        }else{
+            $user_status = DB::table('users as u')
+            ->select('u.user_status_id','us.user_status_details')
+            ->join('user_status as us', 'u.user_status_id', '=', 'us.user_status_id')
+            ->where('user_id','=', $data['user_id'])
+            ->first();
+        }
 
+        if(isset($user_status->user_status_details) && $user_status->user_status_details == 'deleted' ){
+            header("Location: /deleted");
+            die();
+        }
+
+        if(isset($user_status->user_status_details) && $user_status->user_status_details == 'inactive' ){
+            header("Location: /deleted");
+            die();
+        }
+    }
+    public function update_data(){
         $user_details =  DB::table('users as u')
             ->select(DB::raw('CONCAT(user_firstname," ",user_middlename," ",user_lastname) as fullname'),
             'user_id',
@@ -40,21 +57,21 @@ class AdminHeader extends Component
             'user_middlename',
             'user_lastname',
             'user_suffix',
-    
+
             'user_addr_street' ,
             'user_addr_brgy' ,
             'user_addr_city_mun' ,
             'user_addr_province' ,
             'user_addr_zip_code' ,
             
-    
+
             'user_birthdate' ,
             'user_profile_picture' ,
             'user_formal_id' ,
-    
+
             'u.date_created' ,
             'u.date_updated',
-    
+
             'user_gender_details' ,
             )
             ->join('user_status as us', 'u.user_status_id', '=', 'us.user_status_id')
@@ -98,6 +115,18 @@ class AdminHeader extends Component
             'user_address' => $user_details->user_addr_street.', '.$user_details->user_addr_brgy.', '.$user_details->user_addr_city_mun.', '.$user_details->user_addr_province.', '.$user_details->user_addr_zip_code
         ];
     }
+    public function mount(Request $request){
+        $data = $request->session()->all();
+        $this->fullname = DB::table('users as u')
+            ->select(DB::raw('CONCAT(user_firstname," ",user_middlename," ",user_lastname) as fullname'))
+            ->where('user_id','=',$data['user_id'])
+            ->first()->fullname;
+        $this->mode = $data['mode'];
+        
+
+        self::update_data();
+   
+    }
     public function render()
     {
         return view('livewire.components.header.admin-header.admin-header',['user_details'=>$this->user_details]);
@@ -105,6 +134,6 @@ class AdminHeader extends Component
     public function mode_toggle(Request $request){
         $request->session()->put('mode', !$this->mode);
         $this->dispatch('refresh-page');
-    
+        self::update_data();
     }
 }
