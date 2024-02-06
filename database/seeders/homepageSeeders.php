@@ -14,7 +14,7 @@ class homepageSeeders extends Seeder
     public function run(): void
     {
         DB::statement('INSERT INTO homepages VALUES(
-            NULL,
+            1,
             1,
             "About Page",
             "about_pages",
@@ -25,7 +25,7 @@ class homepageSeeders extends Seeder
             NOW()
         );');
         DB::statement('INSERT INTO homepages VALUES(
-            NULL,
+            2,
             1,
             "Links",
             "links",
@@ -36,7 +36,7 @@ class homepageSeeders extends Seeder
             NOW()
         );');
         DB::statement('INSERT INTO homepages VALUES(
-            NULL,
+            3,
             1,
             "About Contents",
             "about_contents",
@@ -47,7 +47,7 @@ class homepageSeeders extends Seeder
             NOW()
         );');
         DB::statement('INSERT INTO homepages VALUES(
-            NULL,
+            4,
             1,
             "Skills",
             "skills",
@@ -58,7 +58,7 @@ class homepageSeeders extends Seeder
             NOW()
         );');
         DB::statement('INSERT INTO homepages VALUES(
-            NULL,
+            5,
             1,
             "Projects",
             "projects",
@@ -69,7 +69,7 @@ class homepageSeeders extends Seeder
             NOW()
         );');
         DB::statement('INSERT INTO homepages VALUES(
-            NULL,
+            6,
             1,
             "Blogs",
             "blogs",
@@ -80,7 +80,7 @@ class homepageSeeders extends Seeder
             NOW()
         );');
         DB::statement('INSERT INTO homepages VALUES(
-            NULL,
+            7,
             1,
             "Experiences",
             "experiences",
@@ -91,7 +91,7 @@ class homepageSeeders extends Seeder
             NOW()
         );');
         DB::statement('INSERT INTO homepages VALUES(
-            NULL,
+            8,
             1,
             "Educations",
             "educations",
