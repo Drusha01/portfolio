@@ -1608,5 +1608,112 @@ class column_seeders extends Seeder
             NOW(),
             NOW()
         );');
+
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            17,
+            1,
+            1,
+            "#",
+            "user_id",
+            "text-center",
+            "",
+            1,
+            NOW(),
+            NOW()
+        );');
+
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            17,
+            1,
+            1,
+            "Firstname",
+            "user_firstname",
+            "",
+            "",
+            2,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            17,
+            1,
+            1,
+            "Middlename",
+            "user_middlename",
+            "",
+            "",
+            3,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            17,
+            1,
+            1,
+            "Lastname",
+            "user_lastname",
+            "",
+            "",
+            4,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            17,
+            1,
+            1,
+            "Profile",
+            "user_profile_picture",
+            "",
+            "",
+            5,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            17,
+            1,
+            1,
+            "Date Created",
+            "date_created",
+            "",
+            "",
+            6,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            17,
+            1,
+            1,
+            "Date Updated",
+            "date_updated",
+            "",
+            "",
+            7,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            17,
+            1,
+            1,
+            "Action",
+            "user_id",
+            "text-center",
+            "",
+            8,
+            NOW(),
+            NOW()
+        );');
+      
     }
 }

@@ -15,7 +15,7 @@ class table_seeders extends Seeder
     {
         DB::statement('DELETE FROM tables WHERE 1;');
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            1,
             1,
             "achievements",
             1,
@@ -24,7 +24,7 @@ class table_seeders extends Seeder
             NOW()
         );');
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            2,
             1,
             "experience",
             1,
@@ -33,7 +33,7 @@ class table_seeders extends Seeder
             NOW()
         );');
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            3,
             1,
             "education",
             1,
@@ -42,7 +42,7 @@ class table_seeders extends Seeder
             NOW()
         );');
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            4,
             1,
             "about_pages",
             1,
@@ -52,7 +52,7 @@ class table_seeders extends Seeder
         );');
 
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            5,
             1,
             "about_content",
             1,
@@ -61,7 +61,7 @@ class table_seeders extends Seeder
             NOW()
         );');
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            6,
             1,
             "links",
             1,
@@ -70,7 +70,7 @@ class table_seeders extends Seeder
             NOW()
         );');
           DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            7,
             1,
             "skills",
             1,
@@ -80,7 +80,7 @@ class table_seeders extends Seeder
         );');
       
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            8,
             1,
             "faq",
             1,
@@ -91,7 +91,7 @@ class table_seeders extends Seeder
 
         // projects
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            9,
             1,
             "projects",
             1,
@@ -101,7 +101,7 @@ class table_seeders extends Seeder
         );');
 
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            10,
             1,
             "project_image_contents",
             1,
@@ -111,7 +111,7 @@ class table_seeders extends Seeder
         );');
 
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            11,
             1,
             "project_developers",
             1,
@@ -121,7 +121,7 @@ class table_seeders extends Seeder
         );');
 
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            12,
             1,
             "developers",
             1,
@@ -131,7 +131,7 @@ class table_seeders extends Seeder
         );');
 
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            13,
             1,
             "blogs",
             1,
@@ -141,7 +141,7 @@ class table_seeders extends Seeder
         );');
 
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            14,
             1,
             "contacts",
             1,
@@ -151,7 +151,7 @@ class table_seeders extends Seeder
         );');
 
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            15,
             1,
             "contact_infos",
             1,
@@ -160,9 +160,19 @@ class table_seeders extends Seeder
             NOW()
         );');
         DB::statement('INSERT INTO tables VALUES(
-            NULL,
+            16,
             1,
             "homepages",
+            1,
+            1,
+            NOW(),
+            NOW()
+        );');
+
+        DB::statement('INSERT INTO tables VALUES(
+            17,
+            1,
+            "Users",
             1,
             1,
             NOW(),

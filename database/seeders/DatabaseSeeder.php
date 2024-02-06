@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             table_seeders::class,
             column_seeders::class,
             homepageSeeders::class,
+            UserSeeder::class,
         ]);
     }
 }

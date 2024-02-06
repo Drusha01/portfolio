@@ -338,6 +338,16 @@
                                                 <label for="mode" class="form-check-label" for="flexSwitchCheckDefault"> @if($skill_active == 1) Active @else Inactive @endif</label>
                                             </div>
                                         </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="me-1 sort-btn ">Per&nbsp;Page</div>
+                                            <div>
+                                                <select id="size" class="form-select @if($mode == 0) bg-dark text-light @endif" wire:model="skill_params.offset" wire:change="update_skill_params({{$skill_data['pagination_params']['page_between']}},{{$skill_data['pagination_params']['offset']}},1,1)">
+                                                    <option value="5" >5</option>
+                                                    <option selected value="10">10</option>
+                                                    <option value="50">50</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -353,8 +363,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($skill_data)
-                                                @foreach ($skill_data as $key =>$value)
+                                            @if($skill_data['content'])
+                                                @foreach ($skill_data['content'] as $key =>$value)
                                                     <tr wire:key="experience-{{$key}}" class="align-middle">
                                                         @foreach($skill_filter as $filter_key =>$filter_value)
                                                             @if($filter_value['name'] == '#'  && $filter_value['active'])
@@ -416,6 +426,20 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                @if($skill_data['page_links'])
+                                    <div class="row d-flex text-center">
+                                        <div class="col">
+                                            @foreach ($skill_data['page_links'] as $key =>$value)
+                                                <button 
+                                                    wire:click="update_skill_params({{$skill_data['pagination_params']['page_between']}},10,{{$value['cursor']}},{{$value['page']}})"
+                                                    style="min-width:60px;"
+                                                    class="btn @if($mode == 1) @if($value['active'])  btn-dark @else btn-outline-dark @endif @else  @if($value['active'])  btn-light @else btn-outline-light @endif @endif">
+                                                        {{$value['page_content']}}
+                                                </button>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
