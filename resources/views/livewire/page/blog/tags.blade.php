@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                             @foreach($tag_data as $key =>$value)
-                            <a href="/blog/@if(isset($user_id)){{$user_id.'/'}}@endif{{'tag/'.$value->tag_details}}" class="link-underline link-underline-opacity-0 @if($mode == 0) text-white @else text-dark @endif">
+                            <a href="/blog/@if(isset($user_id)){{$user_id.'/'}}@endif{{'tag/'.$value->tag_id}}" class="link-underline link-underline-opacity-0 @if($mode == 0) text-white @else text-dark @endif">
                                 <div class="row">
                                     <div class="col-12 pt-1 text-start text-truncate" style="max-width:inherit;">
                                         <p >{{$value->tag_details}} <span class="opacity-50">({{$value->count}}) </p>

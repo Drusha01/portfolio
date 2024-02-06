@@ -40,16 +40,15 @@ class Tags extends Component
     ];
 
 
-    public $tag_details;
+    public $tag_id;
     public $tag_data = [];
     public function boot (Request $request){
+        $this->user_id =1;
         if ($request->is('blog/tag/*')) {
             $value = substr($request->path(),strlen('blog/tag/'));
            if( $value){
-            $this->tag_details = $value;
+                $this->tag_id = $value;
             }
-        }else{
-            return redirect('/blogs');
         }
     }
     public function update_data(){
@@ -317,10 +316,6 @@ class Tags extends Component
     {
         self::update_data();
 
-        $tag = (DB::table('tags')
-                    ->where('tag_details','=',$this->tag_details)
-                    ->first());
-        
         return view('livewire.page.blog.tags',[
             'blog_data'=> DB::table('blog_tags as bt')
                 ->select(
@@ -336,11 +331,11 @@ class Tags extends Component
                     'u.user_middlename',
                     'u.user_lastname',
                     )
-                ->where('bt.tag_id','=',$tag->id)
+                ->where('bt.tag_id','=',$this->tag_id)
                 ->where('b.user_id','=',1)
                 ->join('blogs as b','bt.blog_id','b.id')
                 ->join('users as u','u.user_id','b.user_id')
-                ->orderBy('date_created','asc')
+                ->orderBy('b.date_created','asc')
                 ->cursorPaginate(5)
         ])
         ->layout('components.layouts.page',[
