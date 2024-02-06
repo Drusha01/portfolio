@@ -24,6 +24,7 @@ class Settings extends Component
     public $user_max_display;
     public $user_filter = [];
     public $user_data = [];
+    public $user_columns = [];
     public $user = [
         'id' => NULL,
         'user_id'=> NULL,
@@ -55,10 +56,10 @@ class Settings extends Component
             ->get()
             ->toArray();
 
-        $columns = [];
+        $this->user_columns = [];
         $this->user_filter = [];
         foreach ($user_filter as $key => $value) {
-            array_push($columns,$value->column_name);
+            array_push($this->user_columns,$value->column_name);
             array_push($this->user_filter,[
                 'id' => intval($value->id),
                 'active'=> boolval($value->active),
@@ -68,7 +69,7 @@ class Settings extends Component
                 'style'=> $value->style
             ]);
         }
-        $this->user_data = self::paginate( $this->user_params['table'],  $columns,$this->user_params['paginate_by'],$this->user_params['inbetween'],$this->user_params['offset'], $this->user_params['cursor'] , $this->user_params['page']  );
+        $this->user_data = self::paginate( $this->user_params['table'], $this->user_columns,$this->user_params['paginate_by'],$this->user_params['inbetween'],$this->user_params['offset'], $this->user_params['cursor'] , $this->user_params['page']  );
     }
 
 

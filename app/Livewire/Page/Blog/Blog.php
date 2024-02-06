@@ -26,6 +26,15 @@ class Blog extends Component
         'link' => NULL,
         'button' => NULL,
     ];
+    public $about_params = [
+        'table'=>'blogs as b',  
+        'columns'=>null,
+        'paginate_by'=>'id',
+        'inbetween'=>3,
+        'offset'=>5,
+        'cursor'=>1 ,
+        'page'=>1
+    ];
 
 
     public $tag_details;
@@ -65,7 +74,9 @@ class Blog extends Component
             ->get()
             ->toArray();
         $this->blog_filter = [];
+        $this->blogs_columns = [];
         foreach ($blog_filter as $key => $value) {
+            array_push($this->blogs_columns,$value->column_name);
             array_push($this->blog_filter,[
                 'id' => intval($value->id),
                 'active'=> boolval($value->active),
@@ -76,8 +87,215 @@ class Blog extends Component
             ]);
         }
 
-        $this->blog_data = DB::table('blogs as b')
+        $this->blog_data = self::paginate( $this->about_params['table'],  $this->blogs_columns,$this->about_params['paginate_by'],$this->about_params['inbetween'],$this->about_params['offset'], $this->about_params['cursor'] , $this->about_params['page']  );
+        // $this->blog_data = DB::table('blogs as b')
+        //     ->select(
+        //         'b.user_id',
+        //         'b.id',
+        //         'b.image',
+        //         'b.title',
+        //         'b.content',
+        //         'link',
+        //         'button',
+        //         'b.date_created',
+        //         'u.user_firstname',
+        //         'u.user_middlename',
+        //         'u.user_lastname',
+        //         )
+        //     ->where('b.user_id','=',$this->user_id)
+        //     ->join('users as u','u.user_id','b.user_id')
+        //     ->orderBy('date_created','asc')
+        //     ->get()
+        //     ->toArray();
+        $this->tag_data = DB::table('blog_tags as bt')
             ->select(
+                DB::raw('count(bt.id) as count'),'bt.tag_id','tag_details'
+            )
+            ->where('bt.user_id','=',$this->user_id)
+            ->join('tags as t','t.id','bt.tag_id')
+            ->groupBy('tag_id')
+            ->get()
+            ->toArray();
+    }
+
+    public function update_blog_params($inbetween = 3,$offset=20,$current_cursor,$page){
+        $this->about_params['inbetween'] = $inbetween;
+        $this->about_params['offset'] = $this->about_params['offset'];
+        $this->about_params['cursor'] = $current_cursor;
+        $this->about_params['page'] = $page;
+           
+        self::update_data();
+    }
+
+    public function paginate($table, $columns,$paginate_by,$inbetween = 3,$offset=20,$current_cursor,$page){
+        $total_count = DB::table($table)
+            ->select(
+                DB::raw('count(*) as total_count')
+            )
+            ->where($paginate_by,'>',0)
+            ->where('user_id','=',$this->user_id)
+            ->first()->total_count;
+        if($start = DB::table($table)
+            ->where($paginate_by,'>=',0)
+            ->where('user_id','=',$this->user_id)
+            ->orderBy($paginate_by,'asc')
+            ->limit(1)
+            ->first()){
+                $start = $start->{$paginate_by};
+            }
+        if($end = DB::table($table)
+        ->where($paginate_by,'<=',($total_count - ($total_count % $offset)+1))
+        ->where('user_id','=',$this->user_id)
+        ->orderBy($paginate_by,'desc')
+        ->limit(1)
+        ->first()){
+            $end = $end->{$paginate_by};
+        }
+        $prev_inbetween = $inbetween;
+        $next_inbetween = $inbetween;
+        $next_links = [];
+        $prev_links = [];
+        $current_links = [];
+        $next_cursor = $prev_cursor = $current_cursor;
+        $prev_page = $next_page = $page;
+        $prev_offset = $next_offset = 0;
+        if(!$current_cursor){
+            $prev_page = $next_page = $page = 0;
+            $current_cursor = 0;
+            $next_cursor = $prev_cursor = $current_cursor; 
+        }elseif($current_cursor && $current_cursor ==  $end ){
+            $prev_page = $next_page = $page = ceil($total_count/$offset);
+            $current_cursor = $total_count;
+            $next_cursor = $prev_cursor = $end;
+        }
+
+        array_push( $current_links, [
+            'cursor' =>  $next_cursor,
+            'active' => true,
+            'page'=>  $next_page
+        ]);
+        for ($i=0; $i < $inbetween; $i++) { 
+            if($cursor = DB::table($table)
+            ->select($paginate_by)
+            ->where($paginate_by,'>=', $next_cursor)
+            ->where('user_id','=',$this->user_id)
+            ->orderBy($paginate_by,'asc')
+            ->limit(1)
+            ->offset($offset)
+            ->first()){
+                $next_page++;
+                $next_cursor = $cursor->{$paginate_by};
+                $next_inbetween--;
+                array_push( $next_links, [
+                    'cursor' =>  $next_cursor,
+                    'active' => false,
+                    'page'=>  $next_page
+                ]);
+            }
+        }
+        for ($i=0; $i < $inbetween; $i++) { 
+            if($cursor = DB::table($table)
+            ->select($paginate_by)
+            ->where($paginate_by,'<=',$prev_cursor)
+            ->where('user_id','=',$this->user_id)
+            ->orderBy($paginate_by,'desc')
+            ->limit(1)
+            ->offset($offset)
+            ->first()){
+                $prev_page--;
+                $prev_cursor = $cursor->{$paginate_by};
+                $prev_inbetween--;
+                array_push( $prev_links, [
+                    'cursor' =>  $prev_cursor,
+                    'active' => false,
+                    'page'=>  $prev_page
+                ]);
+            }
+        }
+        if( $next_inbetween > 0){
+            for ($i=0; $i < $next_inbetween; $i++) { 
+                if($cursor = DB::table($table)
+                ->select($paginate_by)
+                ->where($paginate_by,'<=',$prev_cursor)
+                ->where('user_id','=',$this->user_id)
+                ->orderBy($paginate_by,'desc')
+                ->limit(1)
+                ->offset($offset)
+                ->first()){
+                    $prev_page--;
+                    $prev_cursor = $cursor->{$paginate_by};
+                    array_push( $prev_links, [
+                        'cursor' =>  $prev_cursor,
+                        'active' => false,
+                        'page'=>  $prev_page
+                    ]);
+                }
+            }
+        }
+      
+        if($prev_inbetween >0){
+            for ($i=0; $i < $prev_inbetween; $i++) { 
+                if($cursor = DB::table($table)
+                ->select($paginate_by)
+                ->where($paginate_by,'>=',$next_cursor)
+                ->where('user_id','=',$this->user_id)
+                ->orderBy($paginate_by,'asc')
+                ->limit(1)
+                ->offset($offset)
+                ->first()){
+                    $next_page++;
+                    $next_cursor = $cursor->{$paginate_by};
+                    array_push( $next_links, [
+                        'cursor' =>  $next_cursor,
+                        'active' => false,
+                        'page'=>  $next_page
+                    ]);
+                    
+                }
+            }
+        }
+        
+        $links = [];
+        array_push( $links, [
+            'cursor' =>  $start,
+            'active' => $current_links[0]['page'] == 1,
+            'page'=>  1,
+            'page_content'=> 'start'
+        ]);
+        $prev_links =array_reverse($prev_links);
+        foreach ($prev_links as $key => $value) {
+            array_push( $links, [
+                'cursor' =>   $value['cursor'],
+                'active' => $value['active'],
+                'page'=>  intval($value['page']),
+                'page_content'=>  intval($value['page']),
+            ]);
+        }
+        foreach ($current_links as $key => $value) {
+            array_push( $links, [
+                'cursor' =>   $value['cursor'],
+                'active' => $value['active'],
+                'page'=>  intval($value['page']),
+                'page_content'=>  intval($value['page']),
+            ]);
+        }
+        foreach ($next_links as $key => $value) {
+            array_push( $links, [
+                'cursor' =>   $value['cursor'],
+                'active' => $value['active'],
+                'page'=> intval($value['page']),
+                'page_content'=>  intval($value['page']),
+            ]);
+        }
+        array_push( $links, [
+            'cursor' =>  $end,
+            'active' => $current_links[0]['page'] == intval(ceil($total_count/$offset)),
+            'page'=>  intval(ceil($total_count/$offset)),
+            'page_content'=> 'end'
+        ]);
+
+        $page_content = DB::table($table)
+            ->select( 
                 'b.user_id',
                 'b.id',
                 'b.image',
@@ -89,21 +307,26 @@ class Blog extends Component
                 'u.user_firstname',
                 'u.user_middlename',
                 'u.user_lastname',
-                )
-            ->where('b.user_id','=',$this->user_id)
-            ->join('users as u','u.user_id','b.user_id')
-            ->orderBy('date_created','asc')
-            ->get()
-            ->toArray();
-        $this->tag_data = DB::table('blog_tags as bt')
-            ->select(
-                DB::raw('count(bt.id) as count'),'bt.tag_id','tag_details'
             )
-            ->where('bt.user_id','=',$this->user_id)
-            ->join('tags as t','t.id','bt.tag_id')
-            ->groupBy('tag_id')
+            ->join('users as u','u.user_id','b.user_id')
+            ->where('b.'.$paginate_by,'>=',$current_links[0]['cursor'] )
+            ->where('b.user_id','=',$this->user_id)
+            ->orderBy('b.'.$paginate_by,'asc')
+            ->limit($offset)
             ->get()
             ->toArray();
+
+        $page = [
+            'content' => $page_content,
+            'page_links' => $links,
+            'pagination_params' =>[
+                'total_pages' => intval(ceil($total_count/$offset)),
+                'page_between' =>$inbetween,
+                'offset' =>$offset,
+                'current_page' => $page,
+            ]
+        ];
+        return $page;
     }
 
     public function get_table_info($table_name){
