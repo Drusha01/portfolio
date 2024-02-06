@@ -57,6 +57,8 @@ class PageHeader extends Component
         $this->mode = $data['mode'];
         if ( !$request->is('/') && $request->is('blogdetails/*')) {
             $this->user_id = 1;
+        }elseif(!$request->is('/') && $request->is('blog/tag/*')){
+            $this->user_id = 1;
         }else{
             if ( !$request->is('/') && $request->is('*/*')) {
                 $this->request = (substr($request->path(),0,strpos($request->path(),'/')+1));

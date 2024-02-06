@@ -32,6 +32,7 @@ use App\Livewire\Page\Project\Project;
 use App\Livewire\Page\Blog\Blog;
 use App\Livewire\Page\TechStack\TechStack;
 use App\Livewire\Page\Blog\BlogDetails;
+use App\Livewire\Page\Blog\Tags;
 
 // user
 use App\Livewire\User\Profile\Profile as UserProfile;
@@ -101,6 +102,8 @@ Route::middleware([Darkmode::class])->group(function () {
         Route::get('techstack/{id}', TechStack::class)->name('techstack');
 
         Route::get('blogdetails/{id}', BlogDetails::class)->name('blog.details');
+        Route::get('blog/tag/{id}', Tags::class)->name('blog.tags');
+        
     });
 });
 
