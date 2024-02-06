@@ -31,7 +31,7 @@
                                 @if($value->button)
                                 <div class="row ">
                                     <div class="col-12 text-start px-5 py-4 d-flex justify-content-end">
-                                        <a class="btn btn-primary " href="blog/@if(isset($user_id)){{$user_id.'/'}}@endif{{$value->id}}">{{$value->button}}</a>
+                                        <a class="btn @if($mode == 1) btn-primary @else btn-outline-primary @endif " href="blog/@if(isset($user_id)){{$user_id.'/'}}@endif{{$value->id}}">{{$value->button}}</a>
                                     </div>
                                 </div>
                                 @endif
