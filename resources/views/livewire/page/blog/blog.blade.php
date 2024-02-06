@@ -6,8 +6,8 @@
             </div>
             <div class="row">
                 <div class="col-lg-7 col-md-12 col-sm-12 mx-lg-5 ">
-                    @if($blog_data['content'])
-                        @foreach ($blog_data['content'] as $key =>$value)
+                    @if($blog_data)
+                        @foreach ($blog_data as $key =>$value)
                             <div class="col-12 p-0 m-0 shadow">
                                 <div class="row">
                                     <div class="col">
@@ -70,21 +70,10 @@
                         @endforeach
                     @endif
 
-                    @if($blog_data['page_links'])
-                        <div class="row d-flex text-center">
-                            <div class="col">
-                                @foreach ($blog_data['page_links'] as $key =>$value)
-                                    <button 
-                                        @click.debounce.500ms="scrollTo({top: 0, behavior: 'smooth'})"
-                                        wire:click="update_blog_params({{$blog_data['pagination_params']['page_between']}},5,{{$value['cursor']}},{{$value['page']}})"
-                                        style="min-width:60px;"
-                                        class="btn @if($mode == 1) @if($value['active'])  btn-dark @else btn-outline-dark @endif @else  @if($value['active'])  btn-light @else btn-outline-light @endif @endif">
-                                            {{$value['page_content']}}
-                                    </button>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
+                    <div class="d-flex justify-content-center text-dark" @click.debounce.250ms="scrollTo({top: 0, behavior: 'smooth'})">
+                        {{ $blog_data->links() }}
+                    </div>
+                   
                 </div>
                 @if($tag_data)
                 <div class="col-lg-3 col-md-12 col-sm-12 ">

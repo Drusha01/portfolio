@@ -7,16 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
+use Livewire\WithPagination;
 
 class Blog extends Component
 {
+    use WithPagination;
     public $title = 'Blog';
     public $mode;
 
     public $blog_active;
     public $blog_max_display;
     public $blog_filter = [];
-    public $blog_data = [];
+    // public $blog_data = [];
     public $blog = [
         'id' => NULL,
         'user_id'=> NULL,
@@ -33,7 +35,8 @@ class Blog extends Component
         'inbetween'=>3,
         'offset'=>5,
         'cursor'=>1 ,
-        'page'=>1
+        'page'=>1,
+        'order_by'=>'asc'
     ];
 
 
@@ -87,7 +90,7 @@ class Blog extends Component
             ]);
         }
 
-        $this->blog_data = self::paginate( $this->about_params['table'],  $this->blogs_columns,$this->about_params['paginate_by'],$this->about_params['inbetween'],$this->about_params['offset'], $this->about_params['cursor'] , $this->about_params['page']  );
+        // $this->blog_data = self::paginate( $this->about_params['table'],  $this->blogs_columns,$this->about_params['paginate_by'],$this->about_params['inbetween'],$this->about_params['offset'], $this->about_params['cursor'] , $this->about_params['page']  );
         // $this->blog_data = DB::table('blogs as b')
         //     ->select(
         //         'b.user_id',
@@ -324,6 +327,7 @@ class Blog extends Component
                 'page_between' =>$inbetween,
                 'offset' =>$offset,
                 'current_page' => $page,
+                'ordery_by' => $page,
             ]
         ];
         return $page;
@@ -344,7 +348,26 @@ class Blog extends Component
     
     public function render()
     {
-        return view('livewire.page.blog.blog')
+        return view('livewire.page.blog.blog',[
+            'blog_data'=> DB::table('blogs as b')
+                ->select(
+                    'b.user_id',
+                    'b.id',
+                    'b.image',
+                    'b.title',
+                    'b.content',
+                    'link',
+                    'button',
+                    'b.date_created',
+                    'u.user_firstname',
+                    'u.user_middlename',
+                    'u.user_lastname',
+                    )
+                ->where('b.user_id','=',$this->user_id)
+                ->join('users as u','u.user_id','b.user_id')
+                ->orderBy('id','desc')
+                ->cursorPaginate(5)
+        ])
         ->layout('components.layouts.page',[
             'title'=>$this->title,
             'mode'=>$this->mode]);

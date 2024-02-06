@@ -18,7 +18,7 @@ class table_seeders extends Seeder
             1,
             1,
             "achievements",
-            1,
+            10,
             1,
             NOW(),
             NOW()
@@ -27,7 +27,7 @@ class table_seeders extends Seeder
             2,
             1,
             "experience",
-            1,
+            10,
             1,
             NOW(),
             NOW()
@@ -36,7 +36,7 @@ class table_seeders extends Seeder
             3,
             1,
             "education",
-            1,
+            10,
             1,
             NOW(),
             NOW()
@@ -55,7 +55,7 @@ class table_seeders extends Seeder
             5,
             1,
             "about_content",
-            1,
+            10,
             1,
             NOW(),
             NOW()
@@ -64,7 +64,7 @@ class table_seeders extends Seeder
             6,
             1,
             "links",
-            1,
+            10,
             1,
             NOW(),
             NOW()
