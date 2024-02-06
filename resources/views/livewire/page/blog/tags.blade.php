@@ -40,7 +40,7 @@
                                     <div class="col-12">
                                         <div style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; " >
                                             @foreach($this->tag_data as $tag_key => $tag_value)
-                                                <a href="/blog/@if(isset($this->user_id) && $this->user_id !=1 ){{$this->user_id.'/'}}@endif{{'tag/'.$tag_value->tag_details}}">
+                                                <a href="/blog/@if(isset($this->user_id) && $this->user_id !=1 ){{$this->user_id.'/'}}@endif{{'tag/'.$tag_value->tag_id}}">
                                                     <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
                                                         {{$tag_value->tag_details}}
                                                     </span>
