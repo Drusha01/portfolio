@@ -141,10 +141,10 @@
                                                                     </div>  
                                                                     @endif
                                                                 </td>
-                                                            @elseif ($filter_value['name'] == 'Logo'  && $filter_value['active'])
+                                                            @elseif ($filter_value['name'] == 'Image'  && $filter_value['active'])
                                                                 <td class="">
-                                                                    <a href="{{asset('storage/content/experience/'.$value->{$filter_value['column_name']})}}" target="blank">
-                                                                        <img src="{{asset('storage/content/experience/'.$value->{$filter_value['column_name']})}}" alt="" style="height: 100px; ">
+                                                                    <a href="{{asset('storage/images/original/'.$value->{$filter_value['column_name']})}}" target="blank">
+                                                                        <img src="{{asset('storage/images/resize/'.$value->{$filter_value['column_name']})}}" alt="" style="height: 100px; ">
                                                                     </a>
                                                                 </td>
                                                             @else

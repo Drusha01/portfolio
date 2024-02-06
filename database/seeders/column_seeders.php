@@ -1622,6 +1622,32 @@ class column_seeders extends Seeder
             NOW(),
             NOW()
         );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            17,
+            1,
+            1,
+            "Username",
+            "user_name",
+            "",
+            "",
+            2,
+            NOW(),
+            NOW()
+        );');
+        DB::statement('INSERT INTO table_columns VALUES(
+            NULL,
+            17,
+            1,
+            1,
+            "Email",
+            "user_email",
+            "",
+            "",
+            3,
+            NOW(),
+            NOW()
+        );');
 
         DB::statement('INSERT INTO table_columns VALUES(
             NULL,
@@ -1632,7 +1658,7 @@ class column_seeders extends Seeder
             "user_firstname",
             "",
             "",
-            2,
+            4,
             NOW(),
             NOW()
         );');
@@ -1645,7 +1671,7 @@ class column_seeders extends Seeder
             "user_middlename",
             "",
             "",
-            3,
+            5,
             NOW(),
             NOW()
         );');
@@ -1658,7 +1684,7 @@ class column_seeders extends Seeder
             "user_lastname",
             "",
             "",
-            4,
+            6,
             NOW(),
             NOW()
         );');
@@ -1667,11 +1693,11 @@ class column_seeders extends Seeder
             17,
             1,
             1,
-            "Profile",
+            "Image",
             "user_profile_picture",
             "",
             "",
-            5,
+            7,
             NOW(),
             NOW()
         );');
@@ -1684,7 +1710,7 @@ class column_seeders extends Seeder
             "date_created",
             "",
             "",
-            6,
+            8,
             NOW(),
             NOW()
         );');
@@ -1697,7 +1723,7 @@ class column_seeders extends Seeder
             "date_updated",
             "",
             "",
-            7,
+            9,
             NOW(),
             NOW()
         );');
@@ -1710,7 +1736,7 @@ class column_seeders extends Seeder
             "user_id",
             "text-center",
             "",
-            8,
+            10,
             NOW(),
             NOW()
         );');
