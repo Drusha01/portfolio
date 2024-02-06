@@ -67,25 +67,32 @@ class PageFooter extends Component
     public function mount(Request $request){
         $data = $request->session()->all();
         $this->mode = $data['mode'];
-
-        if ($request->is('*/*')) {
-            $value = substr($request->path(),strpos($request->path(),'/')+1);
-           if( $value){
-                $this->user_id = intval($value);
-                if(DB::table('users as u')
-                    ->where('user_id','=',$this->user_id)
-                    ->first()){
-
+        if ( !$request->is('/') && $request->is('blogdetails/*')) {
+            $this->user_id = 1;
+        }else{
+            if ( !$request->is('/') && $request->is('*/*')) {
+                $this->request = (substr($request->path(),0,strpos($request->path(),'/')+1));
+            }
+    
+            if ($request->is('*/*')) {
+                $value = substr($request->path(),strpos($request->path(),'/')+1);
+               if( $value){
+                    $this->user_id = intval($value);
+                    if(DB::table('users as u')
+                        ->where('user_id','=',$this->user_id)
+                        ->first()){
+    
+                    }else{
+                        return redirect('/');
+                    }
                 }else{
-                    return redirect('/');
+                    $this->user_id = 1;
                 }
             }else{
-                $this->user_id = 1;
+                $this->user_id = DB::table('users as u')
+                    ->where('user_name','=','Drusha01')
+                    ->first()->user_id;
             }
-        }else{
-            $this->user_id = DB::table('users as u')
-                ->where('user_name','=','Drusha01')
-                ->first()->user_id;
         }
 
         self::update_data();

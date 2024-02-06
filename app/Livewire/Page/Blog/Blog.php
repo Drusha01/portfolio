@@ -348,6 +348,8 @@ class Blog extends Component
     
     public function render()
     {
+        self::update_data();
+        
         return view('livewire.page.blog.blog',[
             'blog_data'=> DB::table('blogs as b')
                 ->select(
