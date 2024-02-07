@@ -12,20 +12,23 @@ class ChangeEmail extends Component
 {
     public $valid = false;
     public $title;
-
+    public $user_details;
+    public $user_id ;
     protected $rules = [
         'email' => 'required|email',
     ];
-    public function booted(Request $request){
-        $user_details = $request->session()->all();
-        if(!isset($user_details['user_id'])){
+    public function boot(Request $request){
+        $data = $request->session()->all();
+        $this->user_id =  $data['user_id'];
+
+        if(!isset($this->user_id)){
             header("Location: login");
             die();
         }else{
             $user_status = DB::table('users as u')
             ->select('u.user_status_id','us.user_status_details')
             ->join('user_status as us', 'u.user_status_id', '=', 'us.user_status_id')
-            ->where('user_id','=', $user_details['user_id'])
+            ->where('user_id','=', $this->user_id)
             ->first();
         }
 
@@ -40,15 +43,13 @@ class ChangeEmail extends Component
         }
     }
 
-    public function mount(Request $request){
-        $this->title = 'Change Email';
-        $user_details = $request->session()->all();
-        
+    public function update_data(){
+        // dd($this->user_details);
         $user_details = DB::table('users')
-            ->where('user_id','=',$user_details['user_id'])
+            ->where('user_id','=',$this->user_id)
             ->get()
             ->first();
-          
+        
         $this->user_details = [
             "user_id" => $user_details->user_id,
             "user_status_id"=> $user_details->user_status_id,
@@ -79,29 +80,37 @@ class ChangeEmail extends Component
             "date_created"=> $user_details->date_created,
             "date_updated"=> $user_details->date_updated,
         ];
+    }
+
+    public function mount(Request $request){
+        $this->title = 'Change Email';
+        $data = $request->session()->all();
+        $this->user_id =  $data['user_id'];
+        
+        self::update_data();
         // dd(  $this->user_details);
     }
     public function render()
     {
-        return view('livewire.authentication.change-email
-        ')->layout('components.layouts.guest',[
+        return view('livewire.authentication.change-email')
+        ->layout('components.layouts.guest',[
             'title'=>$this->title]);
         
     }
-    public function change_email(){
+    public function change_email(Request $request){
         if (filter_var($this->user_details['user_email'], FILTER_VALIDATE_EMAIL)) {
             if(DB::table('users')
             ->where('user_email',$this->user_details['user_email'])
             ->where('user_email_verified', 1)
             ->first()){
-                $this->dispatchBrowserEvent('swal:redirect',[
-                    'position'          									=> 'center',
-                    'icon'              									=> 'warning',
-                    'title'             									=> 'Email address is used!',
-                    'showConfirmButton' 									=> 'true',
-                    'timer'             									=> '2000',
-                    'link'              									=> '#'
-                ]);
+                $this->dispatch('swal:redirect',
+                    position          									: 'center',
+                    icon              									: 'warning',
+                    title             									: 'Email address is used!',
+                    showConfirmButton 									: 'true',
+                    timer             									: '2000',
+                    link              									: '#'
+                );
             }else{
                 $code = rand(100000,1000000);
                 Mail::send('mail.code-verification-email', [
@@ -115,38 +124,39 @@ class ChangeEmail extends Component
                 $deleted = DB::table('user_activations')
                     ->where('user_activation_email', '=', $this->user_details['user_email'])
                     ->delete();
-                DB::table('user_activations')->insert([
+                if( DB::table('user_activations')->insert([
                     'user_activation_email' => $this->user_details['user_email'],
                     'user_activation_code' => $code,
                     'user_activation_count' => 0
-                ]);
-
-                $this->dispatchBrowserEvent('swal:redirect',[
-                    'position'          									=> 'center',
-                    'icon'              									=> 'success',
-                    'title'             									=> 'Code has been sent to your email address!',
-                    'showConfirmButton' 									=> 'true',
-                    'timer'             									=> '2000',
-                    'link'              									=> '#'
-                ]);
+                    ])){
+                        $request->session()->put('user_email',  $this->user_details['user_email']);
+                }
+                $this->dispatch('swal:redirect',
+                    position          									: 'center',
+                    icon              									: 'success',
+                    title             									: 'Code has been sent to your email address!',
+                    showConfirmButton 									: 'true',
+                    timer             									: '2000',
+                    link              									: '#'
+                );
                 $this->valid = true;
             }
            
         }else{
-            $this->dispatchBrowserEvent('swal:redirect',[
-                'position'          									=> 'center',
-                'icon'              									=> 'warning',
-                'title'             									=> 'Please enter a valid Email!',
-                'showConfirmButton' 									=> 'true',
-                'timer'             									=> '1000',
-                'link'              									=> '#'
-            ]);
+            $this->dispatch('swal:redirect',
+                position          									: 'center',
+                icon              									: 'warning',
+                title             									: 'Please enter a valid Email!',
+                showConfirmButton 									: 'true',
+                timer             									: '1000',
+                link              									: '#'
+            );
         }
     }
     public function verify_code(Request $request){
-        $user_details = $request->session()->all();
+        $data = $request->session()->all();
         $user_details = DB::table('users')
-        ->where('user_id','=',$user_details['user_id'])
+        ->where('user_id','=',$data['user_id'])
         ->get()
         ->first();
         
@@ -154,10 +164,11 @@ class ChangeEmail extends Component
             // $this->validate();
             $activation_details = DB::table('user_activations')
                 ->select('user_activation_id', 'user_activation_email', 'user_activation_code','user_activation_count','date_created', 'date_updated',DB::raw('NOW() as time_now'))
-                ->where('user_activation_email',  $this->user_details['user_email'])
+                ->where('user_activation_email',$data['user_email'])
                 ->first();
             // // check how long
             if(1){
+                
                 if($activation_details && $activation_details->user_activation_code == $this->user_details['user_code']){
                     if($activation_details->user_activation_count<=4){
                             // save into session
@@ -165,76 +176,76 @@ class ChangeEmail extends Component
                             DB::table('users')
                                 ->where('user_id','=',$user_details->user_id)
                                 ->update([
-                                    'user_email'=> $this->user_details['user_email'],
+                                    'user_email'=> $data['user_email'],
                                     'user_email_verified'=>1
                                 ]);
                             $deleted = DB::table('user_activations')
-                            ->where('user_activation_email', '=',  $this->user_details['user_email'])
+                            ->where('user_activation_email', '=',  $data['user_email'])
                             ->delete();
                             $this->valid = false;
 
-                            $this->dispatchBrowserEvent('swal:redirect',[
-                                'position'          									=> 'center',
-                                'icon'              									=> 'success',
-                                'title'             									=> 'Successfully updated your email!',
-                                'showConfirmButton' 									=> 'true',
-                                'timer'             									=> '1000',
-                                'link'              									=> 'admin/profile'
-                            ]);
+                            $this->dispatch('swal:redirect',
+                                position          									: 'center',
+                                icon              									: 'success',
+                                title             									: 'Successfully updated your email!',
+                                showConfirmButton 									: 'true',
+                                timer             									: '1000',
+                                link              									: 'admin/profile'
+                            );
                     }else{
-                        $this->dispatchBrowserEvent('swal:redirect',[
-                            'position'          									=> 'center',
-                            'icon'              									=> 'warning',
-                            'title'             									=> 'Too many tries, code expires!',
-                            'showConfirmButton' 									=> 'true',
-                            'timer'             									=> '1000',
-                            'link'              									=> '#'
-                        ]);
+                        $this->dispatch('swal:redirect',
+                            position          									: 'center',
+                            icon              									: 'warning',
+                            title             									: 'Too many tries, code expires!',
+                            showConfirmButton 									: 'true',
+                            timer             									: '1000',
+                            link              									: '#'
+                        );
                         $deleted = DB::table('user_activations')
-                        ->where('user_activation_email', '=',  $this->user_details['user_email'])
+                        ->where('user_activation_email', '=',  $data['user_email'])
                         ->delete();
                         $this->valid = false;
                     }
                     
                 }else{
                     if($activation_details && $activation_details->user_activation_count<4){
-                        $this->dispatchBrowserEvent('swal:redirect',[
-                            'position'          									=> 'center',
-                            'icon'              									=> 'warning',
-                            'title'             									=> 'Invalid code, you have '.(5-$activation_details->user_activation_count-1).' tries!',
-                            'showConfirmButton' 									=> 'true',
-                            'timer'             									=> '1000',
-                            'link'              									=> '#'
-                        ]);
+                        $this->dispatch('swal:redirect',
+                            position          									: 'center',
+                            icon              									: 'warning',
+                            title             									: 'Invalid code, you have '.(5-$activation_details->user_activation_count-1).' tries!',
+                            showConfirmButton 									: 'true',
+                            timer             									: '1000',
+                            link              									: '#'
+                        );
                         $updated = DB::table('user_activations')
                         ->where('user_activation_id', $activation_details->user_activation_id)
                         ->update(['user_activation_count' =>  $activation_details->user_activation_count+1]);
                     }else{
-                        $this->dispatchBrowserEvent('swal:redirect',[
-                            'position'          									=> 'center',
-                            'icon'              									=> 'warning',
-                            'title'             									=> 'Too many tries, code expires!',
-                            'showConfirmButton' 									=> 'true',
-                            'timer'             									=> '1000',
-                            'link'              									=> '#'
-                        ]);
+                        $this->dispatch('swal:redirect',
+                            position          									: 'center',
+                            icon              									: 'warning',
+                            title             									: 'Too many tries, code expires!',
+                            showConfirmButton 									: 'true',
+                            timer             									: '1000',
+                            link              									: '#'
+                        );
                         $deleted = DB::table('user_activations')
-                        ->where('user_activation_email', '=',   $this->user_details['user_email'])
+                        ->where('user_activation_email', '=',   $data['user_email'])
                         ->delete();
                         $this->valid = false;
                     }
                 } 
             }else{
-                $this->dispatchBrowserEvent('swal:redirect',[
-                    'position'          									=> 'center',
-                    'icon'              									=> 'warning',
-                    'title'             									=> 'Code expires!',
-                    'showConfirmButton' 									=> 'true',
-                    'timer'             									=> '1000',
-                    'link'              									=> '#'
-                ]);
+                $this->dispatch('swal:redirect',
+                    position          									: 'center',
+                    icon              									: 'warning',
+                    title             									: 'Code expires!',
+                    showConfirmButton 									: 'true',
+                    timer             									: '1000',
+                    link              									: '#'
+                    );
                 $deleted = DB::table('user_activations')
-                    ->where('user_activation_email', '=',   $this->user_details['user_email'])
+                    ->where('user_activation_email', '=',   $data['user_email'])
                     ->delete();
                     $this->valid = false;
             }         

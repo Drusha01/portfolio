@@ -28,7 +28,7 @@
                             <li class="list-group-item @if($mode == 0) text-light bg-dark @else text-dark bg-light @endif"><strong>Gender: </strong> {{$user_details['user_gender_details']}}</li>
                             <li class="list-group-item @if($mode == 0) text-light bg-dark @else text-dark bg-light @endif"><strong>Age: </strong> {{floor((time() - strtotime($user_details['user_birthdate'])) / 31556926);}}</li>
                             <li class="list-group-item @if($mode == 0) text-light bg-dark @else text-dark bg-light @endif"><strong>Phone number: </strong> {{$user_details['user_phone']}}</li>
-                            <li class="list-group-item @if($mode == 0) text-light bg-dark @else text-dark bg-light @endif"><strong>Email: </strong> {{$user_details['user_email']}} @if($user_details['user_email_verified']==1)<a href="../change-email">change</a>@else<a href="../change-email">verify</a>@endif</li>
+                            <li class="list-group-item @if($mode == 0) text-light bg-dark @else text-dark bg-light @endif"><strong>Email: </strong> {{$user_details['user_email']}} @if($user_details['user_email_verified']==1)<a wire:navigate href="../change-email">change</a>@else<a wire:navigate href="../change-email">verify</a>@endif</li>
                             <li class="list-group-item @if($mode == 0) text-light bg-dark @else text-dark bg-light @endif"><strong>Birthdate: </strong> {{date_format(date_create($user_details['user_birthdate']),"F d, Y ")}}</li>
                             <li class="list-group-item @if($mode == 0) text-light bg-dark @else text-dark bg-light @endif"><strong>Account Created: </strong> {{date_format(date_create( $user_details['date_created']),"F d, Y ")}}</li>
                         </ul>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-6 ">
                     <div class="row text-center">
-                        <a target="blank"href="{{asset('storage/images/original/'.$user_details['user_profile_picture'])}}">
+                        <a target="blank" href="{{asset('storage/images/original/'.$user_details['user_profile_picture'])}}">
                             <div class="img">
                                 <img src="{{asset('storage/images/original/'.$user_details['user_profile_picture'])}}" alt="Hanrickson E. Dumapit , Drusha Corp " class="object-fit-cover" width="400px" height="400px">
                             </div>
