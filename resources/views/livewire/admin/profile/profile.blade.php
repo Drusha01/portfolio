@@ -53,9 +53,9 @@
                 </div>
             </div>
 
-            <div class="modal fade text-white bg-dark" id="modifyModalDetails" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabelDetails" aria-hidden="true" wire:ignore.self>
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+            <div class="modal fade" id="modifyModalDetails" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabelDetails" aria-hidden="true" wire:ignore.self>
+                <div class="modal-dialog " role="document">
+                    <div class="modal-content @if($mode == 0 ) bg-dark @endif">
                         <div class="modal-header">
                             <h5 class="modal-title" id="modifyModalLabelDetails">Modify Profile Details</h5>
                             <div type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
@@ -65,7 +65,7 @@
                         <div class="modal-body">
                             <fieldset>
                                 <!-- Full Name -->
-                                <form wire:submit.prevent="save_profile_info()">
+                                <form wire:submit.prevent="save_profile_info()" class="">
                                     <div class="form-group row mb-2">
                                         <label  class="col-sm-4 col-form-label">First name<span style="color:red;">*</span> :</label>
                                         <div class="col-sm-8">
