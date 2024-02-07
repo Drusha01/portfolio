@@ -272,7 +272,7 @@
                                                 </div>
                                             </div>
                                             @if(isset($this->user_id) && $this->user_id ==1 )
-                                                <a href="blogdetails/{{$blog_value->id}}" class=" link-underline link-underline-opacity-0 @if($mode == 1) text-dark @else text-light @endif">
+                                                <a wire:navigate href="blogdetails/{{$blog_value->id}}" class=" link-underline link-underline-opacity-0 @if($mode == 1) text-dark @else text-light @endif">
                                             @endif
                                             <div class="row" >
                                                 <div class="col-12">
@@ -300,7 +300,7 @@
                                                 <div class="col-12">
                                                     <div style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; " >
                                                         @foreach($this->tag_data as $tag_key => $tag_value)
-                                                            <a href="/blog/@if(isset($this->user_id) && $this->user_id !=1 ){{$this->user_id.'/'}}@endif{{'tag/'.$tag_value->tag_details}}">
+                                                            <a wire:navigate href="/blog/@if(isset($this->user_id) && $this->user_id !=1 ){{$this->user_id.'/'}}@endif{{'tag/'.$tag_value->tag_details}}">
                                                                 <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
                                                                     {{$tag_value->tag_details}}
                                                                 </span>

@@ -40,7 +40,7 @@
                                     <div class="col-12">
                                         <div style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; " >
                                             @foreach($this->tag_data as $tag_key => $tag_value)
-                                                <a href="/blog/@if(isset($this->user_id) && $this->user_id !=1 ){{$this->user_id.'/'}}@endif{{'tag/'.$tag_value->tag_id}}">
+                                                <a wire:navigate href="/blog/@if(isset($this->user_id) && $this->user_id !=1 ){{$this->user_id.'/'}}@endif{{'tag/'.$tag_value->tag_id}}">
                                                     <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
                                                         {{$tag_value->tag_details}}
                                                     </span>
@@ -59,7 +59,7 @@
                                 @if($value->button)
                                 <div class="row ">
                                     <div class="col-12 text-start px-5 py-4 d-flex justify-content-end">
-                                        <a class="btn @if($mode == 1) btn-primary @else btn-outline-primary @endif" href="{{$value->link}}" target="_blank">{{$value->button}}</a>
+                                        <a class="btn @if($mode == 1) btn-primary @else btn-outline-primary @endif" wire:navigate href="{{$value->link}}" target="_blank">{{$value->button}}</a>
                                     </div>
                                 </div>
                                 @endif
@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                             @foreach($tag_data as $key =>$value)
-                            <a href="/blog/@if(isset($user_id)){{$user_id.'/'}}@endif{{'tag/'.$value->tag_id}}" class="link-underline link-underline-opacity-0 @if($mode == 0) text-white @else text-dark @endif">
+                            <a wire:navigate href="/blog/@if(isset($user_id)){{$user_id.'/'}}@endif{{'tag/'.$value->tag_id}}" class="link-underline link-underline-opacity-0 @if($mode == 0) text-white @else text-dark @endif">
                                 <div class="row">
                                     <div class="col-12 pt-1 text-start text-truncate" style="max-width:inherit;">
                                         <p >{{$value->tag_details}} <span class="opacity-50">({{$value->count}}) </p>
