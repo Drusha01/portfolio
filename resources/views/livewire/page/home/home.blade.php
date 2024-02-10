@@ -16,7 +16,7 @@
                                 <div class="p-3">
                                     <h1>  <span class="text-danger">{{$this->about_page_data['0']->header}}</span></h1>
                                     <p class="lead my-4 d-none d-sm-block ">{{$this->about_page_data['0']->content}}</p>
-                                    <button class="btn btn-outline-primary btn-lg"> Hire Me</button>
+                                    <a href="/cv/Dumapit-Hanrickson-E.pdf" target="_blank" ><button class="btn btn-outline-primary btn-lg"> Hire Me</button></a>
                                 </div>
                             </div>
                         </div>
