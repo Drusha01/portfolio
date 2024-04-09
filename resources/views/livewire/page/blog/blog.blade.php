@@ -14,11 +14,14 @@
                                         <img class="" alt="Hanrickson E. Dumapit Web Developer" src="{{asset('storage/content/blogs/'.$value->image)}}" alt="" style="object-fit:cover;width:inherit;" >
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <p class="h4 text-start px-5 pt-5" style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                    <strong>{{$value->title}}</strong>
-                                </h2>
-                                </div>
+                                @if(isset($this->user_id) && $this->user_id ==1 )
+                                    <a wire:navigate href="blogdetails/{{$value->id}}" class=" link-underline link-underline-opacity-0 @if($mode == 1) text-dark @else text-light @endif">
+                                @endif
+                                    <div class="row">
+                                        <p class="h4 text-start px-5 pt-5" style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                        <strong>{{$value->title}}</strong>
+                                    </div>
+                                </a>
                                 <div class="row">
                                     <div class="col-12 text-start px-5 py-2"><span><i class="bi bi-person"></i> {{$value->user_firstname.' '.$value->user_middlename.' '.$value->user_lastname}}  &#160; &#160; &#160; &#160;<i class="bi bi-clock"></i> {{date_format(date_create($value->date_created), "F d, Y ")}}</span></div>
                                 </div>

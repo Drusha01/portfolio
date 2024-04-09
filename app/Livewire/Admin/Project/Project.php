@@ -1371,4 +1371,76 @@ class Project extends Component
         }
     }
 
+    public function move_up_project(Request $request,$id){
+        $data = $request->session()->all();
+        $count = DB::table('projects')
+            ->select(
+                DB::raw('count(*) as number_of_rows')
+            )
+            ->where('user_id','=',$data['user_id'])
+            ->first()->number_of_rows;
+        $current = DB::table('projects')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$id)
+            ->first();
+        if( $count > 1 && $current->number_order != 1){
+            $prev = DB::table('projects')
+            ->where('user_id','=',$data['user_id'])
+            ->where('number_order','<',$current->number_order)
+            ->orderBy('number_order','desc')
+            ->first();
+
+            DB::table('projects')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$prev->id)
+            ->update([
+                'number_order' => $current->number_order
+            ]);
+            DB::table('projects')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$current->id)
+            ->update([
+                'number_order' => $prev->number_order
+            ]);
+            self::update_data();
+        }
+    }
+    public function move_down_project(Request $request,$id){
+        $data = $request->session()->all();
+        $count = DB::table('projects')
+            ->select(
+                DB::raw('count(*) as number_of_rows')
+            )
+            ->where('user_id','=',$data['user_id'])
+            ->first()->number_of_rows;
+        $current = DB::table('projects')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$id)
+            ->first();
+            $current = DB::table('projects')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$id)
+            ->first();
+        if( $count > 1 && $current->number_order != $count){
+            $prev = DB::table('projects')
+            ->where('user_id','=',$data['user_id'])
+            ->where('number_order','>',$current->number_order)
+            ->orderBy('number_order','asc')
+            ->first();
+
+            DB::table('projects')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$prev->id)
+            ->update([
+                'number_order' => $current->number_order
+            ]);
+            DB::table('projects')
+            ->where('user_id','=',$data['user_id'])
+            ->where('id','=',$current->id)
+            ->update([
+                'number_order' => $prev->number_order
+            ]);
+            self::update_data();
+        }
+    }
 }
