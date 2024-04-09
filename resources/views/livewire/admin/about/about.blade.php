@@ -710,7 +710,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="about_page-link" class="form-label">Content</label>
-                                                <input type="text" id="about_page-link" class="form-control" wire:model="about_page.content" placeholder="Enter content ..." required >
+                                                <textarea id="about_page-link" class="form-control" wire:model="about_page.content" placeholder="Enter content ..." required  cols="30" rows="5"></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="about_page-location" class="form-label">Button</label>
@@ -753,7 +753,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="about_page-link" class="form-label">Content</label>
-                                                <input type="text" id="about_page-link" class="form-control" wire:model="about_page.content" placeholder="Enter content ..." required >
+                                                <textarea id="about_page-link" class="form-control" wire:model="about_page.content" placeholder="Enter content ..." required  cols="30" rows="5"></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="about_page-location" class="form-label">Button</label>
@@ -847,7 +847,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="about_content-link" class="form-label">Content</label>
-                                                <input type="text" id="about_content-link" class="form-control" wire:model="about_content.content" placeholder="Enter content ..." required >
+                                                <textarea id="about_content-link" class="form-control" wire:model="about_content.content" placeholder="Enter content ..." required  cols="30" rows="5"></textarea>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -882,7 +882,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="about_content-link" class="form-label">Content</label>
-                                                <input type="text" id="about_content-link" class="form-control" wire:model="about_content.content" placeholder="Enter content ..." required >
+                                                <textarea id="about_content-link" class="form-control" wire:model="about_content.content" placeholder="Enter content ..." required  cols="30" rows="5"></textarea>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
