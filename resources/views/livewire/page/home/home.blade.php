@@ -140,82 +140,84 @@
                                                     ->orderBy('number_order','asc')
                                                     ->first();
                                                 ?>
-                                                <div class="swiper-slide border border-dark rounded-4 @if($mode == 1) bg-light @else bg-secondary @endif ">
-                                                    <div class="row p-2">
-                                                        <div class="col-6" >
-                                                            <img class="p-2 rounded-start-4"  alt="Hanrickson E. Dumapit Projects" src="{{asset('storage/content/project_image_contents/'. $project_image_contents->image)}}" alt="Hanrickson E. Dumapit, Drusha" style="width:100%;height:100%;object-fit:contain">
-                                                        </div>
-                                                        <div class="col-6 col-xs-6 p-sm-3 " style="max-height:650px;overflow: auto;">
-                                                            <div class="row">
-                                                                <h3 class="text-start text-info pt-md-5 pt-sm-5" style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                                                    {{$project_value->title}}
-                                                                </h3>
+                                                @if(  $project_image_contents)
+                                                    <div class="swiper-slide border border-dark rounded-4 @if($mode == 1) bg-light @else bg-secondary @endif ">
+                                                        <div class="row p-2">
+                                                            <div class="col-6" >
+                                                                <img class="p-2 rounded-start-4"  alt="Hanrickson E. Dumapit Projects" src="{{asset('storage/content/project_image_contents/'. $project_image_contents->image)}}" alt="Hanrickson E. Dumapit, Drusha" style="width:100%;height:100%;object-fit:contain">
                                                             </div>
-                                                        <div class="row">
-                                                                <div class="col">
-                                                                    <a class="justify-content-start link-underline link-underline-opacity-0 " target="_blank" href="@if($project_value->link) {{$project_value->link}} @else # @endif"> 
-                                                                        <button class="text-start btn @if($mode == 0) btn-outline-light @else btn-outline-dark @endif btn-md m-1 px-3"><strong>  {{$project_value->button}}</strong> </button>
-                                                                    </a>
+                                                            <div class="col-6 col-xs-6 p-sm-3 " style="max-height:650px;overflow: auto;">
+                                                                <div class="row">
+                                                                    <h3 class="text-start text-info pt-md-5 pt-sm-5" style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                                                        {{$project_value->title}}
+                                                                    </h3>
                                                                 </div>
-                                                        </div>
-                                                        <div class="row pt-3 d-none">
-                                                            <div class="col">
-                                                                <p class="text-start h6 d-none d-md-block " style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                                        Secondary
-                                                                    </span> 
-                                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                                        Secondary
-                                                                    </span> 
-                                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                                        Secondary
-                                                                    </span> 
-                                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                                        Secondary
-                                                                    </span> 
-                                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                                        Secondary
-                                                                    </span> 
-                                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                                        Secondary
-                                                                    </span> 
-                                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                                        Secondary
-                                                                    </span> 
-                                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                                        Secondary
-                                                                    </span> 
-                                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                                        Secondary
-                                                                    </span> 
-                                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                                        Secondary
-                                                                    </span> 
-                                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                                        Secondary
-                                                                    </span> 
-                                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                                        Secondary
-                                                                    </span> 
-                                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                                        Secondary
-                                                                    </span> 
-                                                                    <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
-                                                                        Secondary
-                                                                    </span> 
-                                                                </p>
+                                                            <div class="row">
+                                                                    <div class="col">
+                                                                        <a class="justify-content-start link-underline link-underline-opacity-0 " target="_blank" href="@if($project_value->link) {{$project_value->link}} @else # @endif"> 
+                                                                            <button class="text-start btn @if($mode == 0) btn-outline-light @else btn-outline-dark @endif btn-md m-1 px-3"><strong>  {{$project_value->button}}</strong> </button>
+                                                                        </a>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="row pt-3 d-none">
+                                                                <div class="col">
+                                                                    <p class="text-start h6 d-none d-md-block " style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                                            Secondary
+                                                                        </span> 
+                                                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                                            Secondary
+                                                                        </span> 
+                                                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                                            Secondary
+                                                                        </span> 
+                                                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                                            Secondary
+                                                                        </span> 
+                                                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                                            Secondary
+                                                                        </span> 
+                                                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                                            Secondary
+                                                                        </span> 
+                                                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                                            Secondary
+                                                                        </span> 
+                                                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                                            Secondary
+                                                                        </span> 
+                                                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                                            Secondary
+                                                                        </span> 
+                                                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                                            Secondary
+                                                                        </span> 
+                                                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                                            Secondary
+                                                                        </span> 
+                                                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                                            Secondary
+                                                                        </span> 
+                                                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                                            Secondary
+                                                                        </span> 
+                                                                        <span class="m-1 p-2 badge @if($mode == 0) text-bg-light text-dark @else  text-bg-secondary text-light @endif">
+                                                                            Secondary
+                                                                        </span> 
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row pt-3">
+                                                                <div class="col">
+                                                                    <p class="text-start lead d-none d-lg-block overflow-auto" style="width:inherit;max-height:450px" >
+                                                                        {{$project_value->content}}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                             </div>
                                                         </div>
-                                                        <div class="row pt-3">
-                                                            <div class="col">
-                                                                <p class="text-start lead d-none d-lg-block overflow-auto" style="width:inherit;max-height:450px" >
-                                                                    {{$project_value->content}}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                    </div>
-                                                </div>       
+                                                    </div> 
+                                                @endif      
                                         @endforeach                         
                                     </div>
                                     <div class="swiper-button-next"></div>

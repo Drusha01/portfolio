@@ -1202,7 +1202,7 @@ class Project extends Component
                 ])){
                     $this->dispatch('swal:redirect',
                         position         									: 'center',
-                        icon              									: 'warning',
+                        icon              									: 'success',
                         title             									: 'Successfully added!',
                         showConfirmButton 									: 'true',
                         timer             									: '1000',
