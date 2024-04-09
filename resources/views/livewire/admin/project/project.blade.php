@@ -513,7 +513,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="project-title" class="form-label">Content</label>
-                                                <input type="text" id="project-title" class="form-control" wire:model.defer="project.content" placeholder="Enter content ..." required>
+                                                <textarea id="project-title" class="form-control" wire:model.defer="project.content" placeholder="Enter content ..." required  cols="30" rows="5"></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="project-link" class="form-label">Button</label>
@@ -552,7 +552,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="project-title" class="form-label">Content</label>
-                                                <input type="text" id="project-title" class="form-control" wire:model.defer="project.content" placeholder="Enter content ..." required>
+                                                <textarea id="project-title" class="form-control" wire:model.defer="project.content" placeholder="Enter content ..." required  cols="30" rows="5"></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="project-link" class="form-label">Button</label>

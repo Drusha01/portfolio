@@ -183,11 +183,11 @@
                                         <div class="modal-body">
                                             <div class="mb-3">
                                                 <label for="faq-title" class="form-label">Question</label>
-                                                <input type="text" id="faq-title" class="form-control" wire:model.defer="faq.question" placeholder="Enter question ..." required>
+                                                <textarea id="faq-link" class="form-control" wire:model="faq.question" placeholder="Enter question ..." required  cols="30" rows="5"></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="faq-link" class="form-label">Answer</label>
-                                                <input type="text" id="faq-link" class="form-control" wire:model="faq.answer" placeholder="Enter answer ..." required >
+                                                <textarea id="faq-link" class="form-control" wire:model="faq.answer" placeholder="Enter answer ..." required  cols="30" rows="5"></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="faq-type" class="form-label">Link</label>
@@ -218,11 +218,11 @@
                                         <div class="modal-body">
                                             <div class="mb-3">
                                                 <label for="faq-title" class="form-label">Question</label>
-                                                <input type="text" id="faq-title" class="form-control" wire:model.defer="faq.question" placeholder="Enter header ..." required>
+                                                <textarea id="faq-link" class="form-control" wire:model="faq.question" placeholder="Enter question ..." required  cols="30" rows="5"></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="faq-link" class="form-label">Answer</label>
-                                                <input type="text" id="faq-link" class="form-control" wire:model="faq.answer" placeholder="Enter content ..." required >
+                                                <textarea id="faq-link" class="form-control" wire:model="faq.answer" placeholder="Enter answer ..." required  cols="30" rows="5"></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="faq-type" class="form-label">Link</label>
