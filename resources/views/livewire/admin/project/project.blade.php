@@ -735,7 +735,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="project-title" class="form-label">Description</label>
-                                                <textarea id="project-title" class="form-control" wire:model.defer="developer.description" placeholder="Enter description ..." required  cols="30" rows="5"></textarea>
+                                                <textarea id="project-title" class="form-control" wire:model.defer="developer.description" placeholder="Enter description ..."  cols="30" rows="5"></textarea>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -778,7 +778,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="project-title" class="form-label">Description</label>
-                                                <textarea id="project-title" class="form-control" wire:model.defer="developer.description" placeholder="Enter description ..." required  cols="30" rows="5"></textarea>
+                                                <textarea id="project-title" class="form-control" wire:model.defer="developer.description" placeholder="Enter description ..."   cols="30" rows="5"></textarea>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
