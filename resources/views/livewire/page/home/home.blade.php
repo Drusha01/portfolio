@@ -143,12 +143,12 @@
                                                 @if(  $project_image_contents)
                                                     <div class="swiper-slide border border-dark rounded-4 @if($mode == 1) bg-light @else bg-secondary @endif ">
                                                         <div class="row p-2">
-                                                            <div class="col-6" >
+                                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6" >
                                                                 <img class="p-2 rounded-start-4"  alt="Hanrickson E. Dumapit Projects" src="{{asset('storage/content/project_image_contents/'. $project_image_contents->image)}}" alt="Hanrickson E. Dumapit, Drusha" style="width:100%;height:100%;object-fit:contain">
                                                             </div>
-                                                            <div class="col-6 col-xs-6 p-sm-3 " style="max-height:650px;overflow: auto;">
+                                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 p-sm-3 " style="max-height:650px;overflow: auto;">
                                                                 <div class="row">
-                                                                    <h3 class="text-start text-info pt-md-5 pt-sm-5" style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                                                    <h3 class="text-start text-info" style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
                                                                         {{$project_value->title}}
                                                                     </h3>
                                                                 </div>
