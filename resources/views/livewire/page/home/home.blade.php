@@ -88,7 +88,7 @@
                     ->toArray();
                 ?>
                 @if($this->skill_data)
-                    <section id="skills" class="pt-5 pb-5" style="@if($color_toggle) @if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif @else @if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif @endif">
+                    <section id="skills" class="pt-5 pb-5 d-none d-sm-block" style="@if($color_toggle) @if($mode == 0) background:#282828;color:white @else background:#fff;color:dark @endif @else @if($mode == 0) background:#242424;color:white @else background:#F9F9F9;color:dark @endif @endif">
                         <div class="container my-5">
                             <div class="align-items-center ">
                                 <h3 class="h1 pb-5 text-uppercase text-center">Skills</h3>
