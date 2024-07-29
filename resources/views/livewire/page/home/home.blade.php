@@ -148,7 +148,7 @@
                                                             </div>
                                                             <div class="col-6 col-xs-6 p-sm-3 " style="max-height:650px;overflow: auto;">
                                                                 <div class="row">
-                                                                    <h3 class="text-start text-info pt-md-5 pt-sm-5" style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                                                                    <h3 class="text-start text-info " style="width:inherit;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
                                                                         {{$project_value->title}}
                                                                     </h3>
                                                                 </div>
