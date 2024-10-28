@@ -19,15 +19,11 @@
                         </form>
                     </div>
                     <a href="/auth/google/redirect" target="_blank">Google</a>
-                    <button onclick="checkLoginState();">
-                    facebook
-                    </button>
                     <button onclick="logout();"> logout</button>
-                    <a href="" target="_blank"  onlogin="checkLoginState();">facebook</a>
 
                         <fb:login-button 
-                        scope="public_profile,email"
-                        onlogin="checkLoginState();">
+                          scope="public_profile,email"
+                          onlogin="checkLoginState();">
                         </fb:login-button>
                     <div class="row">
                         <p class="text-reset mt-4"><a href="/forgot-password" wire:navigate class="text-dark">Forgot password</a></p>
@@ -85,11 +81,11 @@
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
-    }
-    function logout(){
-        FB.logout(function(response) {
-        // Person is now logged out
+  }
+  function logout(){
+      FB.logout(function(response) {
+      // Person is now logged out
     });
-    }
+  }
 </script>
 </div>
