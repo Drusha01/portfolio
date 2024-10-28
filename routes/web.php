@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Laravel\Socialite\Facades\Socialite;
 // middleware
 use App\Http\Middleware\Logout;
 use App\Http\Middleware\Authenticated;
@@ -132,3 +132,21 @@ Route::middleware([Darkmode::class,Authenticated::class,AccountisValid::class,Ac
 Route::get('/createpost', CreatePost::class)->name('createpost');
 
 
+Route::get('/auth/google/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+ 
+Route::get('/auth/google/callback', function () {
+    $user = Socialite::driver('google')->user();
+    dd($user);
+});
+
+
+Route::get('/auth/facebook/redirect', function () {
+    return Socialite::driver('facebook')->redirect();
+});
+ 
+Route::get('/auth/facebook/callback', function () {
+    $user = Socialite::driver('facebook')->user();
+    dd($user);
+});

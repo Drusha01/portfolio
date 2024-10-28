@@ -16,6 +16,8 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="{{url('/bootstrap-5.3.2-dist')}}/css/bootstrap.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.4/umd/popper.min.js"></script>
+        
+
     </head>
     <style>
         body {
@@ -79,6 +81,7 @@
         }
     </style>
     <body>
+        
         <div class="bg"></div>
         <div class="bg bg2"></div>
         <div class="bg bg3"></div>
