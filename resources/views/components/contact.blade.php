@@ -50,9 +50,9 @@
         <div class="container-md mt-5 ">
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-10 @if($mode == 1) bg-light @else bg-dark @endif shadow justify-content-center p-3 mb-5 rounded-4">
-                    <form wire:submit.prevent="send_email()" class="">
+                    <form action="send_email()" class="">
                         <div class="row pt-5">
-                        <div class="col-sm-6 mb-3">
+                            <div class="col-sm-6 mb-3">
                                 <input type="text" class="form-control" wire:model.defer="email.name" placeholder="Your name" required>
                             </div>
                             <div class="col-sm-6 mb-3">
@@ -63,6 +63,7 @@
                             </div>
                             <div class="col-lg-12 mb-3">
                                 <textarea class="form-control" rows="4"  wire:model.defer="email.message" required  placeholder="Message"></textarea>
+                            </div>
                             <div class="text-center mb-3">
                                 <button class="btn btn-light btn-outline-dark" type="submit">Send Message</button>
                             </div>

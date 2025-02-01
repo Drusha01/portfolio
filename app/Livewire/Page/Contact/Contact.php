@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
+
+use Mail;
+
 class Contact extends Component
 {
     public $title = 'Contact';
@@ -52,6 +55,7 @@ class Contact extends Component
         'contact_details' => NULL,
         'number_order' => NULL,
     ];
+
     public function boot(Request $request){
         $data = $request->session()->all();
         $this->mode = $data['mode'];
@@ -173,5 +177,30 @@ class Contact extends Component
         ->layout('components.layouts.contact',[
             'title'=>$this->title,
             'mode'=>$this->mode]);
+    }
+
+    public $email = [
+        'name'=> null,
+        'email'=> null,
+        'subject'=> null,
+        'message'=> null,
+    ];
+    public function send_email(){
+        Mail::send('mail.contact', [
+            'name'=>$this->email['name'], 
+            'email'=>$this->email['email'], 
+            'user_message'=>$this->email['message'], 
+            'subject'=>$this->email['subject']], 
+            function($message) {
+                $message->to('hanzdumapit53@gmail.com', 'hanzdumapit53@gmail.com')->subject
+                ($this->email['subject']);
+        $message->from($this->email['email'],$this->email['subject']);
+     });
+        $this->email = [
+            'name'=> null,
+            'email'=> null,
+            'subject'=> null,
+            'message'=> null,
+        ];
     }
 }
